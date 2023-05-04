@@ -1,0 +1,4 @@
+export PATH=~/jdk1.7.0_11/bin/:$PATH
+export JAVA_HOME=~/jdk1.7.0_11/bin/ 
+export LD_LIBRARY_PATH=.
+java -jar ./DrawGram.jar

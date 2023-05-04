@@ -1,0 +1,11 @@
+#===================================================================#
+#                  Input file for ReadMapping step                  #
+#===================================================================#
+
+#### ReadMapping ####
+### DNA-seq data path(input file of ReadMapping) ###
+## Paired-end read pairs
+## <Hanwoo_Hanwoo1> => RGSM name, format:(BreedName)_(BreedName)(Number)
+## [lib1]
+## Path of forward read
+## Path of reverse read

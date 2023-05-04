@@ -1,0 +1,208 @@
+#===================================================================#
+#                  Input file for ReadMapping step                  #
+#===================================================================#
+
+#### ReadMapping ####
+### DNA-seq data path(input file of ReadMapping) ###
+## Paired-end read pairs
+## <Hanwoo_Hanwoo1> => RGSM name, format:(BreedName)_(BreedName)(Number)
+## [lib1]
+## Path of forward read
+## Path of reverse read
+
+<Angus_Angus1>
+[lib1]
+[Data directory]/SRR1262622_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262622_2.fastq.gz_filtered.gz
+<Angus_Angus2>
+[lib1]
+[Data directory]/SRR1262628_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262628_2.fastq.gz_filtered.gz
+<Angus_Angus3>
+[lib1]
+[Data directory]/SRR1262631_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262631_2.fastq.gz_filtered.gz
+<Angus_Angus4>
+[lib1]
+[Data directory]/SRR1262633_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262633_2.fastq.gz_filtered.gz
+<Angus_Angus5>
+[lib1]
+[Data directory]/SRR1262635_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262635_2.fastq.gz_filtered.gz
+<Angus_Angus6>
+[lib1]
+[Data directory]/SRR1262637_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262637_2.fastq.gz_filtered.gz
+<Angus_Angus7>
+[lib1]
+[Data directory]/SRR1262642_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262642_2.fastq.gz_filtered.gz
+<Angus_Angus8>
+[lib1]
+[Data directory]/SRR1262645_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262645_2.fastq.gz_filtered.gz
+<Angus_Angus9>
+[lib1]
+[Data directory]/SRR1262648_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262648_2.fastq.gz_filtered.gz
+<Angus_Angus10>
+[lib1]
+[Data directory]/SRR1262656_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262656_2.fastq.gz_filtered.gz
+
+<Hanwoo_Hanwoo1>
+[lib1]
+[Data directory]/SRR934397_1.fastq.gz_filtered.gz
+[Data directory]/SRR934397_2.fastq.gz_filtered.gz
+<Hanwoo_Hanwoo2>
+[lib1]
+[Data directory]/SRR934403_1.fastq.gz_filtered.gz
+[Data directory]/SRR934403_2.fastq.gz_filtered.gz
+<Hanwoo_Hanwoo3>
+[lib1]
+[Data directory]/SRR934415_1.fastq.gz_filtered.gz
+[Data directory]/SRR934415_2.fastq.gz_filtered.gz
+<Hanwoo_Hanwoo4>
+[lib1]
+[Data directory]/SRR934417_1.fastq.gz_filtered.gz
+[Data directory]/SRR934417_2.fastq.gz_filtered.gz
+<Hanwoo_Hanwoo5>
+[lib1]
+[Data directory]/SRR934419_1.fastq.gz_filtered.gz
+[Data directory]/SRR934419_2.fastq.gz_filtered.gz
+<Hanwoo_Hanwoo6>
+[lib1]
+[Data directory]/SRR934433_1.fastq.gz_filtered.gz
+[Data directory]/SRR934433_2.fastq.gz_filtered.gz
+<Hanwoo_Hanwoo7>
+[lib1]
+[Data directory]/SRR934435_1.fastq.gz_filtered.gz
+[Data directory]/SRR934435_2.fastq.gz_filtered.gz
+<Hanwoo_Hanwoo8>
+[lib1]
+[Data directory]/SRR934436_1.fastq.gz_filtered.gz
+[Data directory]/SRR934436_2.fastq.gz_filtered.gz
+<Hanwoo_Hanwoo9>
+[lib1]
+[Data directory]/SRR934437_1.fastq.gz_filtered.gz
+[Data directory]/SRR934437_2.fastq.gz_filtered.gz
+
+<Holstein_Holstein1>
+[lib1]
+[Data directory]/SRR1262665_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262665_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Holstein_Holstein2>
+[lib1]
+[Data directory]/SRR1262696_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262696_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Holstein_Holstein3>
+[lib1]
+[Data directory]/SRR1262715_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262715_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Holstein_Holstein4>
+[lib1]
+[Data directory]/SRR1262724_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262724_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Holstein_Holstein5>
+[lib1]
+[Data directory]/SRR1262731_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262731_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Holstein_Holstein6>
+[lib1]
+[Data directory]/SRR1262746_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262746_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Holstein_Holstein7>
+[lib1]
+[Data directory]/SRR1262748_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262748_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Holstein_Holstein8>
+[lib1]
+[Data directory]/SRR1262758_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262758_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Holstein_Holstein9>
+[lib1]
+[Data directory]/SRR1262772_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262772_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+
+<Jersey_Jersey1>
+[lib1]
+[Data directory]/SRR1262789_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262789_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey2>
+[lib1]
+[Data directory]/SRR1262791_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262791_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey3>
+[lib1]
+[Data directory]/SRR1262792_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262792_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey4>
+[lib1]
+[Data directory]/SRR1262793_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262793_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey5>
+[lib1]
+[Data directory]/SRR1262796_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262796_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey6>
+[lib1]
+[Data directory]/SRR1262797_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262797_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey7>
+[lib1]
+[Data directory]/SRR1262798_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262798_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey8>
+[lib1]
+[Data directory]/SRR1262799_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262799_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey9>
+[lib1]
+[Data directory]/SRR1262801_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262801_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+<Jersey_Jersey10>
+[lib1]
+[Data directory]/SRR1262803_1.fastq.gz_filtered.gz_trimmed_val_1.fq.gz
+[Data directory]/SRR1262803_2.fastq.gz_filtered.gz_trimmed_val_2.fq.gz
+
+<Simmental_Simmental1>
+[lib1]
+[Data directory]/SRR1262804_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262804_2.fastq.gz_filtered.gz
+<Simmental_Simmental2>
+[lib1]
+[Data directory]/SRR1262810_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262810_2.fastq.gz_filtered.gz
+<Simmental_Simmental3>
+[lib1]
+[Data directory]/SRR1262812_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262812_2.fastq.gz_filtered.gz
+<Simmental_Simmental4>
+[lib1]
+[Data directory]/SRR1262814_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262814_2.fastq.gz_filtered.gz
+<Simmental_Simmental5>
+[lib1]
+[Data directory]/SRR1262816_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262816_2.fastq.gz_filtered.gz
+<Simmental_Simmental6>
+[lib1]
+[Data directory]/SRR1262821_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262821_2.fastq.gz_filtered.gz
+<Simmental_Simmental7>
+[lib1]
+[Data directory]/SRR1262824_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262824_2.fastq.gz_filtered.gz
+<Simmental_Simmental8>
+[lib1]
+[Data directory]/SRR1262829_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262829_2.fastq.gz_filtered.gz
+<Simmental_Simmental9>
+[lib1]
+[Data directory]/SRR1262838_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262838_2.fastq.gz_filtered.gz
+<Simmental_Simmental10>
+[lib1]
+[Data directory]/SRR1262844_1.fastq.gz_filtered.gz
+[Data directory]/SRR1262844_2.fastq.gz_filtered.gz

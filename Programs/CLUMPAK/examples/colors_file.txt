@@ -1,0 +1,12 @@
+1 blue
+2 color58
+3 dark_purple
+4 dark_green
+5 color60
+6 color101
+7 red
+8 green
+9 color129
+10 color109
+11 dark_brown
+12 yellow
