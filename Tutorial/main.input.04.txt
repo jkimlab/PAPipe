@@ -1,0 +1,19 @@
+#==================================================================#
+#                  Input file for Population step                  #
+#==================================================================#
+
+#### If you take the Effective size step in Population analysis, write the BAM files path ####
+#### Population ####
+### BAM ###
+## <Hanwoo_Hanwoo1> => RGSM name (Before read grouping in ReadMapping step, format:(BreedName)_(BreedName)(Number), example : Hanwoo_Hanwoo1)
+## Path of bam file
+
+### Vcf ###
+## Path of vcf file
+
+### Plink ###
+## Input file of Population analysis ##
+
+
+### Hapmap ###
+## Input file of Population analysis ##

@@ -1,0 +1,31 @@
+34 Mozabite
+36 Bedouin
+37 Druze
+38 Palestinian
+903 Tunisian
+902 Moroccan
+904 Turkish
+901 Ashkenazi
+28 Sardinian
+27 Italian
+29 Tuscan
+25 French
+24 Basque
+20 Orcadian
+22 Russian
+21 Adygei
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

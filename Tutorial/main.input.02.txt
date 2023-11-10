@@ -1,0 +1,8 @@
+#==================================================================#
+#                Input file for VariantCalling step                #
+#==================================================================#
+
+#### VariantCalling ####
+### Bam file path(input file of ReadMapping or Varaint Calling) ###
+## <Hanwoo_Hanwoo1> => RGSM name (Before read grouping in ReadMapping step, format:(BreedName)_(BreedName)(Number), example : Hanwoo_Hanwoo1)
+# Path of bam file
