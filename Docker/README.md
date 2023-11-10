@@ -17,11 +17,18 @@ sudo usermod -aG docker $USER 	# adding user to the “docker” group
 glt clone https://github.com/nayoung9/PAPipe
 ```
 
-**You can load the image from the .tar file ** 
+**Download Tutorial data and get ready to run** 
 
 ```bash
-cd PAPipe/Docker/
-gzip -d PAPipe.tar.gz
+cd PAPipe/TEST/
+wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/test_data.tar.gz
+tar -zxvf test_data.tar.gz
+```
+
+**Download .tar file and load the image** 
+
+```bash
+wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/PAPipe.tar
 docker load -i ./PAPipe.tar
 
 #Check if the image load well 

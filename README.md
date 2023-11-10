@@ -1,338 +1,243 @@
-## PAPipe
+## PopPipe
 
 
 
  A comprehensive pipeline for population genetic analysis containing Read mapping, Variant calling, and Population genetic analysis
 
-![fig1.png](./figure/fig1.png)
+![fig1.png](./figures/fig1.png)
+
+
+### Main workflow
+
+1. Raw read trimming
+    1. Trim galore!
+
+2. Read mapping (Two options)
+    1. BWA
+    2. Bowtie2
+
+3. Variant calling (Three options)
+    1. GATK3
+    2. GATK4
+    3. BCFtools call
+
+4. Postprocessing
+
+5. 11 popular Population genetic analysis 
+    1. principal component analysis (Plink 1.9)
+    2. PCA projection analysis (Plink 2)
+    3. Phylogenetic analysis (Snphylo)
+    4. Treemix analysis (Treemix2)
+    5. Population structure analysis (Structure)
+    6. Linkage disequilibrium decay analysis (PopLDdecay)
+    7. Selective sweep finding analysis (SweepFinder2)
+    8. Population admixture analysis (Admixtools)
+    9. Pairwise sequentially Markovian coalescent analysis (PSMC)
+    10. Multiple sequentially Markovian coalescent analysis (MSMC)
+    11. Fixation index analysis (Fst)
 
 ### Install PAPipe
 
-
-
-```
-1. Download source 
-	$ git clone https://github.com/jkimlab/PAPipe.git
+```bash
+git clone https://github.com/jkimlab/PAPipe.git
 ```
 
-### Install PAPipe using Docker
+### Requirements
 
+---
 
-
-```
-1. Install docker (https://docs.docker.com/install/linux/docker-ce/ubuntu)
-    curl -fsSL https://get.docker.com/ | sudo sh
-    sudo usermod -aG docker $USER 	# adding user to the “docker” group
-
-2. Download source
-  git clone https://github.com/jkimlab/PAPipe.git
-  
-3. Build image using Dockerfile 
-  - Change to the directory where Dockerfile is located (PAPipe/docker/)
-    docker build -t [docker image name] ./ &> log_image_build
-
-4. Run by docker
-  - Run image and create container
-    docker run -v [Local directory containing data]:[Path of connecting directory on container] -it [docker image name]
-```
-
-### Prepare parameter files
-
-
-
-Check out the directory `./params/` containing example parameter files
-
-1. Input files
-    1. Input for read mapping (main_input_01.txt)
-        
-        ```
-        #===================================================================#
-        #                  Input file for ReadMapping step                  #
-        #===================================================================#
-        
-        #### ReadMapping ####
-        ### DNA-seq data path(input file of ReadMapping) ###
-        ## Paired-end read pairs
-        ## <Hanwoo_Hanwoo1> => RGSM name, format:(BreedName)_(BreedName)(Number)
-        ## [lib1]
-        ## Path of forward read
-        ## path of reverse read
-        <Abreed_Abreed1>
-        [lib1]
-        [path to sequencing read]/[sequencing read]-1.fq.gz
-        [path to sequencing read]/[sequencing read]-2.fq.gz
-        [lib2]
-        [path to sequencing read]/[sequencing read]-1.fq.gz
-        [path to sequencing read]/[sequencing read]-2.fq.gz
-        <Abreed_Abreed2>
-        [lib1]
-        [path to sequencing read]/[sequencing read]-1.fq.gz
-        [path to sequencing read]/[sequencing read]-2.fq.gz
-        [lib2]
-        [path to sequencing read]/[sequencing read]-1.fq.gz
-        [path to sequencing read]/[sequencing read]-2.fq.gz
-        ```
-        
-    2. Input for variant calling (main_input_02.txt)
-        
-        ```
-        #==================================================================#
-        #                Input file for VariantCalling step                #
-        #==================================================================#
-        
-        #### VariantCalling ####
-        ### Bam file path(input file of ReadMapping or Varaint Calling) ###
-        ## <Hanwoo_Hanwoo1> => RGSM name (Before read grouping in ReadMapping step, format:(BreedName)_(BreedName)(Number), example : Hanwoo_Hanwoo1)
-        # Path of bam file
-        <Abreed_Abreed1>
-        [path to bam file]/[Abreed_Abreed1].recal.addRG.marked.sort.bam
-        <Abreed_Abreed2>
-        [path to bam file]/[Abreed_Abreed2].recal.addRG.marked.sort.bam
-        <Bbreed_Breed1>
-        [path to bam file]/[Bbreed_Breed1].recal.addRG.marked.sort.bam
-        <Bbreed_Breed2>
-        [path to bam file]/[Bbreed_Breed2].recal.addRG.marked.sort.bam
-        ```
-        
-    3. Input for postprocessing (Format converting or data filtering step, main_input_03.txt)
-        
-        ```
-        #==================================================================#
-        #                Input file for Postprocessing step                #
-        #==================================================================#
-        
-        #### Postprocessing ####
-        ### Vcf file path(input file of Postprocessing) ###
-        ## Path of vcf file
-        [path to variant call VCF]/[variant call].vcf.gz
-        
-        #### If you take the Effective size step in Population analysis, write the BAM files path ####
-        #### Population ####
-        ### Bam files path ###
-        ## <Hanwoo_Hanwoo1> => RGSM name (Before read grouping in ReadMapping step, format:(BreedName)_(BreedName)(Number), example : Hanwoo_Hanwoo1)
-        ## Path of BAM file
-        <Abreed_Abreed1>
-        [path to bam file]/[Abreed_Abreed1].recal.addRG.marked.sort.bam
-        <Abreed_Abreed2>
-        [path to bam file]/[Abreed_Abreed2].recal.addRG.marked.sort.bam
-        <Bbreed_Breed1>
-        [path to bam file]/[Bbreed_Breed1].recal.addRG.marked.sort.bam
-        <Bbreed_Breed2>
-        [path to bam file]/[Bbreed_Breed2].recal.addRG.marked.sort.bam
-        ```
-        
-    4. Input for Population analysis (main_input_04.txt)
-        
-        ```
-        #==================================================================#
-        #                  Input file for Population step                  #
-        #==================================================================#
-        
-        #### If you take the Effective size step in Population analysis, write the BAM files path ####
-        #### Population ####
-        ### BAM ###
-        ## <Hanwoo_Hanwoo1> => RGSM name (Before read grouping in ReadMapping step, format:(BreedName)_(BreedName)(Number), example : Hanwoo_Hanwoo1)
-        ## Path of bam file
-        <Abreed_Abreed1>
-        [path to bam file]/[Abreed_Abreed1].recal.addRG.marked.sort.bam
-        <Abreed_Abreed2>
-        [path to bam file]/[Abreed_Abreed2].recal.addRG.marked.sort.bam
-        <Bbreed_Breed1>
-        [path to bam file]/[Bbreed_Breed1].recal.addRG.marked.sort.bam
-        <Bbreed_Breed2>
-        [path to bam file]/[Bbreed_Breed2].recal.addRG.marked.sort.bam
-        
-        ### Vcf ###
-        ## Path of vcf file
-        
-        ### Plink ###
-        ## Input file of Population analysis ##
-        
-        ### Hapmap ###
-        ## Input file of Population analysis ##
-        
-        ```
-        
-2. Parameter file (main_param.txt)
-    - There is a fixed parameter file for runDocker environment
+- You can prepare the environment in local with the commands below
     
-    ```python
-    #=======================================================================#
-    #                   parameter file for Population pipeline              #
-    #=======================================================================#
-    
-    #==================================================#
-    ####                 ReadMapping                ####
-    #==================================================#
-    ### Program path ###
-    ## Write 'OPTION = 1' if you want to use the BWA tool in Mapping step
-    ## Write 'OPTION = 2' if you want to use the Bowtie2 tool in Mapping step
-    
-    OPTION = 1
-    BWA = [program path]/bwa
-    BOWTIE2 = [program path]/bowtie2
-    SAMTOOLS = [program path]/samtools
-    PICARD = [program path]/picard.jar
+    ```bash
+    cd ./Programs/
+    bash ./set_local_env.sh
     ```
     
-3. Sample file (main_sample.txt)
+    This commands will automatically install the requirements and print the paths can be used as parameter file directly 
     
-    ```python
-    #sample sex[F, M, U, FemaleMale/U for none] population
-    ABreed1 U        Abreed
-    ABreed2 U        Abreed
-    BBreed1 U        Bbreed
-    BBreed2 U        Bbreed
-    ```
+- Or you can use PAPipe on docker without having to prepare the environment.
+    → [How to use PAPipe on docker](https://github.com/nayoung9/PAPipe#using-docker)  
     
+- Check out [Requirements](https://github.com/nayoung9/PAPipe/tree/main/Requirements) for details
 
 ### Run PAPipe
 
+**Using local environment**
 
-
-Parameters for run `main.py`
-
-```python
-#run all steps
-bin/main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> logs
-
-#from variant.vcf to population analysis results
-bin/main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> 02.logs
-
-#
-bin/main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> 03.logs
-
-#
-bin/main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> 04.logs
+```bash
+/Path_to_PAPipe/Programs/bin/main.py -p main.param.txt -s main.sample.txt - -o OUTDIR
 ```
 
-### PAPipe Results
+**Using Docker**
 
+```bash
+# Change directory where Dockerfile exists 
+cd ./Programs
 
+# Build Docker image
+docker build -t [docker image name] ./ &> log_image_build
 
-Results from all steps
+#Run
+docker run -v [Local directory containing data]:[Path of connecting directory on container] -it [docker image name]
+/Path_to_PAPipe/Programs/bin/main.py -p main.param.txt -s main.sample.txt - -o OUTDIR
+```
 
-1. Read mapping (BAM) 
-    
-    ```python
-    #Read mapping files for all samples
-    - 01_readMapping/04ReadRegrouping/[population]_[sample].addRG.marked.sort.bam
-    ```
-    
-2. Variant Calling (VCF)
-    
-    ```python
-    #Variant call generated using all population sequencing data 
-    - 02_VariantCalling/VariantCalling/All.variant.combined.g.vcf.gz
-    ```
-    
-3. Postprocessing
-    
-    ```
-    #Various formatted variant call data 
-    - 03_Postprocessing/Hapmap/variant.combined.GT.SNP.flt.hapmap
-    - 03_Postprocessing/plink/[prefix].bed
-    - 03_Postprocessing/plink/[prefix].bim
-    - 03_Postprocessing/plink/[prefix].fam
-    - 03_Postprocessing/plink/[prefix].map
-    - 03_Postprocessing/plink/[prefix].nosex
-    - 03_Postprocessing/plink/[prefix].ped
-    ```
-    
-4. Population analysis
-    1. Population structure analysis
+→ You can generate the parameter file easily at here : [PAPipe Parameter genetator](http://bioinfo.konkuk.ac.kr/practice/nayoung/PAPipe/parameter_builder/jm_index5.html)
+
+→ Check out more details about parameter files : [Tutorial](https://github.com/nayoung9/PAPipe/tree/main/Tutorial)
+
+### Results of PAPipe
+
+1. Trimmed read data 
+    - Trimmed read data for all samples
         
         ```
-        #STRUCTURE results per K in PNG files and all STRUCTURE results in a single PDF file
-        - 04_Population/STRUCTURE/CLUMPAK/K=[n].MajorCluster.png        
-        - 04_Population/STRUCTURE/CLUMPAK/pipeline_summary.pdf
+        /Path_to_out_directory/00_ReadQC/TrimmedData/[sample]_1_val_1.fq.gz
+        /Path_to_out_directory/00_ReadQC/TrimmedData/[sample]_2_val_2.fq.gz
         ```
         
-    2. Fixation index analysis
+    - fastQC results for all samples before and after trimming
         
         ```
-        #Fixation index results figure, different rounds uses different target and comparing population
-        - 04_Population/Fst/round[n]/Fst_result.pdf
+        /Path_to_out_directory/00_ReadQC/QC_Report_Before_Trimming/[population]/[sample]_1_fastqc.html
+        /Path_to_out_directory/00_ReadQC/QC_Report_Before_Trimming/[population]/[sample]_2_fastqc.html
         ```
         
-    3. LD decay analysis
+    - MultiQC summarized QC results for populations before and after trimming
         
         ```
-        #Estimated LD values
-        - 04_Population/LD/[maximum distance parameter]/Plot/out.[population name]
-        
-        #LD decay plot
-        - 04_Population/LD/[maximum distance parameter]/Plot/Rplots.pdf
+        /Path_to_out_directory/00_ReadQC/QC_Report_Before_Trimming/[population]/multiqc_report.html
         ```
         
-    4. Population admixture analysis
+2. Read alignment data 
+    - Read mapping files for all samples
         
         ```
-        #Admixture analysis results from all available combinations generated to estimate each statistics
-        - 04_Population/ADMIXTOOLS/admixtools_3pop/result.out
-        - 04_Population/ADMIXTOOLS/admixtools_4diff/result.out
-        - 04_Population/ADMIXTOOLS/admixtools_f4stat/result.out        
-        - 04_Population/ADMIXTOOLS/admixtools_Dstat/result.out
+        /Path_to_out_directory/01_readMapping/04ReadRegrouping/[population]_[sample].addRG.marked.sort.bam
         ```
         
-    5. PCA
+3. Variant call data
+    - Variant call generated using all population sequencing data
         
         ```
-        #PCA results
-        - 04_Population/PCA/PCs.info
-        
-        #PCA plot of all available combination of two PCs
-        - 04_Population/PCA/all.PCA.pdf
+        /Path_to_out_directory/02_VariantCalling/VariantCalling/[].All.variant.combined.g.vcf.gz
         ```
         
-    6. Phylogenetic analysis
+4. Post-processed data 
+    - Variant call gone through Hapmap format conversion/Plink filtering
         
         ```
-        #NEWICK formatted phylogenetic tree
-        - 04_Population/SNPhylo/snphylo.ml.txt
-        
-        #Two figures of different visualization type of phylogenetic tree
-        - 04_Population/SNPhylo/snphylo_tree.pdf #rooted tree
-        - 04_Population/SNPhylo/Rplots.pdf #unrooted tree
+        /Path_to_out_directory/03_Postprocessing/Hapmap/variant.combined.GT.SNP.flt.hapmap
+        /Path_to_out_directory/03_Postprocessing/plink/[prefix].*
         ```
         
-    7. Effective Size estimation
-        
-        ```
-        #psmc_plot
-        - 04_Population/EffectiveSize/psmc_plot.pdf
-        ```
-        
-
-### Run PAPipe for making the results
-
-
-
-- DATA
-    - Four cattle population (Jersey, Simmental, Angus, Holstein from NCBI SRA, PRJNA238491, DOI: [10.1038/ng.3034](https://doi.org/10.1038/ng.3034))
-    - Additional single cattle breed data (Hanwoo from NCBI SRA, PRJNA210523, DOI: [10.1093/gbe/evu102](https://dx.doi.org/10.1093%2Fgbe%2Fevu102))
-- Quality Control
-    - IlluQC ([https://doi.org/10.1371/journal.pone.0030619](https://doi.org/10.1371/journal.pone.0030619))
-    - TrimGalore ([https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/))
-- Run PAPipe
-    - Command
-    
-    ```python
-    bin/main.py -P ./main_param.txt -I ./main_input_pre.txt -A ./main_sample.txt -V 1 -J 8 &> logs
-    ```
-    
-    - see `example/main_input_01.txt`
-    - see `example/main_sample.txt`
-    - see `example/main_param.txt`
-
-### **Included third party tools**
-
-
-
-See `Requirements/ThirdPartyTools.txt`
-
-### Contact
-
-
-
-[bioinfolabkr@gmail.com](mailto:bioinfolabkr@gmail.com)
+5. Population analysis
+    1. principal component analysis (Plink 1.9)
+        - PCA results
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/PCA/PCs.info
+            ```
+            
+        - PCA plots of all available combination of two PCs
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/PCA/all.PCA.pdf
+            ```
+            
+    2. PCA projection analysis (Plink 2)
+        - PCA results
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/PCA/PCs.info
+            ```
+            
+    3. Phylogenetic analysis (Snphylo)
+        - .NEWICK formatted phylogenetic tree
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/SNPhylo/snphylo.ml.txt
+            ```
+            
+        - Visualized phylogenetic tree
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/SNPhylo/snphylo.ml.png
+            ```
+            
+    4. Treemix analysis (Treemix2)
+        - Treemix results in a single PDF file
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/Treemix/Treemix.results.pdf
+            ```
+            
+    5. Population structure analysis (Structure)
+        - STRUCTURE results per K in .PNG files and all STRUCTURE results in a single PDF file
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/STRUCTURE/CLUMPAK/K=[n].MajorCluster.png        
+            ```
+            
+        - STRUCTURE results for all K in single .PDF file
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/STRUCTURE/CLUMPAK/pipeline_summary.pdf
+            ```
+            
+    6. Linkage disequilibrium decay analysis (PopLDdecay)
+        - Linkage disequilibrium decay results for each maximum distance parameter
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/LdDecay/[maxDist]/Plot/out.pdf
+            ```
+            
+    7. Selective sweep finding analysis (SweepFinder2)
+        - Selective Sweep results in point plot figures for all chromosom generated per population
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/SweepFinder2/[population]/SweepFinderOut.pdf
+            ```
+            
+        - Selective Sweep results per population and per chromosome
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/SweepFinder2/[population]/[population].[chromosome].SF2out
+            ```
+            
+    8. Population admixture analysis (Admixtools)
+        - Admixture analysis results
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/ADMIXTOOLS/admixtools_3pop/result.out
+            /Path_to_out_directory/04_Population/[running datetime]/ADMIXTOOLS/admixtools_4diff/result.out
+            /Path_to_out_directory/04_Population/[running datetime]/ADMIXTOOLS/admixtools_f4stat/result.out        
+            /Path_to_out_directory/04_Population/[running datetime]/ADMIXTOOLS/admixtools_Dstat/result.out
+            ```
+            
+    9. Pairwise sequentially Markovian coalescent analysis (PSMC)
+        - Effective Size plot
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/EffectiveSize/psmc_plot.pdf
+            ```
+            
+    10. Multiple sequentially Markovian coalescent analysis (MSMC)
+        - Effective Size plot
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/MSMC/MSMC.pdf
+            ```
+            
+    11. Fixation index analysis (Fst)
+        - Fixation index results visualized in manhatton plot figures
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/Fst/[pair information]/Fst_result.pdf
+            ```
+            
+        - Significant regions results of Fst analysis
+            
+            ```
+            /Path_to_out_directory/04_Population/[running datetime]/Fst/[comparing pair information]/[comparing pair information].sig.region.txt
+            ```
