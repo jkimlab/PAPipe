@@ -54,7 +54,7 @@ docker run -v [absolute path of .../PAPipe/TEST/]:/RUN_DOCKER/  -it pap_docker:l
 ```bash
 # Run in the docker container
 cd /RUN_DOCKER/docker_test
-python3 /PAPipe/bin/main.py  -P ./main_param.txt  -I main_input.txt -A main_sample.txt &> log
+python3 /PAPipe/bin/main.py  -P ./main_param.txt  -I ./main_input.txt -A ./main_sample.txt &> ./log
 ```
 
 **8. Generating HTML pages for browsing analysis results** 
@@ -63,5 +63,5 @@ python3 /PAPipe/bin/main.py  -P ./main_param.txt  -I main_input.txt -A main_samp
 # Run in the docker container
 perl /PAPipe/bin/webEnvSet.pl ./out &> webenvset.log # ./out is the output directory created by running PAPipe
 cd ./out/web/
-python3 /PAPipe/bin/html/html/select_input.py /PAPipe/bin/html/html/pre_index.html &> webgen.log
+python3 /PAPipe/bin/html/html/select_input.py /PAPipe/bin/html/html/pre_index.html &> ./webgen.log
 ```
