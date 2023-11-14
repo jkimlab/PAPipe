@@ -4,7 +4,7 @@
 
 **Install docker and get ready to load PAPipe docker image**
 
-[Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+[Install Docker Engine on Various OS](https://docs.docker.com/engine/install/)
 
 ```bash
 curl -fsSL https://get.docker.com/ | sudo sh
@@ -14,7 +14,7 @@ sudo usermod -aG docker $USER 	# adding user to the “docker” group
 **Git clone PAPipe repository**
 
 ```bash
-glt clone https://github.com/nayoung9/PAPipe
+git clone https://github.com/jkimlab/PAPipe
 ```
 
 **Download Tutorial data and get ready to run** 
