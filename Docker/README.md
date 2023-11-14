@@ -2,7 +2,7 @@
 
 ### Run PAPipe with Docker
 
-This file shows how to run PAPipe with Docker for a test data. To run for your own data, you can easily prepare your own parameter files using [our helper webpage](http://bioinfo.konkuk.ac.kr/PAPipe/parameter_builder/) and rerun PAPipe in the Docker image.  
+This file shows how to run PAPipe with Docker for a test data. To run for your own data, you can easily prepare your own parameter files using [our helper webpage](http://bioinfo.konkuk.ac.kr/PAPipe/parameter_builder/){:target="_blank"} and rerun PAPipe in the Docker image.  
 
 **1. Installing Docker Engine (Need root permission)**
 
