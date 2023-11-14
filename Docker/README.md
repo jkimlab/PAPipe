@@ -22,31 +22,30 @@ sudo usermod -aG docker $USER
 git clone https://github.com/jkimlab/PAPipe
 ```
 
+**Downloading and loading the Docker image file** 
+
+```bash
+cd PAPipe
+wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/PAPipe.tar.gz
+docker load -i ./PAPipe.tar.gz
+
+#Check if the image loaded well 
+docker image ls 
+```
+
 **Downloading the test data** 
 
 ```bash
-cd PAPipe/TEST/
+cd TEST
 wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/test_data.tar.gz
 tar -zxvf test_data.tar.gz
 ```
 
-**Downloading and loading the Docker image file** 
+**Creating a docker container that mounts the directory of the test data** 
+
+Need to use the absolute path of the "TEST" directory.
 
 ```bash
-# Go back to the top directory of PAPipe
-cd ../
-
-wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/PAPipe.tar.gz
-docker load -i ./PAPipe.tar
-
-#Check if the image load well 
-docker image ls 
-```
-
-**Create docker container mounting the tutorial data directory** 
-
-```bash
-cd PAPipe/TEST/
 docker run -v [absolute path of .../PAPipe/TEST/]:/RUN_DOCKER/  -it pap_docker:latest
 ```
 
