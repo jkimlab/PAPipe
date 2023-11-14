@@ -17,7 +17,7 @@ curl -fsSL https://get.docker.com/ | sudo sh
 sudo usermod -aG docker $USER 	# adding user to the “docker” group
 ```
 
-**Git clone PAPipe repository**
+**Cloning the PAPipe git repository**
 
 ```bash
 git clone https://github.com/jkimlab/PAPipe
