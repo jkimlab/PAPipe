@@ -49,20 +49,19 @@ Need to use the absolute path of the "TEST" directory.
 docker run -v [absolute path of .../PAPipe/TEST/]:/RUN_DOCKER/  -it pap_docker:latest
 ```
 
-**Run PAPipe in the docker container** 
+**Running PAPipe in the Docker container** 
 
 ```bash
-#on the docker container
+# Run in the docker container
 cd /RUN_DOCKER/docker_test
 python3 /PAPipe/bin/main.py  -P ./main_param.txt  -I main_input.txt -A main_sample.txt &> log
 ```
 
-**Run additional commands to generate local result browser** 
+**Generating HTML pages for browsing analysis results** 
 
 ```bash
-#on the docker container
-cd /RUN_DOCKER/docker_test/
-perl /PAPipe/bin/webEnvSet.pl ./out &> webenvset.log
+# Run in the docker container
+perl /PAPipe/bin/webEnvSet.pl ./out &> webenvset.log # ./out is the output directory created by running PAPipe
 cd ./out/web/
-/PAPipe/bin/html/html/select_input.py /PAPipe/bin/html/html/pre_index.html &> webgen.log
+python3 /PAPipe/bin/html/html/select_input.py /PAPipe/bin/html/html/pre_index.html &> webgen.log
 ```
