@@ -11,7 +11,7 @@ Click [here](https://docs.docker.com/engine/install/) for more information about
 curl -fsSL https://get.docker.com/ | sudo sh
 ```
 
-**Setting Docker user (Need root permission)**
+**Adding a Docker user (Need root permission)**
 
 ```bash
 sudo usermod -aG docker $USER 	# adding user to the “docker” group
