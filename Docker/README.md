@@ -2,7 +2,7 @@
 
 ### Run PAPipe with Docker
 
-**Installing Docker Engine (Need root permission)**
+**1. Installing Docker Engine (Need root permission)**
 
 Skip if your machine already has the engine ([Installation document](https://docs.docker.com/engine/install/)). 
 
