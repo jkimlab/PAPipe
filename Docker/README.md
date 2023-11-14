@@ -4,17 +4,16 @@
 
 **Installing Docker Engine (Need root permission)**
 
-Skip if your machine already has the engine.
-Click [here](https://docs.docker.com/engine/install/) for more information about the Docker Engine installation. 
+Skip if your machine already has the engine ([Instllation documentation](https://docs.docker.com/engine/install/)). 
 
 ```bash
 curl -fsSL https://get.docker.com/ | sudo sh
 ```
 
-**Adding a Docker user (Need root permission)**
+**Adding a Docker user to the docker group (Need root permission)**
 
 ```bash
-sudo usermod -aG docker $USER 	# adding user to the “docker” group
+sudo usermod -aG docker $USER 	
 ```
 
 **Cloning the PAPipe git repository**
@@ -23,7 +22,7 @@ sudo usermod -aG docker $USER 	# adding user to the “docker” group
 git clone https://github.com/jkimlab/PAPipe
 ```
 
-**Download Tutorial data and get ready to run** 
+**Downloading the test data** 
 
 ```bash
 cd PAPipe/TEST/
@@ -31,10 +30,13 @@ wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/test_data.tar.gz
 tar -zxvf test_data.tar.gz
 ```
 
-**Download .tar file and load the image** 
+**Downloading and loading the Docker image file** 
 
 ```bash
-wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/PAPipe.tar
+# Go back to the top directory of PAPipe
+cd ../
+
+wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/PAPipe.tar.gz
 docker load -i ./PAPipe.tar
 
 #Check if the image load well 
