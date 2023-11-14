@@ -4,7 +4,7 @@
 
 **Installing Docker Engine (Need root permission)**
 
-Skip if your machine already has the engine ([Instllation documentation](https://docs.docker.com/engine/install/)). 
+Skip if your machine already has the engine ([Installation document](https://docs.docker.com/engine/install/)). 
 
 ```bash
 curl -fsSL https://get.docker.com/ | sudo sh
