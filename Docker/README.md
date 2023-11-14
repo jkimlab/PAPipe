@@ -2,9 +2,9 @@
 
 ### Run PAPipe with Docker
 
-**Install docker and get ready to load PAPipe docker image**
+**Install docker and get ready to load the PAPipe docker image (you need root permission)**
 
-[Install Docker Engine on Various OS](https://docs.docker.com/engine/install/)
+[Install Docker Engine on Various OS](https://docs.docker.com/engine/install/) (skip if your machine already has)
 
 ```bash
 curl -fsSL https://get.docker.com/ | sudo sh
