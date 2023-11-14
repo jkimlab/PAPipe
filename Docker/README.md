@@ -10,19 +10,19 @@ Skip if your machine already has the engine ([Installation document](https://doc
 curl -fsSL https://get.docker.com/ | sudo sh
 ```
 
-**Adding a Docker user to the docker group (Need root permission)**
+**2. Adding a Docker user to the docker group (Need root permission)**
 
 ```bash
 sudo usermod -aG docker $USER 	
 ```
 
-**Cloning the PAPipe git repository**
+**3. Cloning the PAPipe git repository**
 
 ```bash
 git clone https://github.com/jkimlab/PAPipe
 ```
 
-**Downloading and loading the Docker image file** 
+**4. Downloading and loading the Docker image file** 
 
 ```bash
 cd PAPipe
@@ -33,7 +33,7 @@ docker load -i ./PAPipe.tar.gz
 docker image ls 
 ```
 
-**Downloading the test data** 
+**5. Downloading the test data** 
 
 ```bash
 cd TEST
@@ -41,7 +41,7 @@ wget http://bioinfo.konkuk.ac.kr/PAPipe/bin/test_data.tar.gz
 tar -zxvf test_data.tar.gz
 ```
 
-**Creating a docker container that mounts the directory of the test data** 
+**6. Creating a docker container that mounts the directory of the test data** 
 
 Need to use the absolute path of the "TEST" directory.
 
@@ -49,7 +49,7 @@ Need to use the absolute path of the "TEST" directory.
 docker run -v [absolute path of .../PAPipe/TEST/]:/RUN_DOCKER/  -it pap_docker:latest
 ```
 
-**Running PAPipe in the Docker container** 
+**7. Running PAPipe in the Docker container** 
 
 ```bash
 # Run in the docker container
@@ -57,7 +57,7 @@ cd /RUN_DOCKER/docker_test
 python3 /PAPipe/bin/main.py  -P ./main_param.txt  -I main_input.txt -A main_sample.txt &> log
 ```
 
-**Generating HTML pages for browsing analysis results** 
+**8. Generating HTML pages for browsing analysis results** 
 
 ```bash
 # Run in the docker container
