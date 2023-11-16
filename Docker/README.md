@@ -63,7 +63,7 @@ python3 /PAPipe/bin/main.py  -P ./main_param.txt  -I ./main_input.txt -A ./main_
 
 ```bash
 # Run in the docker container
-perl /PAPipe/bin/webEnvSet.pl ./out &> webenvset.log # ./out is the output directory created by running PAPipe
+perl /PAPipe/bin/webEnvSet.pl ./out &> webenvset.log # ./out is the output directory set in the PAPipe parameter file
 cd ./out/web/
 python3 /PAPipe/bin/html/html/select_input.py /PAPipe/bin/html/html/pre_index.html &> ./webgen.log
 ```
