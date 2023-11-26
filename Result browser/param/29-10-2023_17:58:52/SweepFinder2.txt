@@ -1,0 +1,14 @@
+ON/OFF=ON
+plink_path=plink
+vcftools_path=vcftools
+bgzip_path=bgzip
+tabix_path=tabix
+python_path=python3
+sweepfinder_path=SweepFinder2
+ref_fa=../test_data/REF/Cow.chr1.fa
+autosome_num=30
+non_autosome_list=X,Y,MT
+grid_size=1000
+threads=20
+vcf=./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz
+plink=./out/03_Postprocessing/plink/Cows

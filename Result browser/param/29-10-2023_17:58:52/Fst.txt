@@ -1,0 +1,11 @@
+qqmanS=/RUN_DOCKER/PAPipe_forzen1_copy/working03/script/visMP.R
+ON/OFF=ON
+FTOOLS=vcftools
+reference_chromosome_cnt=1
+lib_path=/opt/conda/lib/R/library/
+window-size=100000
+window-step=0
+plot-width=10
+plot-high=6
+genomewideline=3
+vcf = ./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz

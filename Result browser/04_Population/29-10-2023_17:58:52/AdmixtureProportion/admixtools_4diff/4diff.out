@@ -1,0 +1,140 @@
+parameter file: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_4diff/par_4diff
+### THE INPUT PARAMETERS
+##PARAMETER NAME: VALUE
+DIR: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert
+SSS: Admixtools_result
+indivname: /RUN_DOCKER/TEST_DOCKER2/main_sample.txt
+snpname: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert/Admixtools_result.snp
+genotypename: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert/Admixtools_result.eigenstratgeno
+popfilename: list_4diff
+## qp4diff version: 315
+nplist: 120
+  0                Angus    5
+  1            Simmental    5
+  2               Jersey    5
+  3             Holstein    5
+  4               Hanwoo    5
+jackknife block size:     0.050
+snps: 224706  indivs: 25
+number of blocks for moving block jackknife: 32
+result:      Angus  Simmental     Jersey   Holstein  :      Angus  Simmental     Hanwoo   Holstein     0.003030     0.000970      3.125
+result:      Angus     Jersey  Simmental   Holstein  :      Angus     Jersey     Hanwoo   Holstein     0.010981     0.001190      9.225
+result:      Angus  Simmental   Holstein     Jersey  :      Angus  Simmental     Hanwoo     Jersey     0.000863     0.001021      0.846
+result:      Angus   Holstein  Simmental     Jersey  :      Angus   Holstein     Hanwoo     Jersey     0.004527     0.000946      4.783
+result:      Angus     Jersey   Holstein  Simmental  :      Angus     Jersey     Hanwoo  Simmental     0.004769     0.001431      3.332
+result:      Angus   Holstein     Jersey  Simmental  :      Angus   Holstein     Hanwoo  Simmental     0.000482     0.001331      0.362
+result:      Angus  Simmental     Jersey     Hanwoo  :      Angus  Simmental   Holstein     Hanwoo     0.002167     0.001124      1.928
+result:      Angus     Jersey  Simmental     Hanwoo  :      Angus     Jersey   Holstein     Hanwoo     0.006212     0.000982      6.329
+result:      Angus  Simmental     Hanwoo     Jersey  :      Angus  Simmental   Holstein     Jersey    -0.000863     0.001021     -0.846
+result:      Angus     Hanwoo  Simmental     Jersey  :      Angus     Hanwoo   Holstein     Jersey     0.003664     0.001026      3.571
+result:      Angus     Jersey     Hanwoo  Simmental  :      Angus     Jersey   Holstein  Simmental    -0.004769     0.001431     -3.332
+result:      Angus     Hanwoo     Jersey  Simmental  :      Angus     Hanwoo   Holstein  Simmental    -0.004287     0.001397     -3.068
+result:      Angus  Simmental   Holstein     Hanwoo  :      Angus  Simmental     Jersey     Hanwoo    -0.002167     0.001124     -1.928
+result:      Angus   Holstein  Simmental     Hanwoo  :      Angus   Holstein     Jersey     Hanwoo     0.004045     0.001101      3.674
+result:      Angus  Simmental     Hanwoo   Holstein  :      Angus  Simmental     Jersey   Holstein    -0.003030     0.000970     -3.125
+result:      Angus     Hanwoo  Simmental   Holstein  :      Angus     Hanwoo     Jersey   Holstein     0.007951     0.001182      6.729
+result:      Angus   Holstein     Hanwoo  Simmental  :      Angus   Holstein     Jersey  Simmental    -0.000482     0.001331     -0.362
+result:      Angus     Hanwoo   Holstein  Simmental  :      Angus     Hanwoo     Jersey  Simmental     0.004287     0.001397      3.068
+result:      Angus     Jersey   Holstein     Hanwoo  :      Angus     Jersey  Simmental     Hanwoo    -0.006212     0.000982     -6.329
+result:      Angus   Holstein     Jersey     Hanwoo  :      Angus   Holstein  Simmental     Hanwoo    -0.004045     0.001101     -3.674
+result:      Angus     Jersey     Hanwoo   Holstein  :      Angus     Jersey  Simmental   Holstein    -0.010981     0.001190     -9.225
+result:      Angus     Hanwoo     Jersey   Holstein  :      Angus     Hanwoo  Simmental   Holstein    -0.007951     0.001182     -6.729
+result:      Angus   Holstein     Hanwoo     Jersey  :      Angus   Holstein  Simmental     Jersey    -0.004527     0.000946     -4.783
+result:      Angus     Hanwoo   Holstein     Jersey  :      Angus     Hanwoo  Simmental     Jersey    -0.003664     0.001026     -3.571
+result:     Hanwoo  Simmental     Jersey   Holstein  :     Hanwoo  Simmental      Angus   Holstein     0.010981     0.001190      9.225
+result:     Hanwoo     Jersey  Simmental   Holstein  :     Hanwoo     Jersey      Angus   Holstein     0.003030     0.000970      3.125
+result:     Hanwoo  Simmental   Holstein     Jersey  :     Hanwoo  Simmental      Angus     Jersey     0.004527     0.000946      4.783
+result:     Hanwoo   Holstein  Simmental     Jersey  :     Hanwoo   Holstein      Angus     Jersey     0.000863     0.001021      0.846
+result:     Hanwoo     Jersey   Holstein  Simmental  :     Hanwoo     Jersey      Angus  Simmental     0.000482     0.001331      0.362
+result:     Hanwoo   Holstein     Jersey  Simmental  :     Hanwoo   Holstein      Angus  Simmental     0.004769     0.001431      3.332
+result:     Hanwoo  Simmental     Jersey      Angus  :     Hanwoo  Simmental   Holstein      Angus     0.006454     0.001147      5.629
+result:     Hanwoo     Jersey  Simmental      Angus  :     Hanwoo     Jersey   Holstein      Angus     0.002548     0.001042      2.445
+result:     Hanwoo  Simmental      Angus     Jersey  :     Hanwoo  Simmental   Holstein     Jersey    -0.004527     0.000946     -4.783
+result:     Hanwoo      Angus  Simmental     Jersey  :     Hanwoo      Angus   Holstein     Jersey    -0.003664     0.001026     -3.571
+result:     Hanwoo     Jersey      Angus  Simmental  :     Hanwoo     Jersey   Holstein  Simmental    -0.000482     0.001331     -0.362
+result:     Hanwoo      Angus     Jersey  Simmental  :     Hanwoo      Angus   Holstein  Simmental     0.004287     0.001397      3.068
+result:     Hanwoo  Simmental   Holstein      Angus  :     Hanwoo  Simmental     Jersey      Angus    -0.006454     0.001147     -5.629
+result:     Hanwoo   Holstein  Simmental      Angus  :     Hanwoo   Holstein     Jersey      Angus    -0.003906     0.001225     -3.188
+result:     Hanwoo  Simmental      Angus   Holstein  :     Hanwoo  Simmental     Jersey   Holstein    -0.010981     0.001190     -9.225
+result:     Hanwoo      Angus  Simmental   Holstein  :     Hanwoo      Angus     Jersey   Holstein    -0.007951     0.001182     -6.729
+result:     Hanwoo   Holstein      Angus  Simmental  :     Hanwoo   Holstein     Jersey  Simmental    -0.004769     0.001431     -3.332
+result:     Hanwoo      Angus   Holstein  Simmental  :     Hanwoo      Angus     Jersey  Simmental    -0.004287     0.001397     -3.068
+result:     Hanwoo     Jersey   Holstein      Angus  :     Hanwoo     Jersey  Simmental      Angus    -0.002548     0.001042     -2.445
+result:     Hanwoo   Holstein     Jersey      Angus  :     Hanwoo   Holstein  Simmental      Angus     0.003906     0.001225      3.188
+result:     Hanwoo     Jersey      Angus   Holstein  :     Hanwoo     Jersey  Simmental   Holstein    -0.003030     0.000970     -3.125
+result:     Hanwoo      Angus     Jersey   Holstein  :     Hanwoo      Angus  Simmental   Holstein     0.007951     0.001182      6.729
+result:     Hanwoo   Holstein      Angus     Jersey  :     Hanwoo   Holstein  Simmental     Jersey    -0.000863     0.001021     -0.846
+result:     Hanwoo      Angus   Holstein     Jersey  :     Hanwoo      Angus  Simmental     Jersey     0.003664     0.001026      3.571
+result:   Holstein  Simmental     Jersey     Hanwoo  :   Holstein  Simmental      Angus     Hanwoo     0.006212     0.000982      6.329
+result:   Holstein     Jersey  Simmental     Hanwoo  :   Holstein     Jersey      Angus     Hanwoo     0.002167     0.001124      1.928
+result:   Holstein  Simmental     Hanwoo     Jersey  :   Holstein  Simmental      Angus     Jersey     0.003664     0.001026      3.571
+result:   Holstein     Hanwoo  Simmental     Jersey  :   Holstein     Hanwoo      Angus     Jersey    -0.000863     0.001021     -0.846
+result:   Holstein     Jersey     Hanwoo  Simmental  :   Holstein     Jersey      Angus  Simmental    -0.004287     0.001397     -3.068
+result:   Holstein     Hanwoo     Jersey  Simmental  :   Holstein     Hanwoo      Angus  Simmental    -0.004769     0.001431     -3.332
+result:   Holstein  Simmental     Jersey      Angus  :   Holstein  Simmental     Hanwoo      Angus     0.002548     0.001042      2.445
+result:   Holstein     Jersey  Simmental      Angus  :   Holstein     Jersey     Hanwoo      Angus     0.006454     0.001147      5.629
+result:   Holstein  Simmental      Angus     Jersey  :   Holstein  Simmental     Hanwoo     Jersey    -0.003664     0.001026     -3.571
+result:   Holstein      Angus  Simmental     Jersey  :   Holstein      Angus     Hanwoo     Jersey    -0.004527     0.000946     -4.783
+result:   Holstein     Jersey      Angus  Simmental  :   Holstein     Jersey     Hanwoo  Simmental     0.004287     0.001397      3.068
+result:   Holstein      Angus     Jersey  Simmental  :   Holstein      Angus     Hanwoo  Simmental    -0.000482     0.001331     -0.362
+result:   Holstein  Simmental     Hanwoo      Angus  :   Holstein  Simmental     Jersey      Angus    -0.002548     0.001042     -2.445
+result:   Holstein     Hanwoo  Simmental      Angus  :   Holstein     Hanwoo     Jersey      Angus     0.003906     0.001225      3.188
+result:   Holstein  Simmental      Angus     Hanwoo  :   Holstein  Simmental     Jersey     Hanwoo    -0.006212     0.000982     -6.329
+result:   Holstein      Angus  Simmental     Hanwoo  :   Holstein      Angus     Jersey     Hanwoo    -0.004045     0.001101     -3.674
+result:   Holstein     Hanwoo      Angus  Simmental  :   Holstein     Hanwoo     Jersey  Simmental     0.004769     0.001431      3.332
+result:   Holstein      Angus     Hanwoo  Simmental  :   Holstein      Angus     Jersey  Simmental     0.000482     0.001331      0.362
+result:   Holstein     Jersey     Hanwoo      Angus  :   Holstein     Jersey  Simmental      Angus    -0.006454     0.001147     -5.629
+result:   Holstein     Hanwoo     Jersey      Angus  :   Holstein     Hanwoo  Simmental      Angus    -0.003906     0.001225     -3.188
+result:   Holstein     Jersey      Angus     Hanwoo  :   Holstein     Jersey  Simmental     Hanwoo    -0.002167     0.001124     -1.928
+result:   Holstein      Angus     Jersey     Hanwoo  :   Holstein      Angus  Simmental     Hanwoo     0.004045     0.001101      3.674
+result:   Holstein     Hanwoo      Angus     Jersey  :   Holstein     Hanwoo  Simmental     Jersey     0.000863     0.001021      0.846
+result:   Holstein      Angus     Hanwoo     Jersey  :   Holstein      Angus  Simmental     Jersey     0.004527     0.000946      4.783
+result:     Jersey  Simmental   Holstein     Hanwoo  :     Jersey  Simmental      Angus     Hanwoo     0.004045     0.001101      3.674
+result:     Jersey   Holstein  Simmental     Hanwoo  :     Jersey   Holstein      Angus     Hanwoo    -0.002167     0.001124     -1.928
+result:     Jersey  Simmental     Hanwoo   Holstein  :     Jersey  Simmental      Angus   Holstein     0.007951     0.001182      6.729
+result:     Jersey     Hanwoo  Simmental   Holstein  :     Jersey     Hanwoo      Angus   Holstein    -0.003030     0.000970     -3.125
+result:     Jersey   Holstein     Hanwoo  Simmental  :     Jersey   Holstein      Angus  Simmental     0.004287     0.001397      3.068
+result:     Jersey     Hanwoo   Holstein  Simmental  :     Jersey     Hanwoo      Angus  Simmental    -0.000482     0.001331     -0.362
+result:     Jersey  Simmental   Holstein      Angus  :     Jersey  Simmental     Hanwoo      Angus    -0.003906     0.001225     -3.188
+result:     Jersey   Holstein  Simmental      Angus  :     Jersey   Holstein     Hanwoo      Angus    -0.006454     0.001147     -5.629
+result:     Jersey  Simmental      Angus   Holstein  :     Jersey  Simmental     Hanwoo   Holstein    -0.007951     0.001182     -6.729
+result:     Jersey      Angus  Simmental   Holstein  :     Jersey      Angus     Hanwoo   Holstein    -0.010981     0.001190     -9.225
+result:     Jersey   Holstein      Angus  Simmental  :     Jersey   Holstein     Hanwoo  Simmental    -0.004287     0.001397     -3.068
+result:     Jersey      Angus   Holstein  Simmental  :     Jersey      Angus     Hanwoo  Simmental    -0.004769     0.001431     -3.332
+result:     Jersey  Simmental     Hanwoo      Angus  :     Jersey  Simmental   Holstein      Angus     0.003906     0.001225      3.188
+result:     Jersey     Hanwoo  Simmental      Angus  :     Jersey     Hanwoo   Holstein      Angus    -0.002548     0.001042     -2.445
+result:     Jersey  Simmental      Angus     Hanwoo  :     Jersey  Simmental   Holstein     Hanwoo    -0.004045     0.001101     -3.674
+result:     Jersey      Angus  Simmental     Hanwoo  :     Jersey      Angus   Holstein     Hanwoo    -0.006212     0.000982     -6.329
+result:     Jersey     Hanwoo      Angus  Simmental  :     Jersey     Hanwoo   Holstein  Simmental     0.000482     0.001331      0.362
+result:     Jersey      Angus     Hanwoo  Simmental  :     Jersey      Angus   Holstein  Simmental     0.004769     0.001431      3.332
+result:     Jersey   Holstein     Hanwoo      Angus  :     Jersey   Holstein  Simmental      Angus     0.006454     0.001147      5.629
+result:     Jersey     Hanwoo   Holstein      Angus  :     Jersey     Hanwoo  Simmental      Angus     0.002548     0.001042      2.445
+result:     Jersey   Holstein      Angus     Hanwoo  :     Jersey   Holstein  Simmental     Hanwoo     0.002167     0.001124      1.928
+result:     Jersey      Angus   Holstein     Hanwoo  :     Jersey      Angus  Simmental     Hanwoo     0.006212     0.000982      6.329
+result:     Jersey     Hanwoo      Angus   Holstein  :     Jersey     Hanwoo  Simmental   Holstein     0.003030     0.000970      3.125
+result:     Jersey      Angus     Hanwoo   Holstein  :     Jersey      Angus  Simmental   Holstein     0.010981     0.001190      9.225
+result:  Simmental     Jersey   Holstein     Hanwoo  :  Simmental     Jersey      Angus     Hanwoo    -0.004045     0.001101     -3.674
+result:  Simmental   Holstein     Jersey     Hanwoo  :  Simmental   Holstein      Angus     Hanwoo    -0.006212     0.000982     -6.329
+result:  Simmental     Jersey     Hanwoo   Holstein  :  Simmental     Jersey      Angus   Holstein    -0.007951     0.001182     -6.729
+result:  Simmental     Hanwoo     Jersey   Holstein  :  Simmental     Hanwoo      Angus   Holstein    -0.010981     0.001190     -9.225
+result:  Simmental   Holstein     Hanwoo     Jersey  :  Simmental   Holstein      Angus     Jersey    -0.003664     0.001026     -3.571
+result:  Simmental     Hanwoo   Holstein     Jersey  :  Simmental     Hanwoo      Angus     Jersey    -0.004527     0.000946     -4.783
+result:  Simmental     Jersey   Holstein      Angus  :  Simmental     Jersey     Hanwoo      Angus     0.003906     0.001225      3.188
+result:  Simmental   Holstein     Jersey      Angus  :  Simmental   Holstein     Hanwoo      Angus    -0.002548     0.001042     -2.445
+result:  Simmental     Jersey      Angus   Holstein  :  Simmental     Jersey     Hanwoo   Holstein     0.007951     0.001182      6.729
+result:  Simmental      Angus     Jersey   Holstein  :  Simmental      Angus     Hanwoo   Holstein    -0.003030     0.000970     -3.125
+result:  Simmental   Holstein      Angus     Jersey  :  Simmental   Holstein     Hanwoo     Jersey     0.003664     0.001026      3.571
+result:  Simmental      Angus   Holstein     Jersey  :  Simmental      Angus     Hanwoo     Jersey    -0.000863     0.001021     -0.846
+result:  Simmental     Jersey     Hanwoo      Angus  :  Simmental     Jersey   Holstein      Angus    -0.003906     0.001225     -3.188
+result:  Simmental     Hanwoo     Jersey      Angus  :  Simmental     Hanwoo   Holstein      Angus    -0.006454     0.001147     -5.629
+result:  Simmental     Jersey      Angus     Hanwoo  :  Simmental     Jersey   Holstein     Hanwoo     0.004045     0.001101      3.674
+result:  Simmental      Angus     Jersey     Hanwoo  :  Simmental      Angus   Holstein     Hanwoo    -0.002167     0.001124     -1.928
+result:  Simmental     Hanwoo      Angus     Jersey  :  Simmental     Hanwoo   Holstein     Jersey     0.004527     0.000946      4.783
+result:  Simmental      Angus     Hanwoo     Jersey  :  Simmental      Angus   Holstein     Jersey     0.000863     0.001021      0.846
+result:  Simmental   Holstein     Hanwoo      Angus  :  Simmental   Holstein     Jersey      Angus     0.002548     0.001042      2.445
+result:  Simmental     Hanwoo   Holstein      Angus  :  Simmental     Hanwoo     Jersey      Angus     0.006454     0.001147      5.629
+result:  Simmental   Holstein      Angus     Hanwoo  :  Simmental   Holstein     Jersey     Hanwoo     0.006212     0.000982      6.329
+result:  Simmental      Angus   Holstein     Hanwoo  :  Simmental      Angus     Jersey     Hanwoo     0.002167     0.001124      1.928
+result:  Simmental     Hanwoo      Angus   Holstein  :  Simmental     Hanwoo     Jersey   Holstein     0.010981     0.001190      9.225
+result:  Simmental      Angus     Hanwoo   Holstein  :  Simmental      Angus     Jersey   Holstein     0.003030     0.000970      3.125
+##end of qp4diff:        5.101 seconds cpu      158.298 Mbytes in use

@@ -1,0 +1,10 @@
+visPCA=/RUN_DOCKER/PAPipe_forzen1_copy/working03/script/visPCA.R
+ON/OFF=ON
+GCTA=gcta64
+Rlib_path=/opt/conda/lib/R/library/
+autosome-num=29
+maxPC=5
+PCA=20
+Variance=80
+PCA_title=Cow PCA
+PLINK=./out/03_Postprocessing/plink/Cows

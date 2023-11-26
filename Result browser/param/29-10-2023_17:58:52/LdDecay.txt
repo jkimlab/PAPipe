@@ -1,0 +1,4 @@
+ON/OFF=ON
+PopLDdecay_BIN=/PAPipe/Programs/PopLDdecay/bin/
+MaxDist=500, 1000, 5000, 10000
+VCF=./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz

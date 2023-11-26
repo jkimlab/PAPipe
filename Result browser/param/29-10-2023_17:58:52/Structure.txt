@@ -1,0 +1,10 @@
+ON/OFF=ON
+admixture=admixture
+CLUMPAK=/PAPipe/Programs/CLUMPAK/26_03_2015_CLUMPAK/CLUMPAK/CLUMPAK.pl
+k=5
+Color1=blue
+Color2=red
+Color3=green
+Color4=black
+Color5=yellow
+bed=./out/03_Postprocessing/plink/Cows.bed

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <style>
+            p{
+                margin: 0 auto; 
+            }
+            .par_iframe{
+                width:960px;
+                height:300px;
+            }
+            .pdf_iframe{
+                width:960px;
+                height:900px;
+                margin-top: 10px; 
+            }
+            body {
+                width: 960px; 
+                margin: 0 auto; 
+            }
+            .hidden {
+                display: none;
+            }
+            .analysis {
+                width:960px;
+            }
+            .lev2{
+                width:200px;
+            }
+        </style>
+        <title>PAPipe result browser </title>
+    </head>
+    <body class="bg-light">
+        <div style="text-align: center;">
+            <h3 style="margin-top: 20px; margin-bottom: 30px;">Visualization of the analysis results by PAPipe</h3>
+            <div style="text-align: center;">
+                <label for="dateSelect">Date : </label>
+                <select id="dateSelect" style="width: 200px; margin-bottom: 20px;" onchange="showHideDateSelect()">
+                    <option value=29-10-2023_17:58:52>29-10-2023_17:58:52</option>
+                </select>
+                <label for="analysisSelect_div" style="margin-left: 20px;">Analysis : </label>
+                <div id="analysisSelect_div" style="display: inline;">
+                    <select id=29-10-2023_17:58:52_select style="width: 410px; margin-bottom: 20px;" onchange="showHideAnalysisSelect(this.id, this.value)">                        <option value=PCA>Principal component analysis_Plink v.1.9</option>
+                        <option value=PhylogeneticTree>Phylogenetic analysis</option>
+                        <option value=Structure>Population structure analysis</option>
+                        <option value=Fst>Fixation index analysis</option>
+                        <option value=EffectiveSize>Pairwise sequentially Markovian coalescent analysis</option>
+                        <option value=AdmixtureProportion>Population admixture analysis</option>
+                        <option value=LdDecay>Linkage disequilibrium decay analysis</option>
+                        <option value=MSMC>Multiple sequentially Markovian coalescent analysis</option>
+                        <option value=SweepFinder2>Selective sweep analysis</option>
+                        <option value=Plink2>Principal component analysis_Plink v.2.0</option>
+                        <option value=Treemix>Population trsee analysis</option>
+                    </select>
+               </div>
+            </div>
+        </div>
+        <div id="Allresults_div" style="text-align: center;">
+            <div id=29-10-2023_17:58:52_results class="results">
+                <div id=29-10-2023_17:58:52_select_PCA  class="analysis">
+                    <h5 style="text-align: left;">Principal component analysis_Plink v.1.9</h5>
+                    <div>
+                        <details style="text-align: left;">
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/PCA.txt></iframe>    
+                        </details>
+                    </div>
+                    <div>
+                        <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/PCA/all.PCA.pdf</p>
+                        <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/29-10-2023_17:58:52/PCA/all.PCA.pdf</p>
+                        <iframe class="pdf_iframe" src=./04_Population//29-10-2023_17:58:52/PCA/all.PCA.pdf></iframe>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_PhylogeneticTree class="hidden analysis">
+                    <h5 style="text-align: left;">Phylogenetic analysis</h5>
+                    <div>
+                        <details style="text-align: left;">
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/PhylogeneticTree.txt></iframe>    
+                        </details>
+                    </div>
+                    <div>
+                        <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/PhylogeneticTree/</p>
+                        <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/29-10-2023_17:58:52/PhylogeneticTree/</p>
+                        <details style="text-align: left;">
+                            <summary>Newick Tree</summary>
+                            <iframe class="par_iframe" src=./04_Population//29-10-2023_17:58:52/PhylogeneticTree//snphylo.ml.tree></iframe>
+                        </details>
+                        <iframe class="pdf_iframe" src=./04_Population//29-10-2023_17:58:52/PhylogeneticTree//Rplots.pdf></iframe>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_Structure class="hidden analysis">
+                    <h5 style="text-align: left;">Population structure analysis</h5>
+                    <div>
+                        <details style="text-align: left;">
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/Structure.txt></iframe>    
+                        </details>
+                    </div>
+                    <div>
+                        <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Structure/CLUMPAK/job_100_pipeline_summary.pdf</p>
+                        <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/29-10-2023_17:58:52/Structure/CLUMPAK/job_100_pipeline_summary.pdf</p>
+                        <iframe class="pdf_iframe" src=./04_Population//29-10-2023_17:58:52/Structure/CLUMPAK/job_100_pipeline_summary.pdf></iframe>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_Fst class="hidden analysis">
+                    <h5 style="text-align: left;">Fixation index analysis</h5>
+                    <div style="text-align: left;">
+                        <details>
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/Fst.txt></iframe>    
+                        </details>
+                        <select style="text-align: left;" id=29-10-2023_17:58:52_Fst_select style="width: 200px;" onchange="showHideLev2Select(this.id, this.value)">
+                            <option value=Angus_VS_rest_all_populations>Angus_VS_rest_all_populations</option>
+                            <option value=Hanwoo_VS_rest_all_populations>Hanwoo_VS_rest_all_populations</option>
+                            <option value=Holstein_VS_rest_all_populations>Holstein_VS_rest_all_populations</option>
+                            <option value=Jersey_VS_rest_all_populations>Jersey_VS_rest_all_populations</option>
+                            <option value=Simmental_VS_rest_all_populations>Simmental_VS_rest_all_populations</option>
+                            <option value=Angus_VS_Hanwoo>Angus_VS_Hanwoo</option>
+                            <option value=Angus_VS_Holstein>Angus_VS_Holstein</option>
+                            <option value=Angus_VS_Jersey>Angus_VS_Jersey</option>
+                            <option value=Angus_VS_Simmental>Angus_VS_Simmental</option>
+                            <option value=Hanwoo_VS_Holstein>Hanwoo_VS_Holstein</option>
+                            <option value=Hanwoo_VS_Jersey>Hanwoo_VS_Jersey</option>
+                            <option value=Hanwoo_VS_Simmental>Hanwoo_VS_Simmental</option>
+                            <option value=Holstein_VS_Jersey>Holstein_VS_Jersey</option>
+                            <option value=Holstein_VS_Simmental>Holstein_VS_Simmental</option>
+                            <option value=Jersey_VS_Simmental>Jersey_VS_Simmental</option>
+                        </select>
+                    </div>
+                    <div id="diffResContainer_29-10-2023_17:58:52_Fst_select">
+                        <div class="div_lev2" id=29-10-2023_17:58:52_Fst_select_Angus_VS_rest_all_populations>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Angus_VS_rest_all_populations/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Angus_VS_rest_all_populations/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Angus_VS_rest_all_populations/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Hanwoo_VS_rest_all_populations>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Hanwoo_VS_rest_all_populations/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Hanwoo_VS_rest_all_populations/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Hanwoo_VS_rest_all_populations/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Holstein_VS_rest_all_populations>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Holstein_VS_rest_all_populations/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Holstein_VS_rest_all_populations/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Holstein_VS_rest_all_populations/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Jersey_VS_rest_all_populations>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Jersey_VS_rest_all_populations/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Jersey_VS_rest_all_populations/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Jersey_VS_rest_all_populations/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Simmental_VS_rest_all_populations>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Simmental_VS_rest_all_populations/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Simmental_VS_rest_all_populations/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Simmental_VS_rest_all_populations/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Angus_VS_Hanwoo>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Angus_VS_Hanwoo/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Angus_VS_Hanwoo/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Angus_VS_Hanwoo/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Angus_VS_Holstein>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Angus_VS_Holstein/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Angus_VS_Holstein/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Angus_VS_Holstein/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Angus_VS_Jersey>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Angus_VS_Jersey/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Angus_VS_Jersey/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Angus_VS_Jersey/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Angus_VS_Simmental>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Angus_VS_Simmental/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Angus_VS_Simmental/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Angus_VS_Simmental/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Hanwoo_VS_Holstein>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Hanwoo_VS_Holstein/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Hanwoo_VS_Holstein/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Hanwoo_VS_Holstein/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Hanwoo_VS_Jersey>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Hanwoo_VS_Jersey/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Hanwoo_VS_Jersey/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Hanwoo_VS_Jersey/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Hanwoo_VS_Simmental>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Hanwoo_VS_Simmental/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Hanwoo_VS_Simmental/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Hanwoo_VS_Simmental/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Holstein_VS_Jersey>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Holstein_VS_Jersey/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Holstein_VS_Jersey/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Holstein_VS_Jersey/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Holstein_VS_Simmental>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Holstein_VS_Simmental/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Holstein_VS_Simmental/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Holstein_VS_Simmental/Fst_result.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_Fst_select_Jersey_VS_Simmental>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Fst/Jersey_VS_Simmental/Fst_result.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/Fst/Jersey_VS_Simmental/Fst_result.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/Fst//Jersey_VS_Simmental/Fst_result.pdf></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_EffectiveSize class="hidden analysis">
+                    <h5 style="text-align: left;">Pairwise sequentially Markovian coalescent analysis</h5>
+                    <div>
+                        <details style="text-align: left;">
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/EffectiveSize.txt></iframe>    
+                        </details>
+                    </div>
+                    <div>
+                        <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/EffectiveSize/psmc_plot.pdf</p>
+                        <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/29-10-2023_17:58:52/EffectiveSize/psmc_plot.pdf</p>
+                        <iframe class="pdf_iframe" src=./04_Population//29-10-2023_17:58:52/EffectiveSize/psmc_plot.pdf></iframe>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_AdmixtureProportion class="hidden analysis">
+                    <h5 style="text-align: left;">Population admixture analysis</h5>
+                    <div style="text-align: left;">
+                        <details>
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/AdmixtureProportion.txt></iframe>    
+                        </details>
+                        <select style="text-align: left;" id=29-10-2023_17:58:52_AdmixtureProportion_select style="width: 200px;" onchange="showHideLev2Select(this.id, this.value)">
+                            <option value=admixtools_3pop>admixtools_3pop</option>
+                            <option value=admixtools_4diff>admixtools_4diff</option>
+                            <option value=admixtools_Dstat>admixtools_Dstat</option>
+                            <option value=admixtools_f4stat>admixtools_f4stat</option>
+                        </select>
+                    </div>
+                    <div id="diffResContainer_29-10-2023_17:58:52_AdmixtureProportion_select">
+                        <div class="div_lev2" id=29-10-2023_17:58:52_AdmixtureProportion_select_admixtools_3pop>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/AdmixtureProportion/admixtools_3pop/3pop.out</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/AdmixtureProportion/admixtools_3pop/3pop.out</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/AdmixtureProportion//admixtools_3pop/3pop.out></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_AdmixtureProportion_select_admixtools_4diff>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/AdmixtureProportion/admixtools_4diff/4diff.out</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/AdmixtureProportion/admixtools_4diff/4diff.out</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/AdmixtureProportion//admixtools_4diff/4diff.out></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_AdmixtureProportion_select_admixtools_Dstat>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/AdmixtureProportion/admixtools_Dstat/Dstat.out</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/AdmixtureProportion/admixtools_Dstat/Dstat.out</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/AdmixtureProportion//admixtools_Dstat/Dstat.out></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_AdmixtureProportion_select_admixtools_f4stat>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/AdmixtureProportion/admixtools_f4stat/f4stat.out</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/AdmixtureProportion/admixtools_f4stat/f4stat.out</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/AdmixtureProportion//admixtools_f4stat/f4stat.out></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_LdDecay class="hidden analysis">
+                    <h5 style="text-align: left;">Linkage disequilibrium decay analysis</h5>
+                    <div style="text-align: left;">
+                        <details>
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/LdDecay.txt></iframe>    
+                        </details>
+                        <select style="text-align: left;" id=29-10-2023_17:58:52_LdDecay_select style="width: 200px;" onchange="showHideLev2Select(this.id, this.value)">
+                            <option value=500> MaxDist: 500</option>
+                            <option value=1000> MaxDist: 1000</option>
+                            <option value=5000> MaxDist: 5000</option>
+                            <option value=10000> MaxDist: 10000</option>
+                        </select>
+                    </div>
+                    <div id="diffResContainer_29-10-2023_17:58:52_LdDecay_select">
+                        <div class="div_lev2" id=29-10-2023_17:58:52_LdDecay_select_500>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/LdDecay/500//Plot/out.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/LdDecay/500//Plot/out.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/LdDecay//500//Plot/out.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_LdDecay_select_1000>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/LdDecay/1000//Plot/out.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/LdDecay/1000//Plot/out.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/LdDecay//1000//Plot/out.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_LdDecay_select_5000>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/LdDecay/5000//Plot/out.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/LdDecay/5000//Plot/out.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/LdDecay//5000//Plot/out.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_LdDecay_select_10000>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/LdDecay/10000//Plot/out.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/LdDecay/10000//Plot/out.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/LdDecay//10000//Plot/out.pdf></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_MSMC class="hidden analysis">
+                    <h5 style="text-align: left;">Multiple sequentially Markovian coalescent analysis</h5>
+                    <div>
+                        <details style="text-align: left;">
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/MSMC.txt></iframe>    
+                        </details>
+                    </div>
+                    <div>
+                        <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/MSMC/MSMC.pdf</p>
+                        <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/29-10-2023_17:58:52/MSMC/MSMC.pdf</p>
+                        <iframe class="pdf_iframe" src=./04_Population//29-10-2023_17:58:52/MSMC/MSMC.pdf></iframe>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_SweepFinder2 class="hidden analysis">
+                    <h5 style="text-align: left;">Selective sweep analysis</h5>
+                    <div style="text-align: left;">
+                        <details>
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/SweepFinder2.txt></iframe>    
+                        </details>
+                        <select style="text-align: left;" id=29-10-2023_17:58:52_SweepFinder2_select style="width: 200px;" onchange="showHideLev2Select(this.id, this.value)">
+                            <option value=Angus>Angus</option>
+                            <option value=Holstein>Holstein</option>
+                            <option value=Jersey>Jersey</option>
+                            <option value=Simmental>Simmental</option>
+                            <option value=Hanwoo>Hanwoo</option>
+                        </select>
+                    </div>
+                    <div id="diffResContainer_29-10-2023_17:58:52_SweepFinder2_select">
+                        <div class="div_lev2" id=29-10-2023_17:58:52_SweepFinder2_select_Angus>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/SweepFinder2/Angus/SweepFinderOut.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/SweepFinder2/Angus/SweepFinderOut.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/SweepFinder2//Angus/SweepFinderOut.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_SweepFinder2_select_Holstein>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/SweepFinder2/Holstein/SweepFinderOut.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/SweepFinder2/Holstein/SweepFinderOut.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/SweepFinder2//Holstein/SweepFinderOut.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_SweepFinder2_select_Jersey>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/SweepFinder2/Jersey/SweepFinderOut.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/SweepFinder2/Jersey/SweepFinderOut.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/SweepFinder2//Jersey/SweepFinderOut.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_SweepFinder2_select_Simmental>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/SweepFinder2/Simmental/SweepFinderOut.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/SweepFinder2/Simmental/SweepFinderOut.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/SweepFinder2//Simmental/SweepFinderOut.pdf></iframe>
+                        </div>
+                        <div class="div_lev2 hidden" id=29-10-2023_17:58:52_SweepFinder2_select_Hanwoo>
+                            <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/SweepFinder2/Hanwoo/SweepFinderOut.pdf</p>
+                            <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/SweepFinder2/Hanwoo/SweepFinderOut.pdf</p>
+                            <iframe class="pdf_iframe"  src=./04_Population//29-10-2023_17:58:52/SweepFinder2//Hanwoo/SweepFinderOut.pdf></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_Plink2 class="hidden analysis">
+                    <h5 style="text-align: left;">Principal component analysis_Plink v.2.0</h5>
+                    <div>
+                        <details style="text-align: left;">
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/Plink2.txt></iframe>    
+                        </details>
+                    </div>
+                    <div>
+                        <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Plink2/all.PCA.pdf</p>
+                        <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/29-10-2023_17:58:52/Plink2/all.PCA.pdf</p>
+                        <iframe class="pdf_iframe" src=./04_Population//29-10-2023_17:58:52/Plink2/all.PCA.pdf></iframe>
+                    </div>
+                </div>
+                <div id=29-10-2023_17:58:52_select_Treemix class="hidden analysis">
+                    <h5 style="text-align: left;">Population trsee analysis</h5>
+                    <div>
+                        <details style="text-align: left;">
+                            <summary>Parameters</summary>
+                            <iframe class="par_iframe" src=./param//29-10-2023_17:58:52/Treemix.txt></iframe>    
+                        </details>
+                    </div>
+                    <div>
+                        <p style="text-align: left;"> Server path: ./04_Population//29-10-2023_17:58:52/Treemix/Treemix.results.pdf</p>
+                        <p style="text-align: left;"> Local path: [Local_web directory path]/04_Population/29-10-2023_17:58:52/Treemix/Treemix.results.pdf</p>
+                        <iframe class="pdf_iframe" src=./04_Population//29-10-2023_17:58:52/Treemix/Treemix.results.pdf></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body> 
+    <script>
+        function showHideDateSelect() {
+            var mainSelect = document.getElementById("dateSelect");
+            var selectContainer = document.getElementById("analysisSelect_div");
+            var selectContainer_results = document.getElementById("Allresults_div");
+
+            var selects = selectContainer.getElementsByTagName("select");
+            for (var i = 0; i < selects.length; i++) {
+                selects[i].classList.add("hidden");
+            }
+            var selects = selectContainer_results.getElementsByClassName("results");
+            for (var i = 0; i < selects.length; i++) {
+                selects[i].classList.add("hidden");
+            }
+
+            var selectedValue = mainSelect.value;
+            var selectedOption = document.getElementById(selectedValue+"_select");
+            if (selectedOption) {
+                selectedOption.classList.remove("hidden");
+            }
+            var selectedOption = document.getElementById(selectedValue+"_results");
+            if (selectedOption) {
+                selectedOption.classList.remove("hidden");
+            }
+        }
+        function showHideAnalysisSelect(cur_date_id, cur_select_value) {
+            var date = document.getElementById("dateSelect");
+            var showResDivId = cur_date_id+"_"+cur_select_value;
+            var selectContainer = document.getElementById(date.value+"_results");
+            var selects = selectContainer.getElementsByClassName("analysis");
+            for (var i = 0; i < selects.length; i++) {
+                selects[i].classList.add("hidden");
+            }
+            var selectedOption = document.getElementById(showResDivId);
+            if (selectedOption) {
+                selectedOption.classList.remove("hidden");
+            }
+        }
+        function showHideLev2Select(cur_select_id, cur_select_value) {
+            var showResDivId = cur_select_id+"_"+cur_select_value;
+            
+            var selectContainer = document.getElementById("diffResContainer_"+cur_select_id);
+            var selects = selectContainer.getElementsByClassName("div_lev2");
+            for (var i = 0; i < selects.length; i++) {
+                selects[i].classList.add("hidden");
+            }
+            var selectedOption = document.getElementById(showResDivId);
+            if (selectedOption) {
+                selectedOption.classList.remove("hidden");
+            }
+        }
+        
+    </script>
+</html>

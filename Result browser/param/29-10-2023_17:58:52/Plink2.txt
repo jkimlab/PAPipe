@@ -1,0 +1,12 @@
+ON/OFF=ON
+vcftools=vcftools
+plink2=/PAPipe/Programs/Plink2/plink2
+autosome_cnt=30
+non_autosome_list=X,Y,MT
+popName=Cows
+pca_num=10
+title=cows
+variance=60
+maxPC=5
+vcfInput=./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz
+outdir=/RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/Plink2/

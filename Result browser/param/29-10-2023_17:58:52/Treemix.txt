@@ -1,0 +1,12 @@
+ON/OFF=ON
+vcftools_path=vcftools
+bcftools_path=bcftools
+treemix_path=treemix
+treemix_util_path=/PAPipe/Programs/Treemix/scripts/
+plink=plink
+python2=python2
+Rlib_path=/opt/conda/lib/R/library/
+ldPruning_threshold=0.1
+m=4
+k=2
+vcf=./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz

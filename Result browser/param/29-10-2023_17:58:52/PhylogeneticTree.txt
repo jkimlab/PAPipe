@@ -1,0 +1,8 @@
+dendogram=/RUN_DOCKER/PAPipe_forzen1_copy/working03/script/visTREE.R
+ON/OFF=ON
+Snphylo=/PAPipe/Programs/SNPhylo/snphylo.sh
+sampleNum=25
+m=0
+l=0.7
+M=0.02
+hapmap=./out/03_Postprocessing/Hapmap/Cows.variant.combined.GT.SNP.flt.hapmap

@@ -1,0 +1,45 @@
+/opt/conda/bin/qp3Pop: parameter file: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_3pop/par_3pop
+### THE INPUT PARAMETERS
+##PARAMETER NAME: VALUE
+DIR: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert
+SSS: Admixtools_result
+indivname: /RUN_DOCKER/TEST_DOCKER2/main_sample.txt
+snpname: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert/Admixtools_result.snp
+genotypename: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert/Admixtools_result.eigenstratgeno
+popfilename: list_3pop
+## qp3Pop version: 435
+nplist: 30
+number of blocks for block jackknife: 32
+snps: 224706
+                      Source 1             Source 2               Target           f_3       std. err           Z    SNPs
+ result:                Hanwoo             Holstein                Angus      3.003397       0.233194      12.879   36859
+ result:                Hanwoo               Jersey                Angus      3.333884       0.251453      13.258   48909
+ result:                Hanwoo            Simmental                Angus      2.330196       0.210184      11.086   20743
+ result:              Holstein               Jersey                Angus      3.000747       0.245499      12.223   36818
+ result:              Holstein            Simmental                Angus      2.258065       0.215172      10.494   13275
+ result:                Jersey            Simmental                Angus      2.188065       0.222064       9.853   21434
+ result:                 Angus             Holstein               Hanwoo      0.941018       0.027240      34.545   36859
+ result:                 Angus               Jersey               Hanwoo      0.888408       0.031755      27.977   48909
+ result:                 Angus            Simmental               Hanwoo      0.921532       0.031105      29.627   20743
+ result:              Holstein               Jersey               Hanwoo      0.957138       0.028503      33.581   74625
+ result:              Holstein            Simmental               Hanwoo      0.933109       0.030978      30.122   33651
+ result:                Jersey            Simmental               Hanwoo      0.858638       0.033065      25.968   44419
+ result:                 Angus               Hanwoo             Holstein      1.666405       0.077374      21.537   36859
+ result:                 Angus               Jersey             Holstein      1.599438       0.088940      17.983   36818
+ result:                 Angus            Simmental             Holstein      1.585225       0.095463      16.606   13275
+ result:                Hanwoo               Jersey             Holstein      1.906291       0.067270      28.338   74625
+ result:                Hanwoo            Simmental             Holstein      1.647423       0.079052      20.840   33651
+ result:                Jersey            Simmental             Holstein      1.527728       0.078824      19.382   34168
+ result:                 Angus               Hanwoo               Jersey      1.473455       0.059844      24.622   48909
+ result:                 Angus             Holstein               Jersey      1.470204       0.057563      25.541   36818
+ result:                 Angus            Simmental               Jersey      1.427290       0.070373      20.282   21434
+ result:                Hanwoo             Holstein               Jersey      1.533113       0.050537      30.337   74625
+ result:                Hanwoo            Simmental               Jersey      1.469564       0.059238      24.808   44419
+ result:              Holstein            Simmental               Jersey      1.462047       0.058844      24.846   34168
+ result:                 Angus               Hanwoo            Simmental      2.446814       0.252491       9.691   20743
+ result:                 Angus             Holstein            Simmental      2.306315       0.237239       9.721   13275
+ result:                 Angus               Jersey            Simmental      2.447374       0.277478       8.820   21434
+ result:                Hanwoo             Holstein            Simmental      3.117910       0.234066      13.321   33651
+ result:                Hanwoo               Jersey            Simmental      3.782512       0.318669      11.870   44419
+ result:              Holstein               Jersey            Simmental      3.360013       0.287712      11.678   34168
+##end of qp3Pop:       17.756 seconds cpu      124.035 Mbytes in use

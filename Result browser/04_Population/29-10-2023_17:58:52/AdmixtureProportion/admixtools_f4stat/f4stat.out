@@ -1,0 +1,27 @@
+/opt/conda/bin/qpDstat: parameter file: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_f4stat/par_f4stat
+### THE INPUT PARAMETERS
+##PARAMETER NAME: VALUE
+DIR: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert
+SSS: Admixtools_result
+indivname: /RUN_DOCKER/TEST_DOCKER2/main_sample.txt
+snpname: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert/Admixtools_result.snp
+genotypename: /RUN_DOCKER/TEST_DOCKER2/out/04_Population/29-10-2023_17:58:52/AdmixtureProportion/admixtools_convert/Admixtools_result.eigenstratgeno
+popfilename: list_f4stat
+f4mode: YES
+## qpDstat version: 755
+number of quadruples 5
+  0               Hanwoo    5
+  1                Angus    5
+  2             Holstein    5
+  3               Jersey    5
+  4            Simmental    5
+jackknife block size:     0.050
+snps: 224706  indivs: 25
+number of blocks for jackknife: 32
+nrows, ncols: 25 224706
+result:     Hanwoo   Holstein     Jersey  Simmental      0.004582      2.986     975    800  38214 
+result:      Angus   Holstein     Jersey  Simmental     -0.005854     -5.157     329    473  24709 
+result:      Angus     Hanwoo     Jersey  Simmental     -0.010321     -8.736     398    683  27564 
+result:      Angus     Hanwoo   Holstein  Simmental     -0.003848     -3.477     316    419  26882 
+result:      Angus     Hanwoo   Holstein     Jersey      0.006369      4.590    1084    827  40383 
+##end of qpDstat:        2.747 seconds cpu      194.204 Mbytes in use
