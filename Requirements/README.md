@@ -54,3 +54,9 @@
 | PSMC | 0.6.5 | https://github.com/lh3/psmc |
 | gnuplot | 5.0 | http://www.gnuplot.info/download.html |
 | SAMtools | 0.1.19 | https://sourceforge.net/projects/samtools/files/samtools/0.1.19/ |
+| SweepFinder2 | 1.0 | http://degiorgiogroup.fau.edu/sf2.html |
+| MSMC2 | 2.1.4 | https://github.com/stschiff/msmc2 |
+| Treemix | 1.12 | https://bitbucket.org/nygcresearch/treemix/wiki/Home |
+| Plink2 | 2.00a5.5LM | https://www.cog-genomics.org/plink/2.0/ |
+
+
