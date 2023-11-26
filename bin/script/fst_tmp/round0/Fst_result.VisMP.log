@@ -1,0 +1,60 @@
+Loading required package: qqman
+Error: package or namespace load failed for ‘qqman’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘calibrate’
+[1] "Trying to install qqman"
+Installing package into ‘/mss_dc/project/ny/pap/Pipeline_update/local_env_setting/R_LIB’
+(as ‘lib’ is unspecified)
+also installing the dependency ‘calibrate’
+
+trying URL 'http://cran.r-project.org/src/contrib/calibrate_1.7.7.tar.gz'
+Content type 'application/x-gzip' length 306782 bytes (299 KB)
+==================================================
+downloaded 299 KB
+
+trying URL 'http://cran.r-project.org/src/contrib/qqman_0.1.9.tar.gz'
+Content type 'application/x-gzip' length 1337980 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+* installing *source* package ‘calibrate’ ...
+** package ‘calibrate’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (calibrate)
+* installing *source* package ‘qqman’ ...
+** package ‘qqman’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (qqman)
+
+The downloaded source packages are in
+	‘/tmp/RtmprD3EcO/downloaded_packages’
+
+For example usage please run: vignette('qqman')
+
+Citation appreciated but not required:
+Turner, (2018). qqman: an R package for visualizing GWAS results using Q-Q and manhattan plots. Journal of Open Source Software, 3(25), 731, https://doi.org/10.21105/joss.00731.
+
+null device 
+          1 

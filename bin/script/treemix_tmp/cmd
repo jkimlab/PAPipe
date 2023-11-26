@@ -1,0 +1,1 @@
+perl ../Treemix.pl  -p ./Treemix.txt  -o ./ -s ./main_sample.txt  &> lo

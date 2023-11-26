@@ -1,0 +1,18 @@
+PLINK v1.90b3.36 64-bit (31 Mar 2016)
+Options in effect:
+  --file /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN
+  --indep-pairwise 50 10 /mss3/RDA_Phase2/programs/plink1.9/plink
+  --noweb
+  --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN
+  --set-missing-var-ids @:#
+  --silent
+
+Hostname: titan01
+Working directory: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp
+Start time: Mon Sep 18 05:11:58 2023
+
+Error: Invalid --indep-pairwise r^2 threshold
+'/mss3/RDA_Phase2/programs/plink1.9/plink'.
+For more information, try 'plink --help [flag name]' or 'plink --help | more'.
+
+End time: Mon Sep 18 05:11:58 2023

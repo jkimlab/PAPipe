@@ -5,6 +5,11 @@ import argparse
 
 import subprocess as sub
 from collections import defaultdict
+from threading import Thread
+import multiprocessing
+from datetime import datetime
+
+
 
 import Param
 
@@ -49,29 +54,15 @@ def ParseInput(input_, out) :
                 sub.call(f'ln -s {line} {out}/01_ReadMapping/04.ReadRegrouping/{sample}.bam', shell=True)
 
             elif step == "Vcf" :
-                if not os.path.isdir(out + "/02_VariantCalling/") :
-                    sub.call(f'mkdir {out}/02_VariantCalling', shell=True)
-                if not os.path.isdir(out + "/02_VariantCalling/VariantCalling") :
-                    sub.call(f'mkdir {out}/02_VariantCalling/VariantCalling', shell=True)
-                if not os.path.isdir(out + "/02_VariantCalling/VariantCalling/FINAL") :
-                    sub.call(f'mkdir {out}/02_VariantCalling/VariantCalling/FINAL', shell=True)
-
+                sub.call(f'mkdir -p {out}/02_VariantCalling/VariantCalling/FINAL', shell=True)
                 sub.call(f'ln -s {line} {out}/02_VariantCalling/VariantCalling/FINAL/', shell=True)
 
             elif step == "Plink" :
-                if not os.path.isdir(out + "/03_Postprocessing") :
-                    sub.call(f'mkdir {out}/03_Postprocessing', shell=True)
-                if not os.path.isdir(out + "/03_Postprocessing/plink") :
-                    sub.call(f'mkdir {out}/03_Postprocessing/plink', shell=True)
-
+                sub.call(f'mkdir -p {out}/03_Postprocessing/plink', shell=True)
                 sub.call(f'ln -s {line}* {out}/03_Postprocessing/plink/', shell=True)
 
             elif step == "Hapmap" :
-                if not os.path.isdir(out + "/03_Postprocessing") :
-                    sub.call(f'mkdir {out}/02_Postprocessing', shell=True)
-                if not os.path.isdir(out + "/03_Postprocessing/Hapmap") :
-                    sub.call(f'mkdir {out}/03_Postprocessing/Hapmap', shell=True)
-
+                sub.call(f'mkdir -p {out}/03_Postprocessing/Hapmap', shell=True)
                 sub.call(f'ln -s {line} {out}/03_Postprocessing/Hapmap/', shell=True)
 
 
@@ -90,13 +81,17 @@ def PCA(out, verbose, param, sample) :
             if flag.upper() == "OFF" :
                 sys.stderr.write("Pass the PCA analysis\n")
                 sys.stderr.flush()
-                return
+                return " "
 
-    if not os.path.isdir(out + "/04_Population/PCA") :
-        sub.call(f'mkdir {out}/04_Population/PCA', shell=True)
-    line = PCA + " -p " + param + " -s " + sample + " -o " + out + "/04_Population/PCA"
-    log = out + "/04_Population/logs/pca.log"
+    if not os.path.isdir(out + "/PCA") :
+        sub.call(f'mkdir {out}/PCA', shell=True)
+    line = PCA + " -p " + param + " -s " + sample + " -o " + out + "/PCA"
+    log = out + "/logs/pca.log"
+    O_var_param = open(f'{os.path.abspath(out)}/PCA/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
     
+    return "PCA  "
+    '''
     if verbose == "1" :
         sys.stderr.write(line + " &> " + log + "\n")
         sys.stderr.flush()
@@ -106,6 +101,7 @@ def PCA(out, verbose, param, sample) :
     if not value == 0 :
         sys.stderr.write("[ERROR] Check the log file : " + out + "/04_Population/logs/pca.log\n")
         sys.stderr.flush()
+    '''
 
 
 def PhylogeneticTree(out, verbose, param) :
@@ -122,14 +118,20 @@ def PhylogeneticTree(out, verbose, param) :
             if flag.upper() == "OFF" :
                 sys.stderr.write("Pass the PhylogeneticTree analysis\n")
                 sys.stderr.flush()
-                return
 
-    if not os.path.abspath(out + "/04_Population/PhylogeneticTree") :
-        sub.call(f'mkdir {out}/04_Population/PhylogeneticTree', shell=True)
-    line = PhylogeneticTree + " -p " + param + " -o " + out + "/04_Population/PhylogeneticTree"
-    log = out + "/04_Population/logs/snphylo.log"
+                return " "
 
-    if verbose == "1" :
+    sub.call(f'mkdir {out}/PhylogeneticTree', shell=True)
+    line = PhylogeneticTree + " -p " + param + " -o " + out + "/PhylogeneticTree"
+    log = out + "/logs/snphylo.log"
+
+    O_var_param = open(f'{os.path.abspath(out)}/PhylogeneticTree/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+
+    return "PhylogeneticTree  "
+
+
+'''    if verbose == "1" :
         sys.stderr.write(line + " &> " + log + "\n")
         sys.stderr.flush()
 
@@ -138,7 +140,7 @@ def PhylogeneticTree(out, verbose, param) :
     if not value == 0 :
         sys.stderr.write("[ERROR] Check the log file : " + out + "/04_Population/logs/snphylo.log\n")
         sys.stderr.flush()
-
+'''
 
 def Structure(out, verbose, param, sample) :
     
@@ -155,15 +157,20 @@ def Structure(out, verbose, param, sample) :
             if flag.upper() == "OFF" :
                 sys.stderr.write("Pass the Population Structure analysis\n")
                 sys.stderr.flush()
-                return 
+                return " "
 
-    if not os.path.abspath(out + "/04_Population/Structure") :
-        sub.call(f'mkdir {out}/04_Population/Structure', shell=True)
+    sub.call(f'mkdir -p {out}/Structure', shell=True)
     
-    line = Structure + " -p " + param + " -s " + os.path.abspath(sample) + " -o " + out + "/04_Population/Structure"
-    log = out + "/04_Population/logs/structure.log"
+    line = Structure + " -p " + param + " -s " + os.path.abspath(sample) + " -o " + out + "/Structure"
+    log = out + "/logs/structure.log"
+
+    O_var_param = open(f'{os.path.abspath(out)}/Structure/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+
+    return "Structure  "
+
     
-    if verbose == "1" :
+'''    if verbose == "1" :
         sys.stderr.write(line + " &> " + log + "\n")
         sys.stderr.flush()
 
@@ -173,7 +180,7 @@ def Structure(out, verbose, param, sample) :
     if not value == 0 :
         sys.stderr.write("[ERROR] Check the log file : " + out + "/04_Population/logs/structure.log\n")
         sys.stderr.flush()
-
+'''
 
 def Fst(out, verbose, param, sample) :
     bindir = os.path.abspath(os.path.dirname(__file__))
@@ -189,15 +196,18 @@ def Fst(out, verbose, param, sample) :
             if flag.upper() == "OFF" :
                 sys.stderr.write("Pass the Fst analysis\n")
                 sys.stderr.flush()
-                return
+                return " "
 
-    if not os.path.abspath(out + "/04_Population/Fst") :
-        sub.call(f'mkdir {out}/04_Population/Fst', shell=True)
+    sub.call(f'mkdir -p {out}/Fst', shell=True)
     
-    line = Fst + " -p " + param + " -o " + out + "/04_Population/Fst -s " + sample
-    log = out + "/04_Population/logs/fst.log"
+    line = Fst + " -p " + param + " -o " + out + "/Fst -s " + sample
+    log = out + "/logs/fst.log"
 
-    if verbose == "1" :
+    O_var_param = open(f'{os.path.abspath(out)}/Fst/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+    return "Fst  "
+
+'''    if verbose == "1" :
         sys.stderr.write(line + " &> " + log + "\n")
         sys.stderr.flush()
 
@@ -207,7 +217,7 @@ def Fst(out, verbose, param, sample) :
     if not value == 0 :
         sys.stderr.write("[ERROR] Check the log file : " + out + "/04_Population/logs/fst.log\n")
         sys.stderr.flush()
-
+'''
 
 def EffectiveSize(out, verbose, param, th) :
     bindir = os.path.abspath(os.path.dirname(__file__))
@@ -223,15 +233,17 @@ def EffectiveSize(out, verbose, param, th) :
             if flag.upper() == "OFF" :
                 sys.stderr.write("Pass the Effective size analysis\n")
                 sys.stderr.flush()
-                return
+                return " "
 
-    if not os.path.abspath(out + "/04_Population/EffectiveSize") :
-        sub.call(f'mkdir {out}/04_Population/EffectiveSize', shell=True)
+    sub.call(f'mkdir -p {out}/EffectiveSize', shell=True)
     
-    line = Eff + " -t " + str(th) + " -p " + param + " -o " + out + "/04_Population/EffectiveSize"
-    log = out + "/04_Population/logs/effectivesize.log"
+    line = Eff + " -t " + str(th) + " -p " + param + " -o " + out + "/EffectiveSize"
+    log = out + "/logs/effectivesize.log"
+    O_var_param = open(f'{os.path.abspath(out)}/EffectiveSize/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+    return "EffectiveSize  "
 
-    if verbose == "1" :
+'''    if verbose == "1" :
         sys.stderr.write(line + " &> " + log + "\n")
         sys.stderr.flush()
     with open(log, 'w') as outfile :
@@ -240,7 +252,7 @@ def EffectiveSize(out, verbose, param, th) :
     if not value == 0 :
         sys.stderr.write("[ERROR] Check the log file : " + out + "/04_Population/logs/effectivesize.log\n")
         sys.stderr.flush()
-
+'''
 
 def AdmixtureProportion(out, verbose, param, sample) :
     bindir = os.path.abspath(os.path.dirname(__file__))
@@ -256,15 +268,18 @@ def AdmixtureProportion(out, verbose, param, sample) :
             if flag.upper() == "OFF" :
                 sys.stderr.write("Pass the Admixture Proportion analysis\n")
                 sys.stderr.flush()
-                return
+                return " "
 
-    if not os.path.isdir(out + "/04_Population/AdmixtureProportion") :
-        sub.call(f'mkdir {out}/04_Population/AdmixtureProportion', shell=True)
+    sub.call(f'mkdir -p {out}/AdmixtureProportion', shell=True)
     
-    line = AdmixtureProportion + " -p " + param + " -s " + sample + " -o " + out + "/04_Population/AdmixtureProportion"
-    log = out + "/04_Population/logs/admixtureproportion.log"
+    line = AdmixtureProportion + " -p " + param + " -s " + sample + " -o " + out + "/AdmixtureProportion"
+    log = out + "/logs/admixtureproportion.log"
     
-    if verbose == "1" :
+    O_var_param = open(f'{os.path.abspath(out)}/AdmixtureProportion/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+    return "AdmixtureProportion  "
+
+'''    if verbose == "1" :
         sys.stderr.write(line + " &> " + log + "\n")
         sys.stderr.flush()
    
@@ -274,7 +289,7 @@ def AdmixtureProportion(out, verbose, param, sample) :
     if not value == 0 :
         sys.stderr.write("[ERROR] Check the log file : " + out + "/04_Population/logs/admixtureproportion.log\n")
         sys.stderr.flush()
-
+'''
 
 def LdDecay(out, verbose, param, sample) :
     bindir = os.path.abspath(os.path.dirname(__file__))
@@ -290,14 +305,17 @@ def LdDecay(out, verbose, param, sample) :
             if flag.upper() == "OFF" :
                 sys.stderr.write("Pass the LD Decay analysis\n")
                 sys.stderr.flush()
-                return
+                return " "
 
-    if not os.path.isdir(out + "/04_Population/LdDecay") :
-        sub.call(f'mkdir {out}/04_Population/LdDecay', shell=True)
+    sub.call(f'mkdir -p {out}/LdDecay', shell=True)
     
-    line = "python3 " + LD_script + " -p " + param + " -s " + sample + " -o " + out + "/04_Population/LdDecay"
-    log = out + "/04_Population/logs/lddecay.log"
+    line = "python3 " + LD_script + " -p " + param + " -s " + sample + " -o " + out + "/LdDecay"
+    log = out + "/logs/lddecay.log"
+    O_var_param = open(f'{os.path.abspath(out)}/LdDecay/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+    return "LdDecay  "
 
+'''
     if verbose == "1" :
         sys.stderr.write(line + " &> " + log + "\n")
         sys.stderr.flush()
@@ -308,27 +326,148 @@ def LdDecay(out, verbose, param, sample) :
     if not value == 0 :
         sys.stderr.write("[ERROR] Check the log file : " + out + "/04_Population/logs/lddecay.log\n")
         sys.stderr.flush()
+'''
+
+def MSMC(out, verbose, param, sample) :
+    bindir = os.path.abspath(os.path.dirname(__file__))
+
+    sys.stderr.write("\nMSMC\n")
+    sys.stderr.flush()
+    for line in open(param, 'r') :
+        line = line.strip()
+        if 'ON/OFF' in line :
+            flag = line.split('=')[1].strip()
+            if flag.upper() == "OFF" :
+                sys.stderr.write("Pass the MSMC analysis\n")
+                sys.stderr.flush()
+                return " "
+    sub.call(f'mkdir -p {out}/MSMC', shell=True)
+
+    MSMC_script = bindir + "/script/MSMC.pl"
+    line = "perl " + MSMC_script + " -p " + param + " -s " + sample + " -o " + out + "/MSMC"
+    log = out + "/logs/MSMC.log"
+    O_var_param = open(f'{os.path.abspath(out)}/MSMC/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+    return "MSMC  "            
+
+
+def SweepFinder2(out, verbose, param, sample) :
+    bindir = os.path.abspath(os.path.dirname(__file__))
+
+    sys.stderr.write("\nSweepFinder2\n")
+    sys.stderr.flush()
+    for line in open(param, 'r') :
+        line = line.strip()
+        if 'ON/OFF' in line :
+            flag = line.split('=')[1].strip()
+            if flag.upper() == "OFF" :
+                sys.stderr.write("Pass the SweepFinder2 analysis\n")
+                sys.stderr.flush()
+                return " "
+    sub.call(f'mkdir -p {out}/SweepFinder2', shell=True)
+
+    SweepFinder2_script = bindir + "/script/SweepFinder2.pl"
+    line = "perl " + SweepFinder2_script + " -p " + param + " -s " + sample + " -o " + out + "/SweepFinder2"
+    log = out + "/logs/SweepFinder2.log"
+    O_var_param = open(f'{os.path.abspath(out)}/SweepFinder2/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+    return "SweepFinder2  "
+
+
+def Plink2(out, verbose, param, sample) :
+    bindir = os.path.abspath(os.path.dirname(__file__))
+
+    sys.stderr.write("\nPlink2\n")
+    sys.stderr.flush()
+    for line in open(param, 'r') :
+        line = line.strip()
+        if 'ON/OFF' in line :
+            flag = line.split('=')[1].strip()
+            if flag.upper() == "OFF" :
+                sys.stderr.write("Pass the Plink2 analysis\n")
+                sys.stderr.flush()
+                return " "
+    sub.call(f'mkdir -p {out}/Plink2', shell=True)
+    
+    Plink2_script = bindir + "/script/Plink2.pl"
+    line = "perl " + Plink2_script + " -p " + param + " -s " + sample + " -o " + out + "/Plink2"
+    log = out + "/logs/Plink2.log"
+    O_var_param = open(f'{os.path.abspath(out)}/Plink2/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+    return "Plink2  "
+
+def Treemix(out, verbose, param, sample) :
+    bindir = os.path.abspath(os.path.dirname(__file__))
+
+    sys.stderr.write("\nTreemix\n")
+    sys.stderr.flush()
+    for line in open(param, 'r') :
+        line = line.strip()
+        if 'ON/OFF' in line :
+            flag = line.split('=')[1].strip()
+            if flag.upper() == "OFF" :
+                sys.stderr.write("Pass the Treemix analysis\n")
+                sys.stderr.flush()
+                return " "
+    sub.call(f'mkdir -p {out}/Treemix', shell=True)
+
+    Treemix_script = bindir + "/script/Treemix.pl"
+    line = "perl " + Treemix_script + " -p " + param + " -s " + sample + " -o " + out + "/Treemix"
+    log = out + "/logs/Treemix.log"
+    O_var_param = open(f'{os.path.abspath(out)}/Treemix/cmd', 'w')
+    O_var_param.write(line+" &> "+log+"\n")
+    return "Treemix  "  
 
 
 def main_pipe(args, dict_param, index) :
     sys.stderr.write("---------------Population--------------\n")
     sys.stderr.flush()
     
-    if not os.path.isdir(args.out + "/04_Population") :
-        sub.call(f'mkdir {args.out}/04_Population', shell=True)
-    if not os.path.isdir(args.out + "/04_Population/logs") :
-        sub.call(f'mkdir {args.out}/04_Population/logs', shell=True)
 
     if index == 0 :
         ParseInput(args.input, args.out)
     
     pop_param = Param.Population(args.out, dict_param)
-    PCA(os.path.abspath(args.out), args.verbose, pop_param['PCA'], args.sample)
-    PhylogeneticTree(os.path.abspath(args.out), args.verbose, pop_param['PhylogeneticTree'])
-    Structure(os.path.abspath(args.out), args.verbose, pop_param['Structure'], args.sample)
-    Fst(os.path.abspath(args.out), args.verbose, pop_param['Fst'], args.sample)
-    EffectiveSize(os.path.abspath(args.out), args.verbose, pop_param['EffectiveSize'], args.threads)
-    AdmixtureProportion(os.path.abspath(args.out), args.verbose, pop_param['AdmixtureProportion'], args.sample)
-    LdDecay(os.path.abspath(args.out), args.verbose, pop_param['LdDecay'], args.sample)
+    args.out = pop_param["outdir"]
+    sub.call(f'mkdir -p {args.out}/logs', shell=True)
+
+    
+
+    running_analysis = ""
+    #estimate faSize
+    sys.stderr.write("\nEstimate reference fasta size...\n")
+    ref_fa = os.path.abspath(args.ref)
+    ref_size = ref_fa+".size"
+    
+    with open (ref_size,'w') as outfile:
+        sub.call(f'faSize -detailed {ref_fa}', shell=True,stdout=outfile)
+    #setting CMDS
+    running_analysis += PCA(os.path.abspath(args.out), args.verbose, pop_param['PCA'], args.sample)
+    running_analysis += PhylogeneticTree(os.path.abspath(args.out), args.verbose, pop_param['PhylogeneticTree'])
+    running_analysis += Structure(os.path.abspath(args.out), args.verbose, pop_param['Structure'], args.sample)
+    running_analysis += Fst(os.path.abspath(args.out), args.verbose, pop_param['Fst'], args.sample)
+    running_analysis += EffectiveSize(os.path.abspath(args.out), args.verbose, pop_param['EffectiveSize'], args.threads)
+    running_analysis += AdmixtureProportion(os.path.abspath(args.out), args.verbose, pop_param['AdmixtureProportion'], args.sample)
+    running_analysis += LdDecay(os.path.abspath(args.out), args.verbose, pop_param['LdDecay'], args.sample)
+    running_analysis += MSMC(os.path.abspath(args.out), args.verbose, pop_param['MSMC'], args.sample)
+    running_analysis += SweepFinder2(os.path.abspath(args.out), args.verbose, pop_param['SweepFinder2'], args.sample)
+    running_analysis += Plink2(os.path.abspath(args.out), args.verbose, pop_param['Plink2'], args.sample)
+    running_analysis += Treemix(os.path.abspath(args.out), args.verbose, pop_param['Treemix'], args.sample)
+    
+    #run fork
+    bindir = os.path.abspath(os.path.dirname(__file__))
+    FORK_RUNNER = bindir + "/script/POP_fork.pl "
+    CMD = "perl "+FORK_RUNNER+"  "+os.path.abspath(args.out)+"/   "  + running_analysis  +" "
+    log = os.path.abspath(args.out)+"/logs/all.log"
+    sys.stderr.write(CMD + " &> " + log + "\n")
+    sys.stderr.flush()
+
+    with open(log, 'w') as outfile :
+        value = sub.call(CMD, shell=True, stdout = outfile, stderr = outfile)
+    if value != 0 :
+        sys.stderr.write("[ERROR] Check the log file : " + log+"\n")
+        sys.stderr.flush()
+        sys.exit()
+
     sys.stderr.write("\nFinish the population analysis result generating step\n\n")
     sys.stderr.flush()

@@ -134,7 +134,7 @@ def Draw(out) :
         sub.call(f'mkdir {out}/{dist}/Plot', shell=True)
         sys.stderr.write("\n\n#" + dist + "\n")
         sys.stderr.flush()
-        #os.system("mkdir " + out + "/" + dist + "/Plot")
+        os.system("mkdir " + out + "/" + dist + "/Plot")
         O_L = open(f'{out}/{dist}/Plot/Multi.list', 'w')
         for breed in Breed :
             O_L.write(out + "/" + dist + "/" + breed + ".stat.gz\t" + breed + "\n")
@@ -158,6 +158,7 @@ def Draw(out) :
         if not check == 0 :
             sys.exit(1)
         #p.map(f,cmd)
+
 
 
 def main() :

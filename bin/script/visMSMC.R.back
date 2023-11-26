@@ -1,0 +1,40 @@
+#!/usr/bin/env Rscript
+
+library(RColorBrewer)
+
+mycol=c(brewer.pal(9,"Set1"), brewer.pal(8,"Set2"), brewer.pal(12,"Set3"))
+
+args <- commandArgs(TRUE);
+mu <- as.numeric(args[1])
+gen <- as.numeric(args[2])
+pop_cnt <- as.numeric(args[3])
+outdir <- args[4]
+binpath <- args[5];
+
+data <- read.table(args[6],TRUE)
+
+library(RColorBrewer)
+library(ggplot2)
+load(paste0(binpath,"/col.rda"))
+jjcolor = ColArry;
+
+
+time <- (data$left_time_boundary/mu*gen)
+time <- time + 0.001 
+pop.size <- (1/data$lambda)/(2*mu)
+pop.size <- pop.size + 0.001
+
+outfile <- paste(outdir,"/MSMC.pdf",sep="")
+pdf(outfile)
+plot(time, pop.size, type="s",  xlab="log Years before present",  ylab="Effective Population Size", log="x")
+
+for (i in (6:(5+pop_cnt))){
+    data <- read.table(args[i],TRUE)
+    time <- (data$left_time_boundary/mu*gen)
+    time <- time + 0.001 
+    pop.size <- (1/data$lambda)/(2*mu)
+    pop.size <- pop.size + 0.001
+
+    lines(time, pop.size, type="s", col=mycol[i])
+}
+dev.off()

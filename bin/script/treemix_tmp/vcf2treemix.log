@@ -1,0 +1,70 @@
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.vcf
+	--mac 2
+	--max-alleles 2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned
+	--plink
+	--remove-indels
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+After filtering, kept 25 out of 25 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 0 out of a possible 0 Sites
+File does not contain any sites
+Run Time = 0.00 seconds
+PLINK v1.90b3.36 64-bit (31 Mar 2016)      https://www.cog-genomics.org/plink2
+(C) 2005-2016 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.log.
+Options in effect:
+  --allow-extra-chr 0
+  --allow-no-sex
+  --file /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned
+  --make-bed
+  --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned
+
+192053 MB RAM detected; reserving 96026 MB for main workspace.
+Error: Empty .map file.
+PLINK v1.90b3.36 64-bit (31 Mar 2016)      https://www.cog-genomics.org/plink2
+(C) 2005-2016 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.log.
+Options in effect:
+  --allow-extra-chr 0
+  --allow-no-sex
+  --bfile /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned
+  --freq
+  --missing
+  --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned
+  --within /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/clust
+
+192053 MB RAM detected; reserving 96026 MB for main workspace.
+Error: Failed to open
+/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.bed.
+gzip: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.frq.strat: No such file or directory
+Traceback (most recent call last):
+  File "/mss_dc/project/ny/pap/newProg/TreeMix/scripts/plink2treemix.py", line 8, in <module>
+    infile = gzip.open(sys.argv[1])
+  File "/mss_dc/project/ny/pap/test/programs/pytnon2/Python-2.7.2/Lib/gzip.py", line 34, in open
+    return GzipFile(filename, mode, compresslevel)
+  File "/mss_dc/project/ny/pap/test/programs/pytnon2/Python-2.7.2/Lib/gzip.py", line 89, in __init__
+    fileobj = self.myfileobj = __builtin__.open(filename, mode or 'rb')
+IOError: [Errno 2] No such file or directory: '/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.frq.strat.gz'
+gzip: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.treemix.frq.gz: No such file or directory
+gzip: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.frq.strat.gz: No such file or directory
+paste: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.treemix.frq: No such file or directory
+gzip: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.treemix.frq: No such file or directory

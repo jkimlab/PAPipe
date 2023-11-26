@@ -1,0 +1,1 @@
+python3 ../LdDecay.py -p LdDecay.txt  -s main_sample.txt -o ./

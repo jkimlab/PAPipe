@@ -1,0 +1,20 @@
+PLINK v1.90b3.36 64-bit (31 Mar 2016)
+Options in effect:
+  --allow-extra-chr 0
+  --allow-no-sex
+  --bfile /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned
+  --freq
+  --missing
+  --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned
+  --within /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/clust
+
+Hostname: titan01
+Working directory: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp
+Start time: Mon Sep 18 05:11:58 2023
+
+Random number seed: 1694981518
+192053 MB RAM detected; reserving 96026 MB for main workspace.
+Error: Failed to open
+/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/treemix_tmp/noN.LDpruned.bed.
+
+End time: Mon Sep 18 05:11:58 2023

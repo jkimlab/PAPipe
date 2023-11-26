@@ -1,0 +1,33 @@
+PLINK v2.00a5 32-bit (21 Jun 2023)             www.cog-genomics.org/plink/2.0/
+(C) 2005-2023 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/ref_pcs.log.
+Options in effect:
+  --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/ref_pcs
+  --pca allele-wts
+  --pfile ./plink2
+  --read-freq /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/plink2.afreq
+
+Start time: Mon Sep 18 03:27:02 2023
+192053 MiB RAM detected, ~188946 available; reserving 2047 MiB for main
+workspace.
+Using up to 40 threads (change this with --threads).
+25 samples (0 females, 0 males, 25 ambiguous; 25 founders) loaded from
+./plink2.psam.
+chrSet header line: 30 autosome pairs.
+43 variants loaded from ./plink2.pvar.
+Note: No phenotype data present.
+--read-freq: PLINK 2 --freq file detected.
+--read-freq: Frequencies for 43 variants loaded.
+Warning: 132240 entries skipped due to missing variant IDs, mismatching allele
+codes, and/or zero observations.
+Constructing GRM: 0%done.
+Extracting eigenvalues and eigenvectors... done.
+--pca: Allele weights written to
+/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/ref_pcs.eigenvec.allele
+.
+--pca: Eigenvectors written to
+/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/ref_pcs.eigenvec
+, and eigenvalues written to
+/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/ref_pcs.eigenval
+.
+End time: Mon Sep 18 03:27:02 2023

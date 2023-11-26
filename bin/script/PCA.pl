@@ -24,6 +24,7 @@ use File::Basename;
 use FindBin qw($Bin);
 use Cwd 'abs_path';
 use Sort::Key::Natural 'natsort';
+
 use Switch;
 use  List::MoreUtils 'uniq';
 
@@ -60,7 +61,10 @@ my $plink_prefix = "";
 my $chr_num = 0;
 my $pca_num = 4;
 my $pca_title = "";
+my $maxPC = 8;
 my $obj_variance = 0;
+my $Rlib_path = "";
+
 
 my %spc_name = ();
 open(PARAM,$param_f);
@@ -70,13 +74,15 @@ while(<PARAM>){
 	my @p = split(/\s*=\s*/);
 
 	switch ($p[0]) {
-		case("GCTA")      { $gcta_cmd = abs_path($p[1]); }
+		case("GCTA")      { $gcta_cmd = $p[1]; }
 		case("visPCA")    { $visPCA_R = abs_path($p[1]); }
 		case("PLINK")     { $plink_prefix = abs_path($p[1]); }
 		case("autosome-num")   { $chr_num = $p[1]; }
 		case("PCA")            { $pca_num = $p[1]; }
 		case("PCA_title")      { $pca_title = $p[1]; }
 		case("Variance")      { $obj_variance = $p[1]; }
+		case("maxPC")      { $maxPC = $p[1]; }
+		case("Rlib_path")      { $Rlib_path = $p[1]; }
 	}
 }
 close(PARAM);
@@ -143,8 +149,8 @@ close(W);
 
 ### Visualizing PCA
 
-print "Rscript $visPCA_R '$pca_title' $results_PCnum $outdir/PCA/$prefix.eigenval  $outdir/PCs.info $obj_variance  $outdir\n";
-$output = `Rscript $visPCA_R "$pca_title" $results_PCnum $outdir/PCA/$prefix.eigenval  $outdir/PCs.info $obj_variance  $outdir`;
+print "Rscript $visPCA_R '$pca_title' $results_PCnum $outdir/PCA/$prefix.eigenval  $outdir/PCs.info $obj_variance  $maxPC $outdir $Rlib_path $Bin \n";
+$output = `Rscript $visPCA_R "$pca_title" $results_PCnum $outdir/PCA/$prefix.eigenval  $outdir/PCs.info $obj_variance   $maxPC $outdir $Rlib_path $Bin`;
 if ($?){
 	exit $? >> 8;
 }

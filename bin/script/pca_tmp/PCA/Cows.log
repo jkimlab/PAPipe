@@ -1,0 +1,28 @@
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version 1.91.4 beta3
+* (C) 2010-2018, The University of Queensland
+* Please report bugs to: Jian Yang <jian.yang@uq.edu.au>
+*******************************************************************
+Analysis started at 03:22:33 KST on Mon Sep 18 2023.
+Hostname: europa00
+
+Accepted Options:
+--grm /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows
+--pca 20
+--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/PCA/Cows
+
+Warn: The GSMR analysis will be performed assuming no sample overlap between the GWAS data for exposure and outcome.
+Note: This is a multi-thread program. You could specify the number of threads by the --thread-num option to speed up the computation if there are multiple processors in your machine.
+
+Reading IDs of the GRM from [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows.grm.id].
+25 IDs read from [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows.grm.id].
+Reading the GRM from [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows.grm.bin].
+GRM for 25 individuals are included from [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows.grm.bin].
+
+Performing principal component analysis ...
+Eigenvalues of 25 individuals have been saved in [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/PCA/Cows.eigenval].
+The first 20 eigenvectors of 25 individuals have been saved in [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/PCA/Cows.eigenvec].
+
+Analysis finished at 03:22:33 KST on Mon Sep 18 2023
+Computational time: 0.034389 second(s).

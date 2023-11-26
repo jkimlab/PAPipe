@@ -61,7 +61,7 @@ my $admixture = "";
 my $CLUMPAK = "";
 my $bed = "";
 my $k = "";
-my $jX = 0;
+my $jX = 20;
 my $color = "";
 my $Using_color = 0;
 my $pop = "";
@@ -80,11 +80,11 @@ while(<PARAM>){
 		next;
 	}
 	switch ($p[0]) {
-		case("admixture")	{ $admixture = abs_path($p[1]); }
-		case("CLUMPAK")		{ $CLUMPAK = abs_path($p[1]); }
+		case("admixture")	{ $admixture = $p[1]; }
+		case("CLUMPAK")		{ $CLUMPAK = $p[1]; }
 		case("bed")		{ $bed = abs_path($p[1]); }
 		case("k")		{ $k = int($p[1]); }
-		case("jX")       { $jX = int($p[1]); }
+		case("jX")		{ $jX = int($p[1]); }
 	}
 
 }
@@ -126,6 +126,7 @@ for ( my $pi = 2; $pi <= $k ; $pi++ ) {
 
 my $output ; 
 ### population structure analysis using admixture
+$core = $k;
 my $pm = new Parallel::ForkManager($core);
 for (my $i = 0; $i <= $#cmds ; $i++) {
 	sleep(1);

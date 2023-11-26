@@ -1,0 +1,6 @@
+the Number of subPop samples[found in VCF] is 5
+Warning skip non bi-allelic(Singleton/ThreeMulti allelic) site, and total skip allelic sites number is :492
+##begin pair-wise R^2 cal. after filter Remain SNP Number :	195
+#% number bin is	2
+1%......-->100%.......		ALL done
+Used [perl  ../bin/Plot_XX.pl ] to Plot the LDdecay

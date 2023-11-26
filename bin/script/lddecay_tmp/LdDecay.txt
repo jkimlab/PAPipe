@@ -1,0 +1,4 @@
+ON/OFF=ON
+PopLDdecay_BIN=/bps_mss/projects/RDA/minipig/population/LD_analysis/program/PopLDdecay/bin/
+MaxDist=500, 1000, 5000, 10000
+VCF=/mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr12//out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz

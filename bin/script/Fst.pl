@@ -67,10 +67,13 @@ my $plotW = "30";
 my $plotH = "10";
 my $reference_chromosome_cnt = 0;
 my @ar_targetGroups = ();
+my $userTargetgroups = "";
+
 my @color_arr = ();
 my $color = "";
 my $pop_check = 0;
 my $genomewideline = 5;
+my $Rlib_path = "";
 my $innate_colors = "\\\#996600,\\\#666600,\\\#99991e,\\\#cc0000,\\\#ff0000,\\\#ff00cc,\\\#ffcccc,\\\#ff9900,\\\#ffcc00,\\\#ffff00,\\\#ccff00,\\\#00ff00,\\\#358000,\\\#0000cc,\\\#6699ff,\\\#99ccff,\\\#00ffff,\\\#ccffff,\\\#9900cc,\\\#cc33ff,\\\#cc99ff,\\\#666666,\\\#999999,\\\#cccccc";
 
 $outdir = abs_path($outdir);
@@ -97,6 +100,8 @@ while(<PARAM>){
 		case("plot-high")	{ $plotH = $p[1]; }
 		case("genomewideline")	{ $genomewideline = $p[1]; } 
 		case("TargetGroup")	{ push(@ar_targetGroups,$p[1]); } 
+		case("TargetComb")	{ $userTargetgroups = $p[1]; } 
+		case("Rlib_path")	{ $Rlib_path = $p[1]; } 
 	}
 }
 close(PARAM);
@@ -120,7 +125,6 @@ if ( scalar @color_arr == 0 ) {
 	}
 }
 
-
 ### Running vcftools  
 if (!@ar_targetGroups){
 #every populations are become a target once 
@@ -137,11 +141,11 @@ if (!@ar_targetGroups){
 		}
 	}
 	close(SPARAM);
-	
 }
-print "@ar_targetGroups\n";
+## single target 
 for (my $round = 0 ; $round <= $#ar_targetGroups ; $round ++){
-	my $newoutdir = abs_path("$outdir/round$round");
+	my $cur_target = $ar_targetGroups[$round];
+    my $newoutdir = abs_path("$outdir/$cur_target\_VS_rest_all_populations");
 	`mkdir -p $newoutdir`;
 	chdir ("$newoutdir" or die "cannot change: $!\n");
 	my @arr_ind = ();
@@ -242,10 +246,240 @@ for (my $round = 0 ; $round <= $#ar_targetGroups ; $round ++){
 	$cmd_mp .= "$plotH ";
 	$cmd_mp .= "$genomewideline ";
 	$cmd_mp .= "$color";
-	$output = `$cmd_mp &> $newoutdir/$filename.VisMP.log`;
+	print STDERR "$cmd_mp &> $newoutdir/$filename.VisMP.log\n";
+	$output = `$cmd_mp $Rlib_path &> $newoutdir/$filename.VisMP.log`;
 	if ($?){
 		exit $? >> 8;
 	}
 	print STDERR "$cmd_mp &> $newoutdir/$filename.VisMP.log\n";
 }
 
+## 1 vs 1  
+for (my $round = 0 ; $round <= $#ar_targetGroups ; $round ++){
+	for (my $roundv2 = $round+1 ; $roundv2 <= $#ar_targetGroups ; $roundv2 ++){
+		my $pairname = $ar_targetGroups[$round]."_VS_".$ar_targetGroups[$roundv2];
+		my $newoutdir = abs_path("$outdir/$pairname");
+		`mkdir -p $newoutdir`;
+		chdir ("$newoutdir" or die "cannot change: $!\n");
+		my @arr_ind = ();
+		print "this round : $pairname\n";
+		my %hs_tar = ();
+		$hs_tar{$ar_targetGroups[$roundv2]} = 1;
+		my %hs_ref = ();
+		$hs_ref{$ar_targetGroups[$round]} = 1;
+		open(SPARAM,"$sparam_f")or die "File '$sparam_f' can't be opened";
+		while(<SPARAM>){
+			$_ =~ s/^\s+|\s+$//g;
+			if($_ =~ /^#/ || $_ eq ""){next;}
+			my @p = split(/\s+/,$_);
+			print "@p\n";
+			if (exists($hs_ref{$p[2]})){
+				open(W,">>$newoutdir/$ar_targetGroups[$round].pop1");
+				print W $p[2]."_".$p[0]."\n";
+				close(W);
+			}elsif (exists($hs_tar{$p[2]})){
+				open(W,">>$newoutdir/$ar_targetGroups[$roundv2].pop2");
+				print W $p[2]."_".$p[0]."\n";
+				close(W);
+			}
+		}
+		close(SPARAM);
+		push(@arr_ind, "$newoutdir/$ar_targetGroups[$round].pop1");
+		push(@arr_ind, "$newoutdir/$ar_targetGroups[$roundv2].pop2");
+
+		### fst 
+		my $cmd = "$vcftools ";
+		$cmd .= "--gzvcf $inVCF ";
+		$cmd .= "--fst-window-size $windowS ";
+		$cmd .= "--fst-window-step $stepS ";
+		foreach my $ind (@arr_ind) {
+			$cmd .= "--weir-fst-pop $ind ";
+		}
+		$cmd .= "--out $newoutdir/$pairname";
+		print STDERR "$cmd\n";
+		my $output = `$cmd`;
+		if ($?){
+			exit $? >> 8;
+		}
+		my $filename = $pairname;
+		### manhattan plot
+		open(O, "$newoutdir/$filename.windowed.weir.fst");
+		my %hash_temp = ();
+		while(<O>) {
+			chomp;
+			next if /^CHROM/;
+			my ($chr) = split(/\t/,$_);
+			if ($chr =~ /chr(\d+)/) {
+				if(!exists($hash_temp{$1})) {
+					$hash_temp{$1} = 0;
+				}
+			}
+		}
+		close(O);
+		my @arr_chr = sort {$a <=> $b} keys %hash_temp;
+		my $maxChr = scalar(@arr_chr);
+		my $chrX = $maxChr + 1;
+		my $chrY = $maxChr + 2;
+		my $chrMT = $maxChr + 3;
+		my $modF = "$filename.mod.windowed.weir.fst";
+
+		open(O, "$newoutdir/$filename.windowed.weir.fst");
+		open(W, ">$newoutdir/$modF");
+		my $header = <O>; chomp($header);
+		print W "$header\n";
+		while(<O>) {
+			chomp;
+			print W "$_\n" if /^#/;
+			my @arr_t = split(/\t/,$_);
+			if ($arr_t[0] =~ /X/i) {
+				$arr_t[0] = $chrX;
+				print W join("\t", @arr_t)."\n";
+			} elsif ( $arr_t[0] =~ /Y/i) {
+				$arr_t[0] = $chrY;
+				print W join("\t",@arr_t)."\n";
+			} elsif ( $arr_t[0] =~ /MT/i) {
+				$arr_t[0] = $chrMT;
+				print W join("\t",@arr_t)."\n";
+			} elsif ( $arr_t[0] =~ /chr/i) {
+				my $cutchr = substr($_,3);
+				print W "$cutchr\n";
+			}else{
+				print W "$_\n";
+			}
+		}
+		close(W);
+		close(O);
+		my $inF = "$newoutdir/$modF";
+		my $cmd_mp = "Rscript $qqmanS ";
+		$cmd_mp .= "$inF ";
+		$cmd_mp .= "$newoutdir/$filename ";
+		$cmd_mp .= "$visType ";
+		$cmd_mp .= "$plotW ";
+		$cmd_mp .= "$plotH ";
+		$cmd_mp .= "$genomewideline ";
+		$cmd_mp .= "$color";
+		$output = `$cmd_mp $Rlib_path &> $newoutdir/$filename.VisMP.log`;
+		if ($?){
+			exit $? >> 8;
+		}
+		print STDERR "$cmd_mp &> $newoutdir/$filename.VisMP.log\n";
+	}
+}
+## user target 
+if ($userTargetgroups){
+	my ($g1,$g2) = split(/\<\-\>/,$userTargetgroups);
+	my @ar_g1 = split(/;/,$g1);
+	my @ar_g2 = split(/;/,$g2);
+	$g1 = join("_",@ar_g1);
+    $g2 = join("_",@ar_g2);
+	my $newoutdir = abs_path("$outdir/$g1\_VS_$g2");
+	`mkdir -p $newoutdir`;
+	chdir ("$newoutdir" or die "cannot change: $!\n");
+	my @arr_ind = ();
+	print "this round : user_comb, $outdir/$g1\_VS_$g2\n";
+	my %hs_target1 = ();
+	my %hs_target2 = ();
+	foreach my $tarspc (@ar_g1){
+		$hs_target1{$tarspc} = 1;
+	}
+	foreach my $tarspc (@ar_g2){
+		$hs_target2{$tarspc} = 1;
+	}
+	open(SPARAM,"$sparam_f")or die "File '$sparam_f' can't be opened";
+	while(<SPARAM>){
+		$_ =~ s/^\s+|\s+$//g;
+		if($_ =~ /^#/ || $_ eq ""){next;}
+		my @p = split(/\s+/,$_);
+		if (exists($hs_target1{$p[2]})){
+			open(W,">>$newoutdir/$filename.pop1");
+			print W $p[2]."_".$p[0]."\n";
+			close(W);
+		
+		}elsif (exists($hs_target2{$p[2]})){
+			open(W,">>$newoutdir/$filename.pop2");
+			print W $p[2]."_".$p[0]."\n";
+			close(W);
+		}
+	}
+	close(SPARAM);
+	
+	push(@arr_ind, "$newoutdir/$filename.pop1");
+	push(@arr_ind, "$newoutdir/$filename.pop2");
+
+	### fst 
+	my $cmd = "$vcftools ";
+	$cmd .= "--gzvcf $inVCF ";
+	$cmd .= "--fst-window-size $windowS ";
+	$cmd .= "--fst-window-step $stepS ";
+	foreach my $ind (@arr_ind) {
+		$cmd .= "--weir-fst-pop $ind ";
+	}
+	$cmd .= "--out $newoutdir/$filename";
+	print STDERR "$cmd\n";
+	my $output = `$cmd`;
+	if ($?){
+		exit $? >> 8;
+	}
+	### manhattan plot
+	open(O, "$newoutdir/$filename.windowed.weir.fst");
+	my %hash_temp = ();
+	while(<O>) {
+		chomp;
+		next if /^CHROM/;
+		my ($chr) = split(/\t/,$_);
+		if ($chr =~ /chr(\d+)/) {
+			if(!exists($hash_temp{$1})) {
+				$hash_temp{$1} = 0;
+			}
+		}
+	}
+	close(O);
+	my @arr_chr = sort {$a <=> $b} keys %hash_temp;
+	my $maxChr = scalar(@arr_chr);
+	my $chrX = $maxChr + 1;
+	my $chrY = $maxChr + 2;
+	my $chrMT = $maxChr + 3;
+	my $modF = "$filename.mod.windowed.weir.fst";
+
+	open(O, "$newoutdir/$filename.windowed.weir.fst");
+	open(W, ">$newoutdir/$modF");
+	my $header = <O>; chomp($header);
+	print W "$header\n";
+	while(<O>) {
+		chomp;
+		print W "$_\n" if /^#/;
+		my @arr_t = split(/\t/,$_);
+		if ($arr_t[0] =~ /X/i) {
+			$arr_t[0] = $chrX;
+			print W join("\t", @arr_t)."\n";
+		} elsif ( $arr_t[0] =~ /Y/i) {
+			$arr_t[0] = $chrY;
+			print W join("\t",@arr_t)."\n";
+		} elsif ( $arr_t[0] =~ /MT/i) {
+			$arr_t[0] = $chrMT;
+			print W join("\t",@arr_t)."\n";
+		} elsif ( $arr_t[0] =~ /chr/i) {
+			my $cutchr = substr($_,3);
+			print W "$cutchr\n";
+		}else{
+			print W "$_\n";
+		}
+	}
+	close(W);
+	close(O);
+	my $inF = "$newoutdir/$modF";
+	my $cmd_mp = "Rscript $qqmanS ";
+	$cmd_mp .= "$inF ";
+	$cmd_mp .= "$newoutdir/$filename ";
+	$cmd_mp .= "$visType ";
+	$cmd_mp .= "$plotW ";
+	$cmd_mp .= "$plotH ";
+	$cmd_mp .= "$genomewideline ";
+	$cmd_mp .= "$color";
+	print STDERR "$cmd_mp &> $newoutdir/$filename.VisMP.log\n";
+	$output = `$cmd_mp $Rlib_path &> $newoutdir/$filename.VisMP.log`;
+	if ($?){
+		exit $? >> 8;
+	}
+	print STDERR "$cmd_mp &> $newoutdir/$filename.VisMP.log\n";
+}

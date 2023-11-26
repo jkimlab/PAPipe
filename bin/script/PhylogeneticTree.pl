@@ -31,7 +31,7 @@ my $param_f;
 my $outdir = "./",
 my $help = 0;
 
-
+`export LD_LiBRARY_PATH=\$LD_LIBRARY_PATH:/mss_dc/project/ny/pap/test/programs/pytnon2/Python-2.7.2/`;
 GetOptions (
 	"param|p=s"	=>	\$param_f,
 	"outdir|o=s"	=>	\$outdir,
@@ -57,6 +57,9 @@ my $dendogram = $Bin."/visTREE.R";
 my $hapmapfilt = $Bin."/HAPMAP_FILT.pl";
 my $hapmap_f = "";
 my $sampleNum = 0;
+my $l = 0.7;
+my $m = 0.0;
+my $M = 0.02;
 
 open(PARAM, $param_f);
 while(<PARAM>){
@@ -67,6 +70,9 @@ while(<PARAM>){
 		case("Snphylo"){$snphylo_cmd = abs_path($p[1]);}
 		case("hapmap"){if ($p[1] =~ /.+\.hapmap$/){$hapmap_f = abs_path($p[1]);}}
 		case("sampleNum"){$sampleNum = $p[1];}
+		case("l"){$l = $p[1];}
+		case("m"){$m = $p[1];}
+		case("M"){$M = $p[1];}
 	}
 }
 close(PARAM);
@@ -75,7 +81,7 @@ close(PARAM);
 $hapmap_f = abs_path($hapmap_f);
 chdir($outdir);
 print STDERR "$hapmapfilt $hapmap_f > $outdir/filtered.hapmap\n";
-print STDERR "$snphylo_cmd -H $hapmap_f -P snphylo -A -b >& $outdir/snphylo.log\n";
+print STDERR "$snphylo_cmd -H $hapmap_f -P snphylo -A -b -l $l -m $m -M $M  >& $outdir/snphylo.log\n";
 print STDERR "Rscript $dendogram $outdir/snphylo.ml.tree $sampleNum ./\n";
 
 my $output = `$hapmapfilt $hapmap_f > $outdir/filtered.hapmap`;
@@ -86,7 +92,7 @@ if($?) {
 my $orig_hapmap_f = $hapmap_f;
 $hapmap_f = abs_path("$outdir/filtered.hapmap");
 
-$output = `$snphylo_cmd -t 20 -H $hapmap_f -P snphylo -A -b`;
+$output = `$snphylo_cmd -t 20 -H $hapmap_f -P snphylo -A -b -l $l -m $m -M $M `;
 if($?) {
 	exit $? >> 8;
 }
@@ -123,7 +129,8 @@ if(-e $f_namematch){
 	close(FW);
 }
 
-$output = `Rscript $dendogram $outdir/snphylo.ml.tree  $sampleNum  $outdir`;
-if($?) {
-	exit $? >> 8;
-}
+#$output = `Rscript $dendogram $outdir/snphylo.ml.tree  $sampleNum  $outdir`;
+
+#if($?) {
+#	exit $? >> 8;
+#}

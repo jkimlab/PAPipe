@@ -1,0 +1,12 @@
+ON/OFF=ON
+vcftools=/mss1/programs/titan/bin/bin/vcftools
+plink2=/mss_dc/project/ny/pap/newProg/Plink2/plink2
+autosome_cnt=30
+non_autosome_list=X,Y
+popName=Cows
+pca_num=10
+title=cows
+variance=60
+vcfInput=/mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr15/out//02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz
+maxPC=5
+Rlib_path = /mss_dc/project/ny/pap/Pipeline_update/local_env_setting/R_LIB/

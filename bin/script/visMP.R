@@ -9,9 +9,11 @@ plotW <- as.integer(args[4]);
 plotH <- as.integer(args[5]);
 redline <- as.integer(args[6]);
 color <- args[7];
+libpath <- args[8];
 color_arr <- strsplit(color, ",")[[1]];
 
 inM <- read.table(inF,header=TRUE);
+.libPaths(libpath)
 
 if (!require("qqman"))
 {

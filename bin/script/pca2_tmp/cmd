@@ -1,0 +1,1 @@
+perl ../Plink2.pl -p ./Plink2.txt  -o ./ -s ./main_sample.txt  &> log

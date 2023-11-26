@@ -54,6 +54,7 @@ if ($help == 1 || !$param_f) {
 
 ### Configure parameters
 my $samtools_cmd = "";
+my $samtools_merge_core = 10;
 my $bcftools_cmd = "";
 my $vcfutils_cmd = "";
 my $psmc_dir = "";
@@ -76,7 +77,13 @@ open(PARAM,$param_f);
 while(<PARAM>){
 	chomp;
 	if($_ =~ /^#/ || $_ eq ""){next;}
-	my @p = split(/\s*=\s*|\s+/);
+    my ($line, $left) = ("","");
+    if($_ =~ /#/){
+        ($line,$left) = split(/#/);
+    }else{
+        $line = $_;
+    }
+	my @p = split(/\s*=\s*/,$line);
 	if($_ =~ /^BAM/){
 		my @arr = split(/_/,$p[0]);
 		$bam_files{$arr[1]}{$arr[2]} = $p[1];
@@ -93,10 +100,11 @@ while(<PARAM>){
 
 	switch ($p[0]) {
 		case("Reference")  { $ref_fa = abs_path($p[1]); }
-		case("SAMTOOLS")  { $samtools_cmd = abs_path($p[1]); }
-		case("BCFTOOLS")  { $bcftools_cmd = abs_path($p[1]); }
-		case("VCFUTILS")  { $vcfutils_cmd = abs_path($p[1]); }
-		case("PSMC_DIR")        { $psmc_dir = abs_path($p[1]); }
+		case("SAMTOOLS")  { $samtools_cmd = $p[1]; }
+		case("SAMTOOLS_MERGE_CORE")  { $samtools_merge_core = abs_path($p[1]); }
+		case("BCFTOOLS")  { $bcftools_cmd = $p[1]; }
+		case("VCFUTILS")  { $vcfutils_cmd = $p[1];}
+		case("PSMC_DIR")        { $psmc_dir = $p[1]; }
 		case("SAM_C")      { $sam_c = $p[1]; }
 		case("VCF_d")         { $vcf_d = $p[1]; }
 		case("VCF_D")    { $vcf_D = $p[1]; }
@@ -108,7 +116,6 @@ while(<PARAM>){
 	}
 }
 close(PARAM);
-
 `mkdir -p $outdir`;
 my $output;
 ### Merge bam files
@@ -128,8 +135,8 @@ foreach my $sample (keys %hs_multi){
 	sleep(1);
 	my $bam_list = $hs_multi{$sample};
 	$pm->start and next;
-	print STDERR "$samtools_cmd merge $outdir/$sample/$sample.merged.bam $bam_list\n";
-	$output = `$samtools_cmd merge $outdir/$sample/$sample.merged.bam $bam_list`;
+	print STDERR "$samtools_cmd merge --threads $samtools_merge_core $outdir/$sample/$sample.merged.bam $bam_list\n";
+	$output = `$samtools_cmd merge --threads $samtools_merge_core $outdir/$sample/$sample.merged.bam $bam_list`;
 	if ($?){
 		exit $? >> 8;
 	}
@@ -144,8 +151,10 @@ $pm = new Parallel::ForkManager($threads);
 foreach my $sample (keys %hs_multi){
 	sleep(1);
 	$pm->start and next;
-	print STDERR "$samtools_cmd mpileup -C$sam_c -uf $ref_fa $outdir/$sample/$sample.merged.bam | $bcftools_cmd view -c - | $vcfutils_cmd vcf2fq -d $vcf_d | gzip > $outdir/$sample/$sample.diploid.fq.gz\n";
-	$output = `$samtools_cmd mpileup -C$sam_c -uf $ref_fa $outdir/$sample/$sample.merged.bam | $bcftools_cmd view -c - | $vcfutils_cmd vcf2fq -d $vcf_d | gzip > $outdir/$sample/$sample.diploid.fq.gz`;
+	#print STDERR "$samtools_cmd mpileup -C$sam_c -uf $ref_fa $outdir/$sample/$sample.merged.bam | $bcftools_cmd view -c - | $vcfutils_cmd vcf2fq -d $vcf_d | gzip > $outdir/$sample/$sample.diploid.fq.gz\n";
+	#$output = `$samtools_cmd mpileup -C$sam_c -uf $ref_fa $outdir/$sample/$sample.merged.bam | $bcftools_cmd view -c - | $vcfutils_cmd vcf2fq -d $vcf_d | gzip > $outdir/$sample/$sample.diploid.fq.gz`;
+	print STDERR "$bcftools_cmd mpileup -Ou -f $ref_fa $outdir/$sample/$sample.merged.bam | $bcftools_cmd call -c - | $vcfutils_cmd vcf2fq -d $vcf_d | gzip > $outdir/$sample/$sample.diploid.fq.gz\n";
+	$output = `$bcftools_cmd mpileup -Ou -f $ref_fa $outdir/$sample/$sample.merged.bam | $bcftools_cmd call -c - | $vcfutils_cmd vcf2fq -d $vcf_d | gzip > $outdir/$sample/$sample.diploid.fq.gz`;
 	if ($?){
 		exit $? >> 8;
 	}

@@ -1,0 +1,10 @@
+visPCA=/mss_dc/project/ny/pap/Pipeline_update/Original_update/frozen02/script/visPCA.R
+ON/OFF=ON
+GCTA=/mss3/RDA_Phase2/programs/gcta_1.91.4beta/gcta64
+autosome-num=30
+PCA=20
+Variance=80
+PCA_title=Cow PCA
+PLINK=/mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr11/out/03_Postprocessing/plink/Cows
+maxPC=5
+Rlib_path = /mss_dc/project/ny/pap/Pipeline_update/local_env_setting/R_LIB/

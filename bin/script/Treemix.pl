@@ -1,0 +1,92 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Getopt::Long qw(:config no_ignore_case);
+use FindBin qw($Bin);
+use Cwd 'abs_path';
+use File::Basename;
+use Parallel::ForkManager;
+
+## Parameters
+my $param_f;
+my $sparam_f;
+my $outdir = "./";
+my $help = 0;
+my $visTreemix = " $Bin/visTreemix.R";
+
+GetOptions(
+    "param|p=s"   => \$param_f,
+    "sample|s=s"   => \$sparam_f,
+    "outdir|o=s"  => \$outdir,
+    "help|h"      => \$help,
+);
+
+
+$param_f = abs_path($param_f);
+my %hs_param = ();
+#parse param
+ open(F,"$param_f");
+ while(<F>){
+   chomp;
+   if ($_ =~/^#/){next;}
+   if ($_ =~/^$/){next;}
+   $_ =~ s/^\s+|\s+$//g;
+   my @ar_tmp = split(/\s*=\s*/,$_);
+   $hs_param{$ar_tmp[0]} = $ar_tmp[1];
+ }
+ close(F);
+
+my $ldpruning = "bash $hs_param{'treemix_util_path'}/ldPruning.sh";
+my $vcf2treemix = "bash $hs_param{'treemix_util_path'}/vcf2treemix.sh";
+
+
+
+my $line = 0;
+my %pop_name = ();
+ open(F,"$sparam_f");
+ while(<F>){
+    chomp;
+    if($_ =~ /^#/ || $_ eq ""){next;}
+    $_ =~ s/^\s*(.*?)\s*$/$1/;
+    $line ++;
+    my @p = split(/\s+/,$_);
+    $pop_name{$p[2]} = $p[1]."\n";
+ }
+ close(F);
+
+if (! -d $outdir){
+    `mkdir -pv $outdir`;
+}
+$outdir = abs_path($outdir);
+
+#1 no N 
+print STDERR "Filtering N variants...\n";
+my $missingvarID = '@:#';
+`$hs_param{'vcftools_path'} --gzvcf $hs_param{'vcf'}  --max-missing 1 --recode --stdout | gzip > $outdir/noN.vcf.gz`;
+print STDERR "$hs_param{'vcftools_path'} --gzvcf $hs_param{'vcf'}  --max-missing 1 --recode --stdout | gzip > $outdir/noN.vcf.gz\n";
+#`bcftools view $hs_param{'vcf'} > noN.LDpruned.vcf`;
+#`ln -s $hs_param{'vcf'} $outdir/noN.vcf.gz`;
+
+#2 ld pruning 
+print STDERR "Ld pruning...\n";
+`$ldpruning $outdir/noN.vcf.gz $hs_param{'plink'} $hs_param{'ldPruning_threshold'}  &> $outdir/ldprune.log`;
+print STDERR "$ldpruning $outdir/noN.vcf.gz  $hs_param{'plink'} $hs_param{'ldPruning_threshold'} &> $outdir/ldprune.log\n";
+
+
+#3 generate clust file 
+`$hs_param{'bcftools_path'} query -l $hs_param{'vcf'} | awk '{split(\$1,pop,"_"); print \$1"\t"\$1"\t"pop[1]}'  > $outdir/clust`;
+my $awk_cmd = "awk '{split(\$1,pop,'_'); print \$1".'\t'."\$1".'\t'."pop[1]}";
+print STDERR "$hs_param{'bcftools_path'} query -l $hs_param{'vcf'} | $awk_cmd '  > $outdir/clust\n";
+
+#4 vcf 2 treemix 
+`$vcf2treemix $outdir/noN.LDpruned.vcf $outdir/clust  $hs_param{'python2'} $hs_param{'plink'} &>  $outdir/vcf2treemix.log`;
+
+#5 run treemix 
+for (my $i = 0 ; $i <= $hs_param{'m'} ; $i ++){
+    `$hs_param{'treemix_path'} -i $outdir/noN.LDpruned.treemix.frq.gz  -m $i -o $outdir/out.$i -bootstrap -k $hs_param{'k'}  -noss > $outdir/treemix.$i.log`;
+    print STDERR "$hs_param{'treemix_path'} -i $outdir/noN.LDpruned.treemix.frq.gz -m $i -o out.$i -bootstrap -k $hs_param{'k'}  -noss > $outdir/treemix.$i.log\n";
+}
+
+#6 plot
+`Rscript $visTreemix $outdir/out $hs_param{'m'} $outdir $Bin $hs_param{'Rlib_path'}`;

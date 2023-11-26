@@ -1,0 +1,37 @@
+PLINK v2.00a5 32-bit (21 Jun 2023)
+Options in effect:
+  --chr-set 30
+  --freq
+  --geno 0.01
+  --maf 0.05
+  --make-pgen
+  --not-chr X,Y
+  --set-missing-var-ids @:#
+  --vcf /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/noSex.Cows.vcf.gz
+
+Hostname: titan01
+Working directory: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp
+Start time: Mon Sep 18 03:27:01 2023
+
+Random number seed: 1694975221
+192053 MiB RAM detected, ~188954 available; reserving 2047 MiB for main
+workspace.
+Using up to 40 threads (change this with --threads).
+--vcf: 132283 variants scanned.
+--vcf: plink2-temporary.pgen + plink2-temporary.pvar.zst +
+plink2-temporary.psam written.
+25 samples (0 females, 0 males, 25 ambiguous; 25 founders) loaded from
+plink2-temporary.psam.
+132283 variants loaded from plink2-temporary.pvar.zst.
+Note: No phenotype data present.
+Calculating allele frequencies... done.
+--freq: Allele frequencies (founders only) written to plink2.afreq .
+--geno: 132195 variants removed due to missing genotype data.
+45 variants removed due to allele frequency threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+43 variants remaining after main filters.
+Writing plink2.psam ... done.
+Writing plink2.pvar ... done.
+Writing plink2.pgen ... done.
+
+End time: Mon Sep 18 03:27:02 2023

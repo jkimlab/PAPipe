@@ -1,0 +1,30 @@
+PLINK v2.00a5 32-bit (21 Jun 2023)
+Options in effect:
+  --out new_projection
+  --pfile /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/plink2
+  --read-freq /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/plink2.afreq
+  --score /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/ref_pcs.eigenvec.allele 2 5 header-read no-mean-imputation variance-standardize
+  --score-col-nums 6-15
+
+Hostname: titan01
+Working directory: /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp
+Start time: Mon Sep 18 03:27:02 2023
+
+Random number seed: 1694975222
+192053 MiB RAM detected, ~188950 available; reserving 2047 MiB for main
+workspace.
+Using up to 40 threads (change this with --threads).
+25 samples (0 females, 0 males, 25 ambiguous; 25 founders) loaded from
+/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/plink2.psam.
+chrSet header line: 30 autosome pairs.
+43 variants loaded from
+/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca2_tmp/plink2.pvar.
+Note: No phenotype data present.
+--read-freq: PLINK 2 --freq file detected.
+--read-freq: Frequencies for 43 variants loaded.
+Warning: 132240 entries skipped due to missing variant IDs, mismatching allele
+codes, and/or zero observations.
+--score: 43 variants processed.
+--score: Results written to new_projection.sscore .
+
+End time: Mon Sep 18 03:27:02 2023

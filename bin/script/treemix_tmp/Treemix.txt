@@ -1,0 +1,12 @@
+ON/OFF=ON
+vcftools_path=/mss1/programs/titan/bin/bin/vcftools
+bcftools_path=/mss_dc/project/ny/pap/test/programs/bin/bcftools
+treemix_path=/mss_dc/project/ny/pap/newProg/TreeMix/new_install/treemix/src/treemix
+treemix_util_path=/mss_dc/project/ny/pap/newProg/TreeMix/scripts/
+plink=/mss3/RDA_Phase2/programs/plink1.9/plink
+python2=/mss_dc/project/ny/pap/test/programs/pytnon2/Python-2.7.2/python
+ldPruning_threshold=0.1
+m=4
+k=2
+vcf= /mss_dc/project/ny/pap/test/RUN/POP/25samples_smaller/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf
+Rlib_path = /mss_dc/project/ny/pap/Pipeline_update/local_env_setting/R_LIB/

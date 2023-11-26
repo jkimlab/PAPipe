@@ -1,0 +1,812 @@
+no specific targets
+Angus Hanwoo Holstein Jersey Simmental
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result
+this round : 0, Angus
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 25 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.49707
+Weir and Cockerham weighted Fst estimate: -0.19995
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 1.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.VisMP.log
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round0/Fst_result.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result
+this round : 1, Hanwoo
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 25 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.16943
+Weir and Cockerham weighted Fst estimate: 0.093399
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.VisMP.log
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round1/Fst_result.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result
+this round : 2, Holstein
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 25 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.23526
+Weir and Cockerham weighted Fst estimate: 0.059243
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 1.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.VisMP.log
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round2/Fst_result.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result
+this round : 3, Jersey
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 25 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.040778
+Weir and Cockerham weighted Fst estimate: 0.28479
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.VisMP.log
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round3/Fst_result.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result
+this round : 4, Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 25 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.53272
+Weir and Cockerham weighted Fst estimate: -0.28096
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.VisMP.log
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/round4/Fst_result.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Angus.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Hanwoo.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Angus_VS_Hanwoo
+this round : Angus_VS_Hanwoo
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Angus.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Hanwoo.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Angus.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Hanwoo.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Angus_VS_Hanwoo
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.24412
+Weir and Cockerham weighted Fst estimate: 0.019132
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 1.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Angus_VS_Hanwoo.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Angus_VS_Hanwoo pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Hanwoo/Angus_VS_Hanwoo.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Angus.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Holstein.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Angus_VS_Holstein
+this round : Angus_VS_Holstein
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Angus.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Holstein.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Angus.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Holstein.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Angus_VS_Holstein
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.16254
+Weir and Cockerham weighted Fst estimate: 0.11513
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Angus_VS_Holstein.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Angus_VS_Holstein pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Holstein/Angus_VS_Holstein.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Angus.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Jersey.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Angus_VS_Jersey
+this round : Angus_VS_Jersey
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Angus.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Jersey.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Angus.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Jersey.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Angus_VS_Jersey
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.23486
+Weir and Cockerham weighted Fst estimate: 0.032357
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Angus_VS_Jersey.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Angus_VS_Jersey pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Jersey/Angus_VS_Jersey.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Angus.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Simmental.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Angus_VS_Simmental
+this round : Angus_VS_Simmental
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Angus.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Simmental.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Angus.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Simmental.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Angus_VS_Simmental
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.078741
+Weir and Cockerham weighted Fst estimate: 0.18326
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 1.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Angus_VS_Simmental.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Angus_VS_Simmental pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Angus_VS_Simmental/Angus_VS_Simmental.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Hanwoo.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Holstein.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Hanwoo_VS_Holstein
+this round : Hanwoo_VS_Holstein
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Hanwoo.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Holstein.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Hanwoo.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Holstein.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Hanwoo_VS_Holstein
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.091571
+Weir and Cockerham weighted Fst estimate: 0.16771
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Hanwoo_VS_Holstein.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Hanwoo_VS_Holstein pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Holstein/Hanwoo_VS_Holstein.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Hanwoo.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Jersey.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Hanwoo_VS_Jersey
+this round : Hanwoo_VS_Jersey
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Hanwoo.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Jersey.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Hanwoo.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Jersey.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Hanwoo_VS_Jersey
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.082957
+Weir and Cockerham weighted Fst estimate: 0.17988
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Hanwoo_VS_Jersey.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Hanwoo_VS_Jersey pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Jersey/Hanwoo_VS_Jersey.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Hanwoo.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Simmental.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Hanwoo_VS_Simmental
+this round : Hanwoo_VS_Simmental
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Hanwoo.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Simmental.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Hanwoo.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Simmental.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Hanwoo_VS_Simmental
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.28136
+Weir and Cockerham weighted Fst estimate: -0.032396
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 1.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Hanwoo_VS_Simmental.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Hanwoo_VS_Simmental pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Hanwoo_VS_Simmental/Hanwoo_VS_Simmental.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Holstein.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Jersey.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Holstein_VS_Jersey
+this round : Holstein_VS_Jersey
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Holstein.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Jersey.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Holstein.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Jersey.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Holstein_VS_Jersey
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.062708
+Weir and Cockerham weighted Fst estimate: 0.20638
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Holstein_VS_Jersey.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Holstein_VS_Jersey pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Jersey/Holstein_VS_Jersey.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Holstein.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Simmental.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Holstein_VS_Simmental
+this round : Holstein_VS_Simmental
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Holstein.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Simmental.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Holstein.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Simmental.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Holstein_VS_Simmental
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.19556
+Weir and Cockerham weighted Fst estimate: 0.06931
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 0.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Holstein_VS_Simmental.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Holstein_VS_Simmental pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Holstein_VS_Simmental/Holstein_VS_Simmental.VisMP.log
+/mss1/programs/titan/bin/bin/vcftools --gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz --fst-window-size 100000 --fst-window-step 0 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Jersey.pop1 --weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Simmental.pop2 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Jersey_VS_Simmental
+this round : Jersey_VS_Simmental
+Angus1 U Angus
+Angus2 U Angus
+Angus3 U Angus
+Angus4 U Angus
+Angus5 U Angus
+Hanwoo1 U Hanwoo
+Hanwoo2 U Hanwoo
+Hanwoo3 U Hanwoo
+Hanwoo4 U Hanwoo
+Hanwoo5 U Hanwoo
+Holstein1 U Holstein
+Holstein2 U Holstein
+Holstein3 U Holstein
+Holstein4 U Holstein
+Holstein5 U Holstein
+Jersey1 U Jersey
+Jersey2 U Jersey
+Jersey3 U Jersey
+Jersey4 U Jersey
+Jersey5 U Jersey
+Simmental1 U Simmental
+Simmental2 U Simmental
+Simmental3 U Simmental
+Simmental4 U Simmental
+Simmental5 U Simmental
+
+VCFtools - 0.1.17
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+	--fst-window-size 100000
+	--fst-window-step 0
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Jersey.pop1
+	--weir-fst-pop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Simmental.pop2
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Jersey.pop1
+	--keep /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Simmental.pop2
+	--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Jersey_VS_Simmental
+
+Using zlib version: 1.2.11
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another; will always be heterozygous and is not intended to describe called alleles">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Keeping individuals in 'keep' list
+After filtering, kept 10 out of 25 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: -0.24704
+Weir and Cockerham weighted Fst estimate: 0.010849
+After filtering, kept 77096 out of a possible 77096 Sites
+Run Time = 1.00 seconds
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visMP.R /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Jersey_VS_Simmental.mod.windowed.weir.fst /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Jersey_VS_Simmental pdf 10 6 3 \#996600,\#666600,\#99991e,\#cc0000,\#ff0000,\#ff00cc,\#ffcccc,\#ff9900,\#ffcc00,\#ffff00,\#ccff00,\#00ff00,\#358000,\#0000cc,\#6699ff,\#99ccff,\#00ffff,\#ccffff,\#9900cc,\#cc33ff,\#cc99ff,\#666666,\#999999,\#cccccc &> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/fst_tmp/Jersey_VS_Simmental/Jersey_VS_Simmental.VisMP.log

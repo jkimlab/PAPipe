@@ -1,0 +1,7 @@
+ON/OFF=ON
+Snphylo=/mss3/RDA_Phase2/pop_evol_pipe/PAPipe/Programs/SNPhylo.titan/snphylo.sh
+sampleNum=25
+hapmap=/mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr12//out/03_Postprocessing/Hapmap/Cows.variant.combined.GT.SNP.flt.hapmap
+m=0
+l=0.7
+M=0.02

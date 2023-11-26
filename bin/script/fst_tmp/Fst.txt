@@ -1,0 +1,11 @@
+qqmanS=/mss_dc/project/ny/pap/Pipeline_update/Original_update/frozen02/script/visMP.R
+ON/OFF=ON
+VCFTOOLS=/mss1/programs/titan/bin/bin/vcftools
+reference_chromosome_cnt=1
+window-size=100000
+window-step=0
+plot-width=10
+plot-high=6
+genomewideline=3
+vcf = /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr26/out/02_VariantCalling/VariantCalling/Cows.variant.combined.GT.SNP.flt.vcf.gz
+Rlib_path = /mss_dc/project/ny/pap/Pipeline_update/local_env_setting/R_LIB/

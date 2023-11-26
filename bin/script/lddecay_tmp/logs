@@ -1,0 +1,24 @@
+Make the sample list
+
+
+Caluculate the r^2 by distance
+mkdir: cannot create directory ‘/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500’: File exists
+mkdir: cannot create directory ‘/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500’: File exists
+
+
+#500
+Angus
+/bps_mss/projects/RDA/minipig/population/LD_analysis/program/PopLDdecay/bin//PopLDdecay -InVCF ./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz -OutStat /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Angus.stat.gz -SubPop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/Angus.list -MaxDist 500 2> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Angus.log
+Hanwoo
+/bps_mss/projects/RDA/minipig/population/LD_analysis/program/PopLDdecay/bin//PopLDdecay -InVCF ./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz -OutStat /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Hanwoo.stat.gz -SubPop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/Hanwoo.list -MaxDist 500 2> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Hanwoo.log
+Holstein
+/bps_mss/projects/RDA/minipig/population/LD_analysis/program/PopLDdecay/bin//PopLDdecay -InVCF ./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz -OutStat /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Holstein.stat.gz -SubPop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/Holstein.list -MaxDist 500 2> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Holstein.log
+Jersey
+/bps_mss/projects/RDA/minipig/population/LD_analysis/program/PopLDdecay/bin//PopLDdecay -InVCF ./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz -OutStat /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Jersey.stat.gz -SubPop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/Jersey.list -MaxDist 500 2> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Jersey.log
+Simmental
+/bps_mss/projects/RDA/minipig/population/LD_analysis/program/PopLDdecay/bin//PopLDdecay -InVCF ./out/02_VariantCalling/VariantCalling/FINAL/Cows.variant.combined.GT.SNP.flt.vcf.gz -OutStat /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Simmental.stat.gz -SubPop /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/Simmental.list -MaxDist 500 2> /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Simmental.log
+[ERROR] Check the log file : /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Angus.log
+[ERROR] Check the log file : /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Hanwoo.log
+[ERROR] Check the log file : /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Holstein.log
+[ERROR] Check the log file : /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Jersey.log
+[ERROR] Check the log file : /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/lddecay_tmp/500/Simmental.log

@@ -14,6 +14,7 @@
 use strict;
 use warnings;
 use Getopt::Long qw(:config no_ignore_case);
+use Parallel::ForkManager;
 use File::Basename;
 use Cwd 'cwd';
 use Cwd 'abs_path';
@@ -26,6 +27,7 @@ my $param_f;
 my $sparam_f;
 my $outdir = "./";
 my $help = 0;
+my %hs_dir_cmds = ();
 
 GetOptions(
 	"param|p=s"   => \$param_f,
@@ -62,6 +64,7 @@ while(<PARAM>){
 	}
 }
 close(PARAM);
+
 $sparam_f = abs_path($sparam_f);
 $outdir = abs_path($outdir);
 print STDERR "outdir $outdir\n";
@@ -123,7 +126,7 @@ chdir($pop3dir);
 #parameter generation
 my $pop3_par = $pop3dir."/par_3pop";
 open(FW,">$pop3_par");
-print FW "DIR: ../admixtools_convert\n";
+print FW "DIR: $convertfdir\n";
 print FW "SSS: $result_prefix\n";
 print FW "indivname: $sparam_f\n";
 print FW "snpname: DIR/SSS.snp\n";
@@ -144,97 +147,87 @@ for (my $i = 0 ; $i <= $#ar_fam_name ; $i ++){
 }
 close(FW);
 #running command generation
-`echo "$pop3 -p $pop3dir/par_3pop 1>$pop3dir/3pop.out 2> $pop3dir/3pop.log" > $pop3dir/pop3.CMD`;
-chdir (abs_path($pop3dir));
-$output = `bash pop3.CMD`;
-if ($?){
-	exit $? >> 8;
-}
+`echo "cd  $pop3dir" > $pop3dir/pop3.CMD`;
+`echo "$pop3 -p $pop3dir/par_3pop 1>$pop3dir/3pop.out 2> $pop3dir/3pop.log" >> $pop3dir/pop3.CMD`;
+$hs_dir_cmds{1} = "bash $pop3dir/pop3.CMD";
+
 ############################################################4diff
 chdir(abs_path($outdir)) or die;
 if (@ar_fam_name >= 5){
-my $stat4 = $admixtools_bin."/qp4diff";
-my $stat4dir = abs_path($outdir."/admixtools_4diff"); 
-`mkdir -p $stat4dir`;
-chdir ($stat4dir);
-#parameter generation
-my $stat4_par = $stat4dir."/par_4diff";
-open(FW,">$stat4_par");
-print FW "DIR: ../admixtools_convert\n";
-print FW "SSS: $result_prefix\n";
-print FW "indivname: $sparam_f\n";
-print FW "snpname: DIR/SSS.snp\n";
-print FW "genotypename: DIR/SSS.eigenstratgeno\n";
-print FW "popfilename: list_4diff\n";
-close(FW);
-#input list generation
-my $stat4_list = $stat4dir."/list_4diff";
-open(FW,">$stat4_list");
-for (my $i = 0 ; $i <= $#ar_fam_name ; $i ++){
-	for (my $j = 0 ; $j <= $#ar_fam_name; $j ++){
-		if ($i == $j){next;}
-		for (my $k = 0 ; $k <= $#ar_fam_name; $k ++){
-			if ($i==$k){next;}
-			if ($j==$k){next;}
-			for (my $l = 0 ; $l <= $#ar_fam_name; $l ++){
-				if ($i==$l){next;}
-				if ($j==$l){next;}
-				if ($k==$l){next;}
-				for (my $m = 0 ; $m <= $#ar_fam_name; $m ++){
-					if ($i==$m){next;}
-					if ($j==$m){next;}
-					if ($k==$m){next;}
-					if ($l==$m){next;}
-					print FW "$ar_fam_name[$i] $ar_fam_name[$m] : $ar_fam_name[$l] $ar_fam_name[$k] :: $ar_fam_name[$i] $ar_fam_name[$m] : $ar_fam_name[$j] $ar_fam_name[$k]\n";
-				}
-			}
-		}
-	}
+    my $stat4 = $admixtools_bin."/qp4diff";
+    my $stat4dir = abs_path($outdir."/admixtools_4diff"); 
+    `mkdir -p $stat4dir`;
+    chdir ($stat4dir);
+    #parameter generation
+    my $stat4_par = $stat4dir."/par_4diff";
+    open(FW,">$stat4_par");
+    print FW "DIR: $convertfdir\n";
+    print FW "SSS: $result_prefix\n";
+    print FW "indivname: $sparam_f\n";
+    print FW "snpname: DIR/SSS.snp\n";
+    print FW "genotypename: DIR/SSS.eigenstratgeno\n";
+    print FW "popfilename: list_4diff\n";
+    close(FW);
+    #input list generation
+    my $stat4_list = $stat4dir."/list_4diff";
+    open(FW,">$stat4_list");
+    for (my $i = 0 ; $i <= $#ar_fam_name ; $i ++){
+        for (my $j = 0 ; $j <= $#ar_fam_name; $j ++){
+            if ($i == $j){next;}
+            for (my $k = 0 ; $k <= $#ar_fam_name; $k ++){
+                if ($i==$k){next;}
+                if ($j==$k){next;}
+                for (my $l = 0 ; $l <= $#ar_fam_name; $l ++){
+                    if ($i==$l){next;}
+                    if ($j==$l){next;}
+                    if ($k==$l){next;}
+                    for (my $m = 0 ; $m <= $#ar_fam_name; $m ++){
+                        if ($i==$m){next;}
+                        if ($j==$m){next;}
+                        if ($k==$m){next;}
+                        if ($l==$m){next;}
+                        print FW "$ar_fam_name[$i] $ar_fam_name[$m] : $ar_fam_name[$l] $ar_fam_name[$k] :: $ar_fam_name[$i] $ar_fam_name[$m] : $ar_fam_name[$j] $ar_fam_name[$k]\n";
+                    }
+                }
+            }
+        }
+    }
+    close(FW);
+	`echo "cd $stat4dir" > $stat4dir/diff4.CMD`;
+    `echo "$stat4 -p $stat4_par 1>$stat4dir/4diff.out 2> $stat4dir/4diff.log" >> $stat4dir/diff4.CMD`;
+    $hs_dir_cmds{2} = "bash $stat4dir/diff4.CMD";
 }
-close(FW);
-`echo "$stat4 -p $stat4_par 1>$stat4dir/4diff.out 2> $stat4dir/4diff.log" > $stat4dir/diff4.CMD`;
-chdir($stat4dir);
-$output = `bash diff4.CMD`;
-if ($?){
-	exit $? >> 8;
-}
-}
-chdir(abs_path($outdir));
 ############################################################Dstat 
 
 if (@ar_fam_name >= 4){
-my $Dstat = $admixtools_bin."/qpDstat";
-my $Dstatdir = abs_path("$outdir/admixtools_Dstat");
-`mkdir -p $Dstatdir`;
-chdir ($Dstatdir);
-#parameter generation
-my $Dstat_par = $Dstatdir."/par_Dstat";
-open(FW,">$Dstat_par");
-print FW "DIR: ../admixtools_convert\n";
-print FW "SSS: $result_prefix\n";
-print FW "indivname: $sparam_f\n";
-print FW "snpname: DIR/SSS.snp\n";
-print FW "genotypename: DIR/SSS.eigenstratgeno\n";
-print FW "popfilename: list_Dstat\n";
-close(FW);
-#input list generation
-open(FW,">list_Dstat");
-for (my $i = 0 ; $i <= $#ar_fam_name ; $i ++){
-	for (my $j = 0 ; $j <= $#ar_fam_name ; $j ++){
-		if ($i == $j){next;}
-		print FW "$ar_fam_name[$j] ";
-	 }
-	print FW "\n";
+    my $Dstat = $admixtools_bin."/qpDstat";
+    my $Dstatdir = abs_path("$outdir/admixtools_Dstat");
+    `mkdir -p $Dstatdir`;
+    chdir ($Dstatdir);
+    #parameter generation
+    my $Dstat_par = $Dstatdir."/par_Dstat";
+    open(FW,">$Dstat_par");
+    print FW "DIR: $convertfdir\n";
+    print FW "SSS: $result_prefix\n";
+    print FW "indivname: $sparam_f\n";
+    print FW "snpname: DIR/SSS.snp\n";
+    print FW "genotypename: DIR/SSS.eigenstratgeno\n";
+    print FW "popfilename: list_Dstat\n";
+    close(FW);
+    #input list generation
+    open(FW,">list_Dstat");
+    for (my $i = 0 ; $i <= $#ar_fam_name ; $i ++){
+        for (my $j = 0 ; $j <= $#ar_fam_name ; $j ++){
+            if ($i == $j){next;}
+            print FW "$ar_fam_name[$j] ";
+        }
+        print FW "\n";
+    }
+    close(FW);
+	`echo "cd  $Dstatdir" > $Dstatdir/Dstat.CMD`;
+    `echo "$Dstat -p $Dstat_par 1>$Dstatdir/Dstat.out 2> $Dstatdir/Dstat.log" >> $Dstatdir/Dstat.CMD`;
+    $hs_dir_cmds{3} = "bash $Dstatdir/Dstat.CMD";
 }
-close(FW);
-`echo "$Dstat -p $Dstat_par 1>$Dstatdir/Dstat.out 2> $Dstatdir/Dstat.log" > $Dstatdir/Dstat.CMD`;
-chdir($Dstatdir);
-$output = `bash Dstat.CMD`;
-if ($?){
-	exit $? >> 8;
-}
-}
-
 
 ############################################################Dstat 
 
@@ -246,7 +239,7 @@ chdir ($Dstatdir);
 #parameter generation
 my $Dstat_par = $Dstatdir."/par_f4stat";
 open(FW,">$Dstat_par");
-print FW "DIR: ../admixtools_convert\n";
+print FW "DIR: $convertfdir\n";
 print FW "SSS: $result_prefix\n";
 print FW "indivname: $sparam_f\n";
 print FW "snpname: DIR/SSS.snp\n";
@@ -264,13 +257,19 @@ for (my $i = 0 ; $i <= $#ar_fam_name ; $i ++){
 	print FW "\n";
 }
 close(FW);
-`echo "$Dstat -p $Dstat_par 1>$Dstatdir/f4stat.out 2> $Dstatdir/f4stat.log" > $Dstatdir/f4stat.CMD`;
-chdir($Dstatdir);
-$output = `bash f4stat.CMD`;
-if ($?){
-	exit $? >> 8;
-}
+`echo "cd $Dstatdir" > $Dstatdir/f4stat.CMD`;
+`echo "$Dstat -p $Dstat_par 1>$Dstatdir/f4stat.out 2> $Dstatdir/f4stat.log" >> $Dstatdir/f4stat.CMD`;
+$hs_dir_cmds{4} = " bash  $Dstatdir/f4stat.CMD";
 }
 
+my $pm = new Parallel::ForkManager(4);
+foreach my $idx (1,2,3,4){
+	$pm->start and next;
 
-
+    `$hs_dir_cmds{$idx}`;
+    if ($?){
+	    exit $? >> 8;
+    }
+    $pm->finish;
+}
+$pm->wait_all_children;

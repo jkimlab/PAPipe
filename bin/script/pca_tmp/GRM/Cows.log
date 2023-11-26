@@ -1,0 +1,36 @@
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version 1.91.4 beta3
+* (C) 2010-2018, The University of Queensland
+* Please report bugs to: Jian Yang <jian.yang@uq.edu.au>
+*******************************************************************
+Analysis started at 03:22:33 KST on Mon Sep 18 2023.
+Hostname: europa00
+
+Options: 
+ 
+--bfile /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr11/out/03_Postprocessing/plink/Cows 
+--autosome-num 30 
+--autosome 
+--make-grm 
+--out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows 
+
+Note: GRM is computed using the SNPs on the autosome.
+Reading PLINK FAM file from [/mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr11/out/03_Postprocessing/plink/Cows.fam]...
+25 individuals to be included from FAM file.
+Reading PLINK BIM file from [/mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr11/out/03_Postprocessing/plink/Cows.bim]...
+72 SNPs to be included from BIM file.
+BED file(s) check OK.
+Computing the genetic relationship matrix (GRM) ...
+Subset 1/1, no. subject 1-25
+  25 samples, 72 markers, 325 GRM elements
+IDs for the GRM file has been saved in the file [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows.grm.id]
+Reading PLINK BED file(s) in SNP-major format...
+  100% Finished in 0.0 min
+The GRM computation is completed.
+Saving GRM...
+GRM has been saved in the file [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows.grm.bin]
+Number of SNPs in each pair of individuals has been saved in the file [/mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows.grm.N.bin]
+
+Analysis finished at 03:22:33 KST on Mon Sep 18 2023
+Computational time: 0.012680 second(s).

@@ -2,10 +2,24 @@ import re
 import os
 import sys
 
+import subprocess as sub
+from datetime import datetime
 from collections import defaultdict
+
 
 def tree() :
     return defaultdict(tree)
+
+def ReadQC(out, dict_param):
+    O_pre_param = open(f'{os.path.abspath(out)}/param/ReadQC.txt', 'w')
+    O_pre_param.write("outdir  "+out+"/00_ReadQC/"+"\n")
+    O_pre_param.write("threads  "+dict_param["Global"]["threads"]+"\n")
+    O_pre_param.write("### programs ### \n")
+    for step in dict_param :
+        if step == "ReadQC" :
+            for var in dict_param[step] :
+                O_pre_param.write(var + "  " + dict_param[step][var] + "\n")
+    #return O_pre_param
 
 def ReadMapping(out, dict_param, dict_input) :
     O_pre_param = open(f'{os.path.abspath(out)}/param/ReadMapping.txt', 'w')
@@ -42,6 +56,8 @@ def VariantCalling(out, dict_param) :
     if os.path.isdir(out + "/01_ReadMapping/04.ReadRegrouping") :
         for file_ in os.listdir(out + "/01_ReadMapping/04.ReadRegrouping") :
             basename = os.path.basename(file_)
+            if not ("bam" in basename):
+                continue
             basename = basename.replace(".addRG.marked.sort.bam", '')
             basename = basename.replace(".bam", '')
             O_var_param.write("<" + basename + ">\n")
@@ -76,8 +92,14 @@ def Postprocessing(out, dict_param) :
 def Population(out, dict_param) :
     Population_input = tree()
     bindir = os.path.abspath(os.path.dirname(__file__))
+    now = datetime.now()
+    pop_outdir = out+"/04_Population/"+now.strftime("%d-%m-%Y_%H:%M:%S")
+    param_outdir = out+"/param/"+now.strftime("%d-%m-%Y_%H:%M:%S")
+    sub.call(f'mkdir -p {pop_outdir}', shell=True)
+    sub.call(f'mkdir -p {param_outdir}', shell=True)
+    Population_input["outdir"] =os.path.abspath(pop_outdir)
 
-    O_pca_param = open(f'{os.path.abspath(out)}/param/PCA.txt' ,'w')
+    O_pca_param = open(f'{os.path.abspath(param_outdir)}/PCA.txt' ,'w')
 
     O_pca_param.write("visPCA=")
     O_pca_param.write(bindir + "/script/visPCA.R\n")
@@ -96,7 +118,7 @@ def Population(out, dict_param) :
     O_pca_param.close()
     Population_input["PCA"] = O_pca_param.name
 
-    O_snphylo_param = open(f'{os.path.abspath(out)}/param/PhylogeneticTree.txt', 'w')
+    O_snphylo_param = open(f'{os.path.abspath(param_outdir)}/PhylogeneticTree.txt', 'w')
 
     O_snphylo_param.write("dendogram=")
     O_snphylo_param.write(bindir + "/script/visTREE.R\n")
@@ -114,7 +136,7 @@ def Population(out, dict_param) :
     O_snphylo_param.close()
     Population_input["PhylogeneticTree"] = O_snphylo_param.name
     
-    O_structure_param = open(f'{os.path.abspath(out)}/param/Structure.txt', 'w') 
+    O_structure_param = open(f'{os.path.abspath(param_outdir)}/Structure.txt', 'w') 
     for step in dict_param :
         if step == "Population Structure" :
             for var in dict_param[step] :
@@ -129,7 +151,7 @@ def Population(out, dict_param) :
     O_structure_param.close()
     Population_input["Structure"] = O_structure_param.name
 
-    O_fst_param = open(f'{os.path.abspath(out)}/param/Fst.txt', 'w')
+    O_fst_param = open(f'{os.path.abspath(param_outdir)}/Fst.txt', 'w')
 
     O_fst_param.write("qqmanS=")
     O_fst_param.write(bindir + "/script/visMP.R\n")
@@ -154,7 +176,7 @@ def Population(out, dict_param) :
     O_fst_param.close()
     Population_input["Fst"] = O_fst_param.name
 
-    O_effectivesize_param = open(f'{os.path.abspath(out)}/param/EffectiveSize.txt', 'w')
+    O_effectivesize_param = open(f'{os.path.abspath(param_outdir)}/EffectiveSize.txt', 'w')
     for step in dict_param :
         if step == "Effective Size" :
             for var in dict_param[step] :
@@ -162,6 +184,10 @@ def Population(out, dict_param) :
 
     if os.path.isdir(out + "/01_ReadMapping/04.ReadRegrouping") :
         for bam in os.listdir(out + "/01_ReadMapping/04.ReadRegrouping") :
+            if not ("bam" in bam):
+                continue
+            if ("bam.bai" in bam):
+                continue
             name = os.path.basename(bam).replace(".bam", "")
             name = os.path.basename(name).replace(".addRG.marked.sort", "")
             O_effectivesize_param.write("BAM_" + name + "=" + out + "/01_ReadMapping/04.ReadRegrouping/" + bam + "\n")
@@ -170,7 +196,7 @@ def Population(out, dict_param) :
     O_effectivesize_param.close()
     Population_input["EffectiveSize"] = O_effectivesize_param.name
 
-    O_admixtools_param = open(f'{os.path.abspath(out)}/param/AdmixtureProportion.txt', 'w')
+    O_admixtools_param = open(f'{os.path.abspath(param_outdir)}/AdmixtureProportion.txt', 'w')
     for step in dict_param :
         if step == "Admixture Proportion" :
             for var in dict_param[step] :
@@ -186,7 +212,7 @@ def Population(out, dict_param) :
     O_admixtools_param.close()
     Population_input["AdmixtureProportion"] = O_admixtools_param.name
 
-    O_LD_param = open(f'{os.path.abspath(out)}/param/LdDecay.txt', 'w')
+    O_LD_param = open(f'{os.path.abspath(param_outdir)}/LdDecay.txt', 'w')
     for step in dict_param :
         if step == "Ld Decay" :
             for var in dict_param[step] :
@@ -199,5 +225,78 @@ def Population(out, dict_param) :
 
     O_LD_param.close()
     Population_input['LdDecay'] = O_LD_param.name
+
+#-------
+    O_MSMC_param = open(f'{os.path.abspath(param_outdir)}/MSMC.txt', 'w')
+    for step in dict_param :
+        if step == "MSMC" :
+            for var in dict_param[step] :
+                O_MSMC_param.write(var + "=" + dict_param[step][var] + "\n")
+
+    Population_input['MSMC'] = O_MSMC_param.name
+    if os.path.isdir(out + "/01_ReadMapping/04.ReadRegrouping") :
+        for bam in os.listdir(out + "/01_ReadMapping/04.ReadRegrouping") :
+            if not ("bam" in bam):
+                continue
+            if ("bam.bai" in bam):
+                continue
+            name = os.path.basename(bam).replace(".bam", "")
+            name = os.path.basename(name).replace(".addRG.marked.sort", "")
+            O_MSMC_param.write("BAM_" + name + "=" + out + "/01_ReadMapping/04.ReadRegrouping/" + bam + "\n")
+    O_MSMC_param.close()
+
+
+
+
+
+    O_SF2_param = open(f'{os.path.abspath(param_outdir)}/SweepFinder2.txt', 'w')
+    for step in dict_param :
+        if step == "SweepFinder2" :
+            for var in dict_param[step] :
+                O_SF2_param.write(var + "=" + dict_param[step][var] + "\n")
+
+    if os.path.isdir(out + "/02_VariantCalling/VariantCalling/FINAL") :
+        for file_ in os.listdir(out + "/02_VariantCalling/VariantCalling/FINAL") :
+            O_SF2_param.write("vcf=")
+            O_SF2_param.write(out + "/02_VariantCalling/VariantCalling/FINAL/" + file_ + "\n")
+
+    O_SF2_param.write("plink=")
+    if os.path.isdir(out + "/03_Postprocessing/plink") :
+        for file_ in os.listdir(out + "/03_Postprocessing/plink") :
+            if "bed" in file_ :
+                prefix = (os.path.basename(file_)).replace('.bed', '')
+                O_SF2_param.write(out + "/03_Postprocessing/plink/" + prefix + "\n")
+
+
+    O_SF2_param.close()
+    Population_input['SweepFinder2'] = O_SF2_param.name
+
+    O_Plink2_param = open(f'{os.path.abspath(param_outdir)}/Plink2.txt', 'w')
+    for step in dict_param :
+        if step == "Plink2" :
+            for var in dict_param[step] :
+                O_Plink2_param.write(var + "=" + dict_param[step][var] + "\n")
+    if os.path.isdir(out + "/02_VariantCalling/VariantCalling/FINAL") :
+        for file_ in os.listdir(out + "/02_VariantCalling/VariantCalling/FINAL") :
+            O_Plink2_param.write("vcfInput=")
+            O_Plink2_param.write(out + "/02_VariantCalling/VariantCalling/FINAL/" + file_ + "\n")
+            O_Plink2_param.write("outdir=")
+            O_Plink2_param.write(os.path.abspath(pop_outdir) + "/Plink2/\n")
+
+    O_Plink2_param.close()
+    Population_input['Plink2'] = O_Plink2_param.name
+
+    O_Treemix_param = open(f'{os.path.abspath(param_outdir)}/Treemix.txt', 'w')
+    for step in dict_param :
+        if step == "Treemix" :
+            for var in dict_param[step] :
+                O_Treemix_param.write(var + "=" + dict_param[step][var] + "\n")
+    if os.path.isdir(out + "/02_VariantCalling/VariantCalling/FINAL") :
+        for file_ in os.listdir(out + "/02_VariantCalling/VariantCalling/FINAL") :
+            O_Treemix_param.write("vcf=")
+            O_Treemix_param.write(out + "/02_VariantCalling/VariantCalling/FINAL/" + file_ + "\n")
+
+    O_Treemix_param.close()
+    Population_input['Treemix'] = O_Treemix_param.name
     
     return Population_input

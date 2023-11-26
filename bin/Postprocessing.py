@@ -94,14 +94,8 @@ def ParseInput(input_, out) :
             sample = (line.replace('<', '').replace('>', '')).strip()
         elif not line.startswith('#') :
             if step == 3 :
-                if not os.path.isdir(out + "/02_VariantCalling/") :
-                    sub.call(f'mkdir {out}/02_VariantCalling', shell=True)
-                if not os.path.isdir(out + "/02_VariantCalling/VariantCalling") :
-                    sub.call(f'mkdir {out}/02_VariantCalling/VariantCalling', shell=True)
-                if not os.path.isdir(out + "/02_VariantCalling/VariantCalling/FINAL") :
-                    sub.call(f'mkdir {out}/02_VariantCalling/VariantCalling/FINAL', shell=True)
-
-                sub.call(f'ln -s {line} {out}/02_VariantCalling/VariantCalling/FINAL/', shell=True)
+                sub.call(f'mkdir -p {out}/02_VariantCalling/VariantCalling/FINAL', shell=True)
+                sub.call(f'ln -sf {line} {out}/02_VariantCalling/VariantCalling/FINAL/', shell=True)
             elif step == 4 :
                 if not os.path.isdir(out + "/01_ReadMapping/") :
                     sub.call(f'mkdir {out}/01_ReadMapping', shell=True)
@@ -122,13 +116,14 @@ def VCF_Filt(out, th, verbose) :
     
     line = ""
     log = ""
+    missingvarID = '@:#';
     if Plink_option['allow_chr'] :
         if not os.path.isdir(out + "/03_Postprocessing/VCF_Filt/") :
             sub.call(f'mkdir {out}/03_Postprocessing/VCF_Filt', shell=True)
 
         if ".gz" in VCF :
             new_vcf = (os.path.basename(VCF)).replace(".vcf.gz", "") + ".chrflt"
-            line = VCFTOOLS + " --gzvcf " + VCF + " --chr " + str(Plink_option['allow_chr']) + " --out " + out + "/03_Postprocessing/VCF_Filt/" + new_vcf + " --recode"
+            line = VCFTOOLS +" --gzvcf " + VCF + " --chr " + str(Plink_option['allow_chr']) + " --out " + out + "/03_Postprocessing/VCF_Filt/" + new_vcf + " --recode"
             log = out + "/03_Postprocessing/logs/vcf_filt.log"
         else :
             new_vcf = (os.path.basename(VCF)).replace(".vcf", "") + ".chrflt"
@@ -198,13 +193,13 @@ def PLINK(out, th, verbose) :
     line = ""
     log = ""
     if Plink_option['allow_chr'] :
-        line = Plink + " --threads " + str(th) + " --geno " + str(Plink_option['geno']) + " --maf " + str(Plink_option['maf']) + " --hwe " + str(Plink_option['hwe']) + " --make-bed --chr-set " + str(Plink_option['chr-set']) + " --chr " + str(Plink_option['allow_chr']) + " " + str(Plink_option['plink_option_line']) + "--vcf " + VCF + " --out " + out + "/03_Postprocessing/plink/" + SAMPLE_NAME
+        line = Plink + " --threads " + str(th) + "  --set-missing-var-ids @:#   --geno " + str(Plink_option['geno']) + " --maf " + str(Plink_option['maf']) + " --hwe " + str(Plink_option['hwe']) + " --make-bed --chr-set " + str(Plink_option['chr-set']) + " --chr " + str(Plink_option['allow_chr']) + " " + str(Plink_option['plink_option_line']) + "--vcf " + VCF + " --out " + out + "/03_Postprocessing/plink/" + SAMPLE_NAME
         log = out + "/03_Postprocessing/logs/plink_1.log"
     elif Plink_option['not_allow_chr'] :
-        line = Plink + " --threads " + str(th) + " --geno " + str(Plink_option['geno']) + " --maf " + str(Plink_option['maf']) + " --hwe " + str(Plink_option['hwe']) + " --make-bed --chr-set " + str(Plink_option['chr-set']) + " --not-chr " + str(Plink_option['not_allow_chr']) + " " + str(Plink_option['plink_option_line']) + "--vcf " + VCF + " --out " + out + "/03_Postprocessing/plink/" + SAMPLE_NAME
+        line = Plink + " --threads " + str(th) + "  --set-missing-var-ids @:# --geno " + str(Plink_option['geno']) + " --maf " + str(Plink_option['maf']) + " --hwe " + str(Plink_option['hwe']) + " --make-bed --chr-set " + str(Plink_option['chr-set']) + " --not-chr " + str(Plink_option['not_allow_chr']) + " " + str(Plink_option['plink_option_line']) + "--vcf " + VCF + " --out " + out + "/03_Postprocessing/plink/" + SAMPLE_NAME
         log = out + "/03_Postprocessing/logs/plink_1.log"
     else :
-        line = Plink + " --threads " + str(th) + " --geno " + str(Plink_option['geno']) + " --maf " + str(Plink_option['maf']) + " --hwe " + str(Plink_option['hwe']) + " --make-bed --chr-set " + str(Plink_option['chr-set']) + " " + str(Plink_option['plink_option_line']) + "--vcf " + VCF + " --out " + out + "/03_Postprocessing/plink/" + SAMPLE_NAME
+        line = Plink + " --threads " + str(th) + "  --set-missing-var-ids @:#  --geno " + str(Plink_option['geno']) + " --maf " + str(Plink_option['maf']) + " --hwe " + str(Plink_option['hwe']) + " --make-bed --chr-set " + str(Plink_option['chr-set']) + " " + str(Plink_option['plink_option_line']) + "--vcf " + VCF + " --out " + out + "/03_Postprocessing/plink/" + SAMPLE_NAME
         log = out + "/03_Postprocessing/logs/plink_1.log"
 
 

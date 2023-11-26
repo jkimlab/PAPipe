@@ -1,0 +1,4 @@
+/mss3/RDA_Phase2/programs/gcta_1.91.4beta/gcta64 --bfile /mss_dc/project/ny/pap/test/RUN/POP/per_single_chrom/chr11/out/03_Postprocessing/plink/Cows --autosome-num 30 --autosome --make-grm --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows
+/mss3/RDA_Phase2/programs/gcta_1.91.4beta/gcta64 --grm /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/GRM/Cows --pca 20 --out /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/PCA/Cows
+Rscript /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/visPCA.R 'Cow PCA' 20 /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/PCA/Cows.eigenval  /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp/PCs.info 80  5 /mss_dc/project/ny/pap/Pipeline_update/Original_update/script/pca_tmp /mss_dc/project/ny/pap/Pipeline_update/local_env_setting/R_LIB/ 
+Loading required package: ggplot2

@@ -18,6 +18,7 @@ BWA = ""
 BOWTIE2 = ""
 PICARD = ""
 SAMTOOLS = ""
+JAVA = ""
 OPTION = ""
 
 ## Data Variable
@@ -77,6 +78,7 @@ def param_file(param) :
     sample_rcnt = 1
     library_cnt = 0
 
+    global JAVA
     global BWA
     global BOWTIE2
     global SAMTOOLS 
@@ -130,14 +132,21 @@ def param_file(param) :
                     LIBRARY_UNIT = path
                 elif match == "OPTION" :
                     OPTION = path
+                elif match == "JAVA" :
+                    #JAVA = os.path.abspath(path)
+                    JAVA = path
                 elif match == "BWA" :
-                    BWA = os.path.abspath(path)
+                    #BWA = os.path.abspath(path)
+                    BWA = path
                 elif match == "BOWTIE2" :
-                    BOWTIE2 = os.path.abspath(path)
+                    #BOWTIE2 = os.path.abspath(path)
+                    BOWTIE2 = path
                 elif match == "SAMTOOLS" :
-                    SAMTOOLS = os.path.abspath(path)
+                    #SAMTOOLS = os.path.abspath(path)
+                    SAMTOOLS = path
                 elif match == "PICARD" :
-                    PICARD = os.path.abspath(path)
+                    #PICARD = os.path.abspath(path)
+                    PICARD = path
                 elif match == "Reference" :
                     REFERENCE = os.path.abspath(path)
                 elif match == "indexing_option_line" :
@@ -181,9 +190,10 @@ def ParseInput(input_) :
 
     return dict_input
 
-def Indexing(out, verbose) :
+def Indexing(out, th, verbose) :
     global OPTION
     global BWA
+    global JAVA
     global BOWTIE2
 
     global REFERENCE
@@ -197,6 +207,38 @@ def Indexing(out, verbose) :
 
     if not os.path.isdir(out + "/01_ReadMapping/logs/01.Indexing") :
         sub.call(f'mkdir {out}/01_ReadMapping/logs/01.Indexing', shell=True)
+
+    f_incomplete = out+"/01_ReadMapping/01.Indexing/incomplete"
+    f_incomplete_tmp = out+"/01_ReadMapping/01.Indexing/incomplete_tmp"
+    O_incomplete_tmp = open(f'{f_incomplete_tmp}','w')
+    RENEW_CMD = list()
+    single_CMD = list()
+    incomplete_line = 0
+    if os.path.exists(f_incomplete):
+        for line in open(f_incomplete, 'r') :
+            line = line.strip()
+            cmd, log = [i.strip() for i in line.split('&>')]
+            single_CMD.append([cmd, log])
+            incomplete_line += 1
+
+        RENEW_CMD.append(single_CMD)
+        with Pool(incomplete_line) as p :
+            value = p.map(map_f, RENEW_CMD)
+            check = 0
+            for i in range(len(value)) :
+                if not value[i] == 0 :
+                    check += 1
+                    sys.stderr.write("[ERROR] Check the log file : " + RENEW_CMD[i][0][1] + "\n")
+                    O_incomplete_tmp.write(RENEW_CMD[i][0][0] +" &> "+ RENEW_CMD[i][0][1] +"\n")
+                    sys.stderr.flush()
+            if not check == 0 :
+                sub.call(f'mv -f {f_incomplete_tmp} {f_incomplete}', shell=True)
+                sys.exit()
+        sub.call(f'touch  {out}/01_ReadMapping/01.Indexing/complete', shell=True)
+        sub.call(f'rm -f  {out}/01_ReadMapping/01.Indexing/incomplete', shell=True)
+        return
+
+    O_incomplete = open(f'{f_incomplete}','w')
 
     if OPTION == "1" :
         sys.stderr.write("Start indexing the reference file using the bwa tools\n")
@@ -213,13 +255,14 @@ def Indexing(out, verbose) :
         
         if value != 0 :
             sys.stderr.write("[ERROR] Check the log file : " + out + "/01_ReadMapping/logs/01.Indexing/index.bwa.log")
+            O_incomplete.write(CMD + " &> " + log+"\n")
             sys.stderr.flush()
             sys.exit()
     
     elif OPTION == "2" :
         sys.stderr.write("Start to indexing the reference file using the bowtie2 tools\n")
         sys.stderr.flush()
-        CMD = BOWTIE2 + "-build " + REFERENCE + " " + out + "/01_ReadMapping/01.Indexing/ref" + indexing_option_line 
+        CMD = BOWTIE2 + "-build " +"--threads "+str(th)+"  "+ REFERENCE + " " + out + "/01_ReadMapping/01.Indexing/ref" + indexing_option_line 
         log = out + "/01_ReadMapping/logs/01.Indexing/index.bowtie2.log"
         
         if verbose == "1" : 
@@ -230,11 +273,14 @@ def Indexing(out, verbose) :
             value = sub.call(CMD, shell=True, stdout = outfile, stderr = outfile)
         if value != 0 :
             sys.stderr.write("[ERROR] Check the log file : " + out + "/01_ReadMapping/logs/01.Indexing/index.bowtie2.log")
+            O_incomplete.write(CMD + " &> " + log+"\n")
             sys.stderr.flush()
             sys.exit()
+    
 
 def Mapping(out, th, job, verbose) :
     global OPTION
+    global JAVA
     global BWA
     global BOWTIE2
     global SAMTOOLS
@@ -248,11 +294,38 @@ def Mapping(out, th, job, verbose) :
     sys.stderr.write("#02.Mapping\n")
     sys.stderr.flush()
     if not os.path.isdir(out + "/01_ReadMapping/02.Mapping") :
-        sub.call(f'mkdir {out}/01_ReadMapping/02.Mapping', shell=True)
+        sub.call(f'mkdir -p {out}/01_ReadMapping/02.Mapping', shell=True)
 
     if not os.path.isdir(out + "/01_ReadMapping/logs/02.Mapping") :
         sub.call(f'mkdir {out}/01_ReadMapping/logs/02.Mapping', shell=True)
 
+    f_incomplete = out+"/01_ReadMapping/02.Mapping/incomplete"
+    f_incomplete_tmp = out+"/01_ReadMapping/02.Mapping/incomplete_tmp"
+    O_incomplete_tmp = open(f'{f_incomplete_tmp}','w')
+    RENEW_CMD = list()
+    single_CMD = list()
+    if os.path.exists(f_incomplete):
+        for line in open(f_incomplete, 'r') :
+            line = line.strip()
+            cmd, log = [i.strip() for i in line.split('&>')]
+            single_CMD.append([cmd, log])
+        
+        RENEW_CMD.append(single_CMD)
+        with Pool(int(job)) as p :
+            value = p.map(map_f, RENEW_CMD)
+            check = 0
+            for i in range(len(value)) :
+                if not value[i] == 0 :
+                    check += 1
+                    sys.stderr.write("[ERROR] Check the log file : " + RENEW_CMD[i][0][1] + "\n")
+                    O_incomplete_tmp.write( RENEW_CMD[i][0][0] +" &> "+ RENEW_CMD[i][0][1] +"\n")
+                    sys.stderr.flush()
+            if not check == 0 :
+                sys.exit()
+        sub.call(f'touch  {out}/01_ReadMapping/02.Mapping/complete', shell=True)
+        return;
+
+    O_incomplete = open(f'{f_incomplete}','w')
     ALL_CMD = list()
     sample_CMD = list()
     if OPTION == "1" :
@@ -361,6 +434,7 @@ def Mapping(out, th, job, verbose) :
             if not value[i] == 0 :
                 check += 1
                 sys.stderr.write("[ERROR] Check the log file : " + ALL_CMD[i][0][1] + "\n")
+                O_incomplete.write(ALL_CMD[i][0][0]+" &> "+ALL_CMD[i][0][1]+"\n")
                 #sys.stderr.write("[ERROR] Check the log file : " + out + "/01_ReadMapping/logs/02.Mapping/" + sample_list[i] + ".mapping.log\n")
                 sys.stderr.flush()
         if not check == 0 :
@@ -368,8 +442,10 @@ def Mapping(out, th, job, verbose) :
 
 
 
-def Mark_Duplicate(out, memory, job, verbose) :
+
+def Mark_Duplicate(out, memory, th, job, verbose) :
     global PICARD
+    global JAVA
     global SAMPLE_DATA
     global LIBRARY_sample
     global markduplicate_option_line
@@ -383,9 +459,38 @@ def Mark_Duplicate(out, memory, job, verbose) :
     if not os.path.isdir(out + "/01_ReadMapping/logs/03.MarkDuplicate") :
         sub.call(f'mkdir {out}/01_ReadMapping/logs/03.MarkDuplicate', shell=True)
 
+
+    f_incomplete = out+"/01_ReadMapping/03.MarkDuplicate/incomplete"
+    f_incomplete_tmp = out+"/01_ReadMapping/03.MarkDuplicate/incomplete_tmp"
+    O_incomplete_tmp = open(f'{f_incomplete_tmp}','w')
+    RENEW_CMD = list()
+    single_CMD = list()
+    if os.path.exists(f_incomplete):
+        for line in open(f_incomplete, 'r') :
+            line = line.strip()
+            cmd, log = [i.strip() for i in line.split('&>')]
+            single_CMD.append([cmd, log])
+        
+        RENEW_CMD.append(single_CMD)
+        with Pool(int(job)) as p :
+            value = p.map(map_f, RENEW_CMD)
+            check = 0
+            for i in range(len(value)) :
+                if not value[i] == 0 :
+                    check += 1
+                    sys.stderr.write("[ERROR] Check the log file : " + RENEW_CMD[i][0][1] + "\n")
+                    O_incomplete_tmp.write(RENEW_CMD[i][0][0]+" &> "+RENEW_CMD[i][0][1]+"\n")
+                    sys.stderr.flush()
+            if not check == 0 :
+                sub.call(f'mv -f {f_incomplete_tmp} {f_incomplete}', shell=True)
+                sys.exit()
+        sub.call(f'touch  {out}/01_ReadMapping/03.MarkDuplicate/complete', shell=True)
+        return
+
+    O_incomplete = open(f'{f_incomplete}','w')
     line, log = "", ""
     for i,j in SAMPLE_DATA.items() :
-        line = "java -Xmx" + str(memory) + "g -jar " + PICARD + " MarkDuplicates " + markduplicate_option_line + "I=" + out + "/01_ReadMapping/02.Mapping/" + i + ".sort.bam O=" + out + "/01_ReadMapping/03.MarkDuplicate/" + i + ".marked.sort.bam M=" + out + "/01_ReadMapping/03.MarkDuplicate/" + i + ".marked_dup_matrix"
+        line = JAVA+" -Xmx" + str(memory) + "g -jar " + PICARD + " MarkDuplicates " + markduplicate_option_line + "I=" + out + "/01_ReadMapping/02.Mapping/" + i + ".sort.bam O=" + out + "/01_ReadMapping/03.MarkDuplicate/" + i + ".marked.sort.bam M=" + out + "/01_ReadMapping/03.MarkDuplicate/" + i + ".marked_dup_matrix"
         log = out + "/01_ReadMapping/logs/03.MarkDuplicate/" + i + ".mark_duplicate.log"
         CMD.append([line, log])
 
@@ -394,20 +499,22 @@ def Mark_Duplicate(out, memory, job, verbose) :
             sys.stderr.flush()
         
 
-    with Pool(int(job)) as p :
+    with Pool(int(th)) as p :
         value = p.map(multi_run_wrapper, CMD)
         check = 0
         for i in range(len(value)) :
             if not value[i] == 0 :
                 check += 1
                 sys.stderr.write("[ERROR] Check the log file : " + (CMD[i])[1] + "\n")
+                O_incomplete.write( (CMD[i])[0] + " &> " +  (CMD[i])[1]+"\n")
                 sys.stderr.flush()
         if not check == 0 :
             sys.exit()
 
 
-def Read_Regrouping(out, memory, job, verbose) :
+def Read_Regrouping(out, memory, th, job, verbose) :
     global PICARD
+    global JAVA
     global SAMPLE_DATA
     global PLATFORM
     global LIBRARY_sample
@@ -425,9 +532,39 @@ def Read_Regrouping(out, memory, job, verbose) :
     if not os.path.isdir(out + "/01_ReadMapping/logs/04.ReadRegrouping") :
         sub.call(f'mkdir {out}/01_ReadMapping/logs/04.ReadRegrouping', shell=True)
 
+    f_incomplete = out+"/01_ReadMapping/04.ReadRegrouping/incomplete"
+    f_incomplete_tmp = out+"/01_ReadMapping/04.ReadRegrouping/incomplete_tmp"
+    O_incomplete_tmp = open(f'{f_incomplete_tmp}','w')
+    RENEW_CMD = list()
+    single_CMD = list()
+    if os.path.exists(f_incomplete):
+        for line in open(f_incomplete, 'r') :
+            line = line.strip()
+            cmd, log = [i.strip() for i in line.split('&>')]
+            single_CMD.append([cmd, log])
+
+        RENEW_CMD.append(single_CMD)
+        with Pool(int(job)) as p :
+            value = p.map(map_f, RENEW_CMD)
+            check = 0
+            for i in range(len(value)) :
+                if not value[i] == 0 :
+                    check += 1
+                    sys.stderr.write("[ERROR] Check the log file : " + RENEW_CMD[i][0][1] + "\n")
+                    O_incomplete_tmp.write(RENEW_CMD[i][0][0]+" &> "+RENEW_CMD[i][0][1]+"\n")
+                    sys.stderr.flush()
+            if not check == 0 :
+                sub.call(f'mv -f {f_incomplete_tmp} {f_incomplete}', shell=True)
+                sys.exit()
+        sub.call(f'rm -f  {f_incomplete_tmp} {f_incomplete}', shell=True)
+        sub.call(f'touch  {out}/01_ReadMapping/04.ReadRegrouping/complete', shell=True)
+        return
+
+    O_incomplete = open(f'{f_incomplete}','w')
+
     line, log = "", ""
     for i,j in SAMPLE_DATA.items() :
-        line = "java -Xmx" + str(memory) + "g -jar " + PICARD + " AddOrReplaceReadGroups " + readgrouping_option_line + "I=" + out + "/01_ReadMapping/03.MarkDuplicate/" + i + ".marked.sort.bam O=" + out + "/01_ReadMapping/04.ReadRegrouping/" + i + ".addRG.marked.sort.bam RGLB=lib1 RGPL=" + PLATFORM + " RGPU=" + LIBRARY_UNIT + " RGSM=" + i
+        line = JAVA+" -Xmx" + str(memory) + "g -jar " + PICARD + " AddOrReplaceReadGroups " + readgrouping_option_line + "I=" + out + "/01_ReadMapping/03.MarkDuplicate/" + i + ".marked.sort.bam O=" + out + "/01_ReadMapping/04.ReadRegrouping/" + i + ".addRG.marked.sort.bam RGLB=lib1 RGPL=" + PLATFORM + " RGPU=" + LIBRARY_UNIT + " RGSM=" + i
         log = out + "/01_ReadMapping/logs/04.ReadRegrouping/" + i + ".addRG.log"
         CMD.append([line, log])
 
@@ -435,13 +572,14 @@ def Read_Regrouping(out, memory, job, verbose) :
             sys.stderr.write(line + " &> " + log + "\n")
             sys.stderr.flush()
 
-    with Pool(int(job)) as p :
+    with Pool(int(th)) as p :
         value = p.map(multi_run_wrapper, CMD)
         check = 0
         for i in range(len(value)) :
             if not value[i] == 0 :
                 check += 1
                 sys.stderr.write("[ERROR] Check the log file : " + (CMD[i])[1] + "\n")
+                O_incomplete.write(CMD[i][0] + " &> " + CMD[i][1]+"\n")
                 sys.stderr.flush()
         if not check == 0 :
             sys.exit()
@@ -468,23 +606,47 @@ def main_pipe(args, dict_param, index) :
 
     pre_param = Param.ReadMapping(args.out, dict_param, SAMPLE_DATA)
     param_file(pre_param.name)
-   
+    out = os.path.abspath(args.out)
     ####01.Indexing
-    Indexing(os.path.abspath(args.out), args.verbose)
-    sys.stderr.write("Success the Indexing\n\n")
-    sys.stderr.flush()
+    index_complete = args.out+"/01_ReadMapping/01.Indexing/complete"
+    if os.path.exists(index_complete):
+        sys.stderr.write("Skip Indexing\n\n")
+        sys.stderr.flush()
+    else:
+        Indexing(os.path.abspath(args.out), args.threads ,args.verbose)
+        sys.stderr.write("Success the Indexing\n\n")
+        sys.stderr.flush()
+        sub.call(f'touch  {out}/01_ReadMapping/01.Indexing/complete', shell=True)
     ####02.Mapping
-    Mapping(os.path.abspath(args.out), args.threads, args.job, args.verbose)
-    sys.stderr.write("Success the Mapping\n\n")
-    sys.stderr.flush()
+    mapping_complete = args.out+"/01_ReadMapping/02.Mapping/complete"
+    if os.path.exists(mapping_complete):
+        sys.stderr.write("Skip Mapping\n\n")
+        sys.stderr.flush()
+    else:
+        Mapping(os.path.abspath(args.out), args.threads, args.job, args.verbose)
+        sys.stderr.write("Success the Mapping\n\n")
+        sys.stderr.flush()
+        sub.call(f'touch  {out}/01_ReadMapping/02.Mapping/complete', shell=True)
     ####03.MarkDuplicate
-    Mark_Duplicate(os.path.abspath(args.out), args.memory, args.job, args.verbose)
-    sys.stderr.write("Success the MarkDuplicate\n\n")
-    sys.stderr.flush()
+    mapping_complete = args.out+"/01_ReadMapping/03.MarkDuplicate/complete"
+    if os.path.exists(mapping_complete):
+        sys.stderr.write("Skip MarkDuplicate\n\n")
+        sys.stderr.flush()
+        sub.call(f'touch  {out}/01_ReadMapping/03.MarkDuplicate/complete', shell=True)
+    else:
+        Mark_Duplicate(os.path.abspath(args.out), args.memory, args.threads, args.job, args.verbose)
+        sys.stderr.write("Success the MarkDuplicate\n\n")
+        sys.stderr.flush()
     ####04.ReadRegrouping
-    Read_Regrouping(os.path.abspath(args.out), args.memory, args.job, args.verbose)
-    sys.stderr.write("Success the ReadRegrouping\n\n")
-    sys.stderr.flush()
+    mapping_complete = args.out+"/01_ReadMapping/04.ReadRegrouping/complete"
+    if os.path.exists(mapping_complete):
+        sys.stderr.write("Skip ReadRegrouping\n\n")
+        sys.stderr.flush()
+    else:
+        Read_Regrouping(os.path.abspath(args.out), args.memory, args.threads, args.job, args.verbose)
+        sys.stderr.write("Success the ReadRegrouping\n\n")
+        sys.stderr.flush()
+        sub.call(f'touch  {out}/01_ReadMapping/04.ReadRegrouping/complete', shell=True)
 
 
     sys.stderr.write("Finish the Read mapping step\n\n")
