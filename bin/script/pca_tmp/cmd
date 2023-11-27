@@ -1,3 +1,0 @@
-perl ../PCA.pl -p ./PCA.txt  -s ./main_sample.txt  -o ./ &> log
-
-

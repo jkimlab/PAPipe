@@ -1,4 +1,0 @@
-ON/OFF=ON
-ADMIXTOOLS=/opt/conda/bin/
-Prefix=admixt_result
-PLINK=./out/03_Postprocessing/plink/Cows

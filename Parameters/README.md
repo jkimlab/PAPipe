@@ -1,423 +1,169 @@
-# Prepare the paramater files to run PAPipe
+# Parameter File Generator
 
-### Parameter files to prepare
+## Wegpage link 
 
----
+[PAPipe Parameter File Generator](http://bioinfo.konkuk.ac.kr/PAPipe/parameter_builder/)
 
-PAPipe requires three parameter files below to execute
+## Main web interface
+<p align="center"><img src="../figures/fig_pg1.png" width="70%"></p>
 
-- `I` main.input.txt
-    
-    Containing main input files to analyze
-    
-- `S` main.sample.txt
-    
-    Containing sample-population information
-    
-- `P` main.param.txt
-    
-    Containing parameters and environment paths to run the PAPipe and incorporated population analyses
-    
+## Documentation
 
----
+### "Load parameter for test data" button
 
-- By default, PAPipe is ready to receive raw paired-end reads from all individuals for population analysis.
-- As PAPipe supports various analysis subsets, users can perform population analysis from their available data, including trimmed reads, read alignments, and variant calls, in addition to raw reads.
-- You can configure `main.input.txt` according to user input, and similarly, `main.param.txt` should be set by the user to match the subset range they intend to analyze.
-- PAPipe provides a step-by-step parameter form where you can simply fill in the content as a default.
-- However, for user convenience, we have also implemented an additional parameter-builder web interface, allowing you to generate parameters more easily through this website.
+- Example parameter values for a test data are loaded in each field 
 
----
+### "Clear" button
 
-💡 Check out our [Parameter generator webpage](http://bioinfo.konkuk.ac.kr/PAPipe/parameter_builder/) and [Documentation](./parameter_generator.md)!
+- Reset all parameter values 
 
----
+### Global parameters
 
-**From raw reads or trimmed reads**
+**(1) Reference genome assembly file**
 
-```
-#### ReadMapping ####
-### DNA-seq data path(input file of ReadMapping) ###
-# Paired-end read pairs
-# <Hanwoo_Hanwoo1> => RGSM name, format:(BreedName)_(BreedName)(Number)
-# [lib1]
-# Path of forward read
-# path of reverse read
-<Abreed_Abreed1>
-[lib1]
-[path to sequencing read]/[sequencing read]-1.fq.gz
-[path to sequencing read]/[sequencing read]-2.fq.gz
+- The name of a genome assembly file (gzip-compressed FASTA) of a reference species
+- Example: pig.fa.gz
 
-```
+**(2) Reference dbSNP file (optional)**
 
-**From read alignments**
+- The dbSNP file (gzip-compressed VCF) of a reference species
+- Optional parameter
+- Example: pig.vcf.gz
 
-```
-#### VariantCalling ####
-### Bam file path(input file of ReadMapping or Varaint Calling) ###
-# <Hanwoo_Hanwoo1> => RGSM name (Before read grouping in ReadMapping step, format:(BreedName)_(BreedName)(Number), example : Hanwoo_Hanwoo1)
-# Path of bam file
-<Abreed_Abreed1>
-[path to bam file]/[Abreed_Abreed1].bam
-<Abreed_Abreed2>
-[path to bam file]/[Abreed_Abreed2].bam
+**(3) Total number of chromosomes in the reference genome**
 
-```
+- Total number of chromosomes (including sex chromosomes) of in the reference genome
+- Example: 23
 
-**From variant call data**
+**(4) Number of autosomes in the reference genome**
 
-```
-#### Postprocessing ####
+- Total number of autosomes in the reference genome
+- Example: 21
 
-### Vcf file path(input file of Postprocessing) ###
-# Path of vcf file
-[path to variant call VCF]/[variant call].vcf.gz
+**(5) Names of sex chromosomes in the reference genome (optional)**
 
-#### Population ####
-# If you take the Effective size step in Population analysis, write the BAM files path ####
-### Bam files path ###
-# <Hanwoo_Hanwoo1> => RGSM name (Before read grouping in ReadMapping step, format:(BreedName)_(BreedName)(Number), example : Hanwoo_Hanwoo1)
-# Path of BAM file
-<Abreed_Abreed1>
-[path to bam file]/[Abreed_Abreed1].recal.addRG.marked.sort.bam
-<Abreed_Abreed2>
-[path to bam file]/[Abreed_Abreed2].recal.addRG.marked.sort.ba
+- The list of the names of sex chromosomes in the reference genome
+- Comma-separated without space
+- Optional parameter
+- Example: X,Y
 
-```
+**(6) Name of output directory**
 
----
+- The name of output directory
 
-### main.sample.txt
+**(7) Threads**
 
-[example.main.sample.txt](https://github.com/nayoung9/PAPipe/blob/main/Tutorial/main.sample.txt)
+- The number of threads for parallel execution
 
-List of sample-sex-population information per single line
+### Population setting
 
-```
-#sample sex[F, M, U, FemaleMale/U for none] population
-ABreed1 U        Abreed
-ABreed2 U        Abreed
-BBreed1 U        Bbreed
-BBreed2 U        Bbreed
+- Names of populations
+- One population name per line
+<p align="center"><img src="../figures/fig_pg1.2.png" width="70%"></p>
 
-```
 
----
+### Begin analysis from
 
-### main.param.txt
+<p align="center"><img src="../figures/fig_pg2.png" width="70%"></p>
 
-Lift of required parameters for running each
-[example.main.param.txt](https://github.com/nayoung9/PAPipe/blob/main/Tutorial/main.param.txt)
+- Set the starting point of analysis
+- Data in the "Input file setting" must be set differently based on the choice here
 
-**Global options running PAPipe**
+**From read QC (you have raw reads)**
 
-The parameter file should include this section for every execution.
+- You have raw sequencing files and therefore you want to begin analysis from read QC and trimming
+- In the "Input file setting" textbox, the names of a sample and its corresponding sequencing file must be given (one pair per line)
+- Only paired-end sequencing data is supported, therefore for one sample, two read files (one for the first reads and the other for the second reads) must be specified in two different lines
+- Sequencing files must be gzip-compressed fastq files
+<p align="center"><img src="../figures/fig_pg3.png" width="70%"></p>
 
-```
-#### Global ####
-outdir = ./out
-threads = 20
-verbose = 1
-memory = 10
-step = 0-4
-reference = /RUN_DOCKER/data/ref/cow.chr1.fa.gz
-```
+**From read mapping (you have trimmed reads)**
 
-- step information
-    - 0: Read QC
-    - 1: Read alignment
-    - 2: Variant calling
-    - 3: Postprocessing
-    - 4: Population analyses
+- You have trimmed sequencing files and therefore you want to begin analysis from read mapping (skip read QC and trimming)
+- In the "Input file setting" textbox, the names of a sample and its corresponding sequencing file must be given (one pair per line)
+- Only paired-end sequencing data is supported, therefore for one sample, two read files (one for the first reads and the other for the second reads) must be specified in two different lines
+- Sequencing files must be gzip-compressed fastq files
+<p align="center"><img src="../figures/fig_pg3.png" width="70%"></p>
 
-**Running ReadQC step in PAPipe**
+**From variant calling (you have read mapping files)**
 
-```
-#### ReadQC ####
-### Program path ###
-fastqc_path  = /mss1/programs/titan/FastQC/fastqc
-multiqc_path  = ~/.local/bin/multiqc
-Trim_galore_path = /mss3/RDA_Phase2/programs/TrimGalore-0.6.0/trim_galore
-path_to_cutadapt =  ~/.local/bin/cutadapt
+- You have read mapping files and therefore you want to begin analysis from variant calling (skip read QC, read trimming, and read mapping)
+- In the "Input file setting" textbox, the names of a sample and its corresponding mapping file must be given (one pair per line)
+- The mapping file must be a BAM file
+<p align="center"><img src="../figures/fig_pg4.png" width="70%"></p>
 
-tg;quality = 20
-tg;length = 20
-```
+**From population genetic analyses (you have variant calling results)**
 
-**Running ReadMapping step in PAPipe**
+- You have variant calling results and therefore you want to begin population genetic analyses (skip read QC, read trimming, read mapping, and variant calling)
+- In the "Input variant file name" textbox, a single variant calling result file (gzip-compressed VCF file) must be given
+- In the "Input sample list" textbox, a sample name must be given (one per line)
+<p align="center"><img src="../figures/fig_pg5.png" width="70%"></p>
 
-```
-#### ReadMapping ####
-### Program path ###
-OPTION = 1
-BWA = [path_to_bwa]/bwa
-BOWTIE2 = [path_to_bowtie2]/bowtie2
-SAMTOOLS = [path_to_samtools]/samtools
-PICARD = [path_to_picard]/picard.jar
-JAVA = [path_to_java]/java
+### Population setting for input files
 
-### Data path ###
-Reference = [path_to_reference_genome]/[...].fa
+A population name is assigned to each input data file in this part.
 
-```
+<p align="center"><img src="../figures/fig_pg6.png" width="70%"></p>
 
-- **ReadMapping** option information
-    - 1: Bwa
-    - 2: Bowtie2
 
-**Running VariantCalling step in PAPipe**
+**Requirements**
 
-```
-#### VariantCalling ####
-### Program path ###
-OPTION = 2
-PICARD = [path_to_picard]/picard.jar
-SAMTOOLS = [path_to_samtools]/samtools
-BCFTOOLS = [path_to_bcftools]/bcftools
-VCFTOOLS = [path_to_vcftools]/vcftools
-GATK3.8 = [path_to_gatk3]/gatk-package-distribution-3.8-1.jar
-GATK4.0 = [path_to_gatk4]/gatk
-JAVA = [path_to_java]/java
+- Population names must be given in the "Population setting" texbox as described above
+- The names of samples and input files must be given in the "Input file setting" textbox as described above
 
-### Data path ###
-Reference = [path_to_reference_genome]/[...].fa
-DBSNP = [path_to_dbsnp_variants]/[...].vcf.gz
+**Population setting** 
 
-### Default ###
-VCF_prefix = Cows
+- Click the "Population setting for input files" button to display the population setting table as shown above
+- A population and sex information can be set for each input file separately by using the "Population" and "Sex" drop-down textbox
+- A population and sex information can be set for multiple input files together by using the "Apply population" and "Apply sex" bottons and their related drop-down textbox (use mouse shift-click as described on the webpage)
+- The sex information is optional and therefore leave them as "None" in that case 
 
-```
+### Parameter settting for read QC, read alignment, variant calling, and post processing
 
-- **VariantCalling** option information
-    - 1: GATK3
-    - 2: GATK4
-    - 3: BCFtools
+<p align="center"><img src="../figures/fig_pg7.png" width="70%"></p>
 
-**Running Postprocessing step in PAPipe**
+- Parameter values for read QC, read alignment, variant calling, and post processing can be set using textboxes shown above
+- Read alignment can be done by BWA or Bowtie 2
+- Variant calling can be done by GATK3, GATK4, or BCFtools
+- Additional parameters can be set by clicking "Additional user parameters (optional)"
+- The description of available parameters can be obtained by clicking the "manual" link 
 
-```
-####               Postprocessing               ####
-### Program path ###
-Plink= [path_to_plink]/plink
-VCFTOOLS = [path_to_vcftools]/vcftools
+### Population genetic analysis
 
-###             Default             ###
-chr-set = [total chromosome number]
-geno = 0.01
-maf = 0.05
-hwe = 0.000001
+<p align="center"><img src="../figures/fig_pg8.png" width="60%"></p>
 
-```
+- A total of 11 population genetic analyses can be simultaneously run by using the on/off button shown above
 
-**Running PopulationAnalysis step in PAPipe**
 
-```
-#### PopulationAnalysis ####
+### Parameter setting for population genetic analysis
 
-```
+- The description of most parameters can be found from the manual page of each tool (click the "manual" link)
+- The description of parameters generated by PAPipe are shown below
 
-- The parameters for population analysis part starts along with the header.
-- User can set whether to perform the analysis or not using an ON/OFF parameter.
-    1. **principal component analysis (Plink 1.9)**
-        
-        ```
-        #### PCA ####
-        ON/OFF = ON
-        
-        GCTA = [path_to_gcta]/gcta64
-        Rlib_path = [path_to_RLib]/R_LIB/
-        
-        autosome-num = 30        #number of autosome used in analysis
-        PCA = 20                 #number of PCs for PCA analysis
-        maxPC = 5                #maximum number of PC for drawing PCA plots
-        Variance = 80            #objective variance for drawing PCA plots
-        PCA_title = [title]      #Title for PCA plot
-        
-        ```
-        
-    2. **PCA projection analysis (Plink 2)**
-        
-        ```
-        #### Plink2 ####
-        ON/OFF = ON
-        
-        vcftools = [path_to_vcftools]/vcftools
-        plink2 = [path_to_plink2]/plink2
-        
-        autosome_cnt = 30              #number of autosome used in analysis
-        non_autosome_list  = X,Y,MT    #list of not-using chromosomes deliminated by comma
-        PCA = 20                       #number of PCs for PCA analysis
-        maxPC = 5                      #maximum number of PC for drawing PCA plots
-        Variance = 80                  #objective variance for drawing PCA plots
-        PCA_title = [title]            #Title for PCA plot
-        
-        ```
-        
-    3. **Phylogenetic analysis (Snphylo)**
-        
-        ```
-        #### Phylogenetic Tree ####
-        ON/OFF = ON
-        
-        Snphylo = [path_to_snphylo]/snphylo.sh
-        
-        sampleNum = 25
-        m=0
-        l=0.7
-        M=0.02
-        
-        ```
-        
-    4. **Treemix analysis (Treemix2)**
-        
-        ```
-        #### Treemix####
-        ON/OFF = ON
-        
-        vcftools_path = [path_to_vcftools]/vcftools
-        bcftools_path = [path_to_bcftools]/bcftools
-        treemix_path = [path_to_treemix]/src/treemix
-        treemix_util_path = [path_to_treemix]/scripts/
-        plink= [path_to_plink]/plink
-        python2=[path_to_python2]/python
-        lib_path = [path_to_RLib]/R_LIB/
-        
-        ldPruning_threshold = 0.1
-        m = 4
-        k = 2
-        
-        ```
-        
-    5. **Population structure analysis (Structure)**
-        
-        ```
-        #### Population Structure ####
-        ON/OFF = ON
-        
-        admixture = [path_to_admixture]/admixture
-        CLUMPAK = [path_to_CLUMPAK]/CLUMPAK.pl
-        
-        k = 5     #number of maximum ancestor species
-        
-        ```
-        
-    6. **Linkage disequilibrium decay analysis (PopLDdecay)**
-        
-        ```
-        #### Ld Decay ####
-        ON/OFF = ON
-        
-        PopLDdecay_BIN = [path_to_PopLDdecay]/bin/
-        
-        MaxDist = 500, 1000, 5000, 10000      #The maximum distance parameter allows for one or more values, which should be delimited by commas.
-        
-        ```
-        
-    7. **Selective sweep finding analysis (SweepFinder2)**
-        
-        ```
-        #### SweepFinder2 ####
-        ON/OFF = ON
-        
-        plink_path = [path_to_plink]/plink
-        vcftools_path = [path_to_vcftools]/vcftools
-        bgzip_path = [path_to_bgzip]/bgzip
-        tabix_path = [path_to_tabix]/tabix
-        python_path = [path_to_python3]/python3
-        sweepfinder_path = [path_to_SweepFinder2]/SweepFinder2
-        
-        ref_fa = [path_to_reference_genome]/[...].fa     #reference fasta
-        autosome_num = 30                                #autosome number
-        non_autosome_list  = X,Y,MT                      #non-autosome-list delimited by commas
-        grid_size = 1000                                 #grid size
-        threads = 20
-        
-        ```
-        
-    8. **Population admixture analysis (Admixtools)**
-        
-        ```
-        #### Admixture Proportion ####
-        ON/OFF = ON
-        
-        ADMIXTOOLS = [path_to_ADMIXTOOLS]/bin/
-        
-        Prefix = admixt_result
-        
-        ```
-        
-    9. **Pairwise sequentially Markovian coalescent analysis (PSMC)**
-        
-        ```
-        #### Effective Size ####
-        ON/OFF = ON
-        
-        VCFUTILS = [path_to_vcfutils]/vcfutils.pl
-        SAMTOOLS = [path_to_samtools]/samtools
-        BCFTOOLS = [path_to_bcftools]/bcftools
-        PSMC_DIR = [path_to_psmc]/psmc/
-        
-        ### Data path ###
-        Reference = [path_to_reference_genome]/[...].fa
-        
-        #=====================================#
-        ###             Default             ###
-        #=====================================#
-        ## SAMTOOLS
-        SAM_C = 50  # parameter for adjusting mapQ; 0 to disable [0]
-        VCF_d = 10  # max per-BAM depth to avoid excessive memory usage [250]
-        VCF_D = 100 # output per-sample DP in BCF
-        
-        ## PSMC
-        # fq2psmcfa
-        q = 20 # rounds of iterations
-        
-        # psmc
-        N = 25  # maximum number of iterations [30]
-        t = 15  # maximum 2N0 coalescent time [15]
-        r = 5   # initial theta/rho ratio [4]
-        p = "4+25*2+4+6"  # pattern of parameters [4+5*3+4]
-        
-        ```
-        
-    10. **Multiple sequentially Markovian coalescent analysis (MSMC)**
-        
-        ```
-        #### MSMC ####
-        ON/OFF = ON
-        
-        seqbility_bin = [path_to_MSMC_mappability]/seqbility-20091110/
-        msmctools_bin = [path_to_MSMC-tools]/msmc-tools
-        msmc_path = [path_to_MSMC2]/msmc2
-        samtools_path = [path_to_samtools]/samtools
-        bwa_path = [path_to_bwa]/bwa
-        python_path = [path_to_python3]/python3
-        faSize = [path_to_faSize]/faSize
-        bcftools_path = [path_to_bcftools]/bcftools
-        
-        ref_fa = [path_to_reference_genome]/[...].fa
-        threads = 20
-        
-        ```
-        
-    11. **Fixation index analysis (Fst)**
-        
-        ```
-        #### Fst ####
-        ON/OFF = ON
-        
-        VCFTOOLS = [path_to_vcftools]/vcftools
-        
-        reference_chromosome_cnt = 1
-        Rlib_path = [path_to_RLib]/R_LIB/
-        
-        window-size = 100000            #window size
-        window-step = 0                 #step of window, 0 for adjacent window is fixed
-        plot-width = 10                 #width of plot
-        plot-high = 6                   #height of plot
-        genomewideline = 3
-        
-        # Optional #
-        TargetComb = Angus;Hanwoo;<->Holstein;Jersey;
-        
-        ```
+**Principal component analysis**
+
+<p align="center"><img src="../figures/fig_pg9.png" width="70%"></p>
+
+- Number of PC: the total number of PCs generated by this analysis
+- Objective sum of the proportion of variance explained (%): the cutoff value of the sum of the proportion of variance explained (PVE), only top PCs that their PVE sum satisfies this cutoff are used
+- Max PC: only this number of top PCs are used to create the PCA plots between two PCs
+
+**Fixation index analysis**
+
+<p align="center"><img src="../figures/fig_pg13.png" width="55%"></p>
+
+- By default, the fixation index is calculated for the following population combinations
+    - For all possible pairs of two populations
+    - For one population against all others 
+- Specific pairs of populations can be set by using "Additional user setting for population combinations (optional)"
+
+
+### Generate paramter files
+
+<p align="center"><img src="../figures/fig_pg_fin.png" width="70%"></p>
+
+- Click the "Generate parameter files" button after all parameters are set
+- Two new buttons will be generated
+    - "Copy the link of parameter files": the link of a gzip-compressed tar file is copied to clipboard (you can use this link to download the file directly to your Linux machine using the "wget" command)
+    - "Download parameter files": a gzip-compressed tar file is downloaded directly to your computer
+  
