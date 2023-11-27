@@ -1,6 +1,6 @@
 # Analysis result browser
 
-![fig1.png](../../figures/fig_rb_1.png)
+![fig_rb_1.png](../figures/fig_rb_1.png)
 
 **"Date" drop-down box**
 
@@ -18,7 +18,7 @@
 - Parameter values used for this analysis can be seen by clicking the "Parameters"
 - The following example shows the parameter values used for the principal component analysis
 
-![fig1.png](../../figures/fig_rb_2.png)
+![fig_rb_2.png](../figures/fig_rb_2.png)
 
 - The paths of generated files are also provided below the parameter section
 
