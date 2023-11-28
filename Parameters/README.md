@@ -1,6 +1,6 @@
 # Parameter File Generator
 
-## Webpage link 
+## Wegpage link 
 
 [PAPipe Parameter File Generator](http://bioinfo.konkuk.ac.kr/PAPipe/parameter_builder/)
 
