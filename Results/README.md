@@ -18,8 +18,8 @@
 - QC results for all samples after trimming
     
     ```
-    Path_to_out_directory/00_ReadQC/QC_Report_After_Trimming/[population]/[sample]_1_fastqc.html
-    Path_to_out_directory/00_ReadQC/QC_Report_After_Trimming/[population]/[sample]_2_fastqc.html
+    Path_to_out_directory/00_ReadQC/QC_Report_After_Trimming/[population]/[sample]_1_val_1_fastqc.html
+    Path_to_out_directory/00_ReadQC/QC_Report_After_Trimming/[population]/[sample]_2_val_2_fastqc.html
     ```
 
 - MultiQC summarized QC results for populations after trimming
@@ -169,7 +169,7 @@
     Path_to_out_directory/04_Population/[running datetime]/SweepFinder2/
     ```
 
-- Selective Sweep results in point plot figures for all chromosom generated per population
+- Selective Sweep results in point plot figures for all chromosome generated per population
     
     ```
     Path_to_out_directory/04_Population/[running datetime]/SweepFinder2/[population]/SweepFinderOut.pdf
@@ -234,19 +234,23 @@
     
     ```
     #pairwise comparison
-    Path_to_out_directory/04_Population/[running datetime]/Fst/[comparing pair information]/[comparing pair information].pdf
+    Path_to_out_directory/04_Population/[running datetime]/Fst/[population1_VS_population2]/[population1_VS_population2].pdf
     
     #single population vs all other populations, user combination
-    Path_to_out_directory/04_Population/[running datetime]/Fst/[comparing information]/Fst_result.pdf
+    Path_to_out_directory/04_Population/[running datetime]/Fst/[single population_VS_rest_all_populations]/Fst_result.pdf
+
+	#user defined combination
+	Path_to_out_directory/04_Population/[running datetime]/Fst/[population group1_VS_population group2]/Fst_result.pdf
     ```
     
 - Significant regions results of Fst analysis
     
     ```
     #pairwise comparison
-    Path_to_out_directory/04_Population/[running datetime]/Fst/[comparing pair information]/[comparing pair information].sig.region.txt
+    Path_to_out_directory/04_Population/[running datetime]/Fst/[population1_VS_population2]/[population1_VS_population2].sig.region.txt
 
     #single population vs all other populations, user combination
-    Path_to_out_directory/04_Population/[running datetime]/Fst/[comparing information]/Fst_result.sig.region.txt
-    
+    Path_to_out_directory/04_Population/[running datetime]/Fst/[single population_VS_rest_all_populations]/Fst_result.sig.region.txt
+	#user defined combination
+    Path_to_out_directory/04_Population/[running datetime]/Fst/[population group1_VS_population group2]/Fst_result.sig.region.txt
     ```
