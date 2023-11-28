@@ -7,9 +7,9 @@
 1. Read trimming (by [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/))
 2. Read mapping (by [BWA](https://bio-bwa.sourceforge.net/) or [Bowtie 2](https://bowtie-bio.sourceforge.net/bowtie2/))
 3. Genetic variant calling (by [GATK3](https://gatk.broadinstitute.org/hc/en-us), [GATK4](https://gatk.broadinstitute.org/hc/en-us) or [BCFtools](https://github.com/samtools/bcftools))
-4. Data filtering and format converting (by [GCTA](https://yanglab.westlake.edu.cn/software/gcta/#PCA))
+4. Data filtering and format converting (by [PLINK v 1.9](https://www.cog-genomics.org/plink/))
 5. Population genetic analyses
-    - Principal component analysis (by [PLINK v 1.9](https://www.cog-genomics.org/plink/) or [PLINK v 2.0](https://www.cog-genomics.org/plink/2.0/))
+    - Principal component analysis (by [GCTA](https://yanglab.westlake.edu.cn/software/gcta/#PCA) or [PLINK v 2.0](https://www.cog-genomics.org/plink/2.0/))
     - Phylogenetic tree analysis (by [SNPhylo](https://github.com/thlee/SNPhylo))
     - Population tree analysis (by [TreeMix](https://bitbucket.org/nygcresearch/treemix/wiki/Home))
     - Population structure analysis (by [ADMIXTURE](https://speciationgenomics.github.io/ADMIXTURE/))
