@@ -47,4 +47,10 @@ PCA = 20
 Variance = 80
 PCA_title = PCA analysis
 ```
-  
+- You can find the description of the various parameters in the parameter file generator of PAPipe [here](http://bioinfo.konkuk.ac.kr/PAPipe/parameter_builder/).
+
+### Rerun PAPipe
+
+After finishing the setting of parameter values, you can rerun PAPipe using the same command as shown below.
+
+
