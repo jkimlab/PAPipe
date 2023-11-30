@@ -112,7 +112,7 @@ However, PAPipe also supports the generation of HTML pages for easily browsing t
 
 ```bash
 # Run in the docker container
-perl /PAPipe/bin/webEnvSet.pl ./out &> webenvset.log    # Suppose "out" is the output directory set in the "main_param.txt" file
+perl /PAPipe/bin/html/webEnvSet.pl ./out &> webenvset.log    # Suppose "out" is the output directory set in the "main_param.txt" file
 cd ./out/web/
 perl /PAPipe/bin/html/prep_html.pl ./ &> ./webgen.log
 ```
