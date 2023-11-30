@@ -53,4 +53,9 @@ PCA_title = PCA analysis
 
 After finishing the setting of parameter values, you can rerun PAPipe using the same command as shown below.
 
+```bash
+# Run in the docker container
+cd /RUN_DOCKER/
+python3 /PAPipe/bin/main.py  -P ./main_param.txt  -I ./main_input.txt -A ./main_sample.txt &> ./log
+```
 
