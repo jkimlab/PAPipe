@@ -6,10 +6,45 @@
 
 ### Parameter setting 
 
-After the first run of PAPipe, if you want to run PAPipe again for the same variant calling results, please follow the steps below.
+After the first run of PAPipe, if you want to run PAPipe again for the same variant calling results, please follow the instruction below.
 
-- you can change parameter values of various population genetic analyses
-
+- In the "main_param.txt" parameter file, do not change anything above the following line.
 ```
 #### PopulationAnalysis ####
 ```
+
+- In the "main_param.txt" parameter file, you can find the parameter setting for various population genetic analyses.
+- The following example shows the setting for the principal component analysis by GCTA.
+
+```
+#### PCA ####
+# Principal component analysis by GCTA #
+ON/OFF = OFF
+### Program path ###
+GCTA = gcta64
+Rlib_path = /opt/conda/lib/R/library/
+### GRM parameter ###
+autosome-num = 1
+maxPC = 5
+PCA = 20
+Variance = 80
+PCA_title = PCA analysis
+```
+- You can turn on the analysis by setting:
+```
+ON/OFF = ON
+```
+- You can turn off the analysis by setting:
+```
+ON/OFF = OFF
+```
+- You can change various parameter values appearing after the ON/OFF setting:
+```
+### GRM parameter ###
+autosome-num = 1
+maxPC = 5
+PCA = 20
+Variance = 80
+PCA_title = PCA analysis
+```
+  
