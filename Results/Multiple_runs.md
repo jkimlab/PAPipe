@@ -6,7 +6,9 @@
 
 ### Parameter setting 
 
-- After the first run of PAPipe, if you want to run PAPipe again for the same variant calling results, you have to 
+After the first run of PAPipe, if you want to run PAPipe again for the same variant calling results, please follow the steps below.
+
+- you can change parameter values of various population genetic analyses
 
 ```
 #### PopulationAnalysis ####
