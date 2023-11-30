@@ -7,7 +7,7 @@
 - PAPipe can be run multiple times with different parameter settings, and can generate analysis results into the same output directory.
 - In this case, PAPipe create a sub-directory with a date for its name for each run, and stores analysis results in that sub-directory.
 - By using this drop-down box, user can navigate analysis results generate at different time point.
-- Check out the more details of the multiple running feature of PAPipe [here](./Results/Multiple_runs.md).
+- Check out the more details of the multiple running feature of PAPipe [here](./Multiple_runs.md).
 
 **"Analysis" drop-down box**
 
